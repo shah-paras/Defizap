@@ -1,5 +1,7 @@
 {
-    "env": {
-      "REACT_APP_BLOCKNATIVE_ID": "@blocknativeid"
+    "build": {
+      "env": {
+        "REACT_APP_BLOCKNATIVE_ID": "@blocknativeid"
+      }
     }
 }
