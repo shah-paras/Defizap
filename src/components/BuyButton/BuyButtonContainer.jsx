@@ -62,6 +62,7 @@ class LenderBuyButton extends React.Component {
       if (walletSelection && walletCheck) {
         const accounts = await web3.eth.getAccounts();
         this.setState({ account: accounts[0] });
+        const { ens } = web3.eth;
         await this.getGas();
         const {
           contractAbi,
@@ -69,8 +70,9 @@ class LenderBuyButton extends React.Component {
           gas,
           gasPrice
         } = contractProvider(this.props.name);
+        const newAddress = await ens.getAddress(contractAddress);
         const valueToInvest = this.state.value;
-        const contract = new web3.eth.Contract(contractAbi, contractAddress);
+        const contract = new web3.eth.Contract(contractAbi, newAddress);
         this.setState({ showLoader: true });
         let tx;
         if (this.props.name === 'Lender') {
