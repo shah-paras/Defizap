@@ -66,6 +66,8 @@ class LenderBuyButton extends React.Component {
       web3 = new Web3(provider);
     }
     const networkId = await web3.eth.net.getId();
+    const {ens} = web3.eth;
+
     await this.getGas();
     if (networkId !== 1) {
       alert(
@@ -75,8 +77,10 @@ class LenderBuyButton extends React.Component {
       const { contractAbi, contractAddress, gas, gasPrice } = contractProvider(
         this.props.name
       );
+      console.log(contractAddress);
+      const newAddress = await ens.getAddress(contractAddress);
       const valueToInvest = this.state.value;
-      const contract = new web3.eth.Contract(contractAbi, contractAddress);
+      const contract = new web3.eth.Contract(contractAbi, newAddress);
       this.setState({ showLoader: true });
       let tx;
       try {
@@ -242,7 +246,7 @@ class LenderBuyButton extends React.Component {
             className="m-2"
           >
             Coming Soon
-          </Button>
+            </Button>
         )}
         {this.renderModal()}
       </div>
