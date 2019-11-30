@@ -2985,10 +2985,10 @@ bnc-notify@^0.2.1:
     lodash.debounce "^4.0.8"
     uuid "^3.3.3"
 
-bnc-onboard@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/bnc-onboard/-/bnc-onboard-1.1.5.tgz#29c86a52e9b320140a199eed0c2ff7140201edf4"
-  integrity sha512-IArqpM44sOKv2sZM6qef8TlZoRm8FneD78VfrLOQQhruvQtIBFvXMQxM8ZYoTbzWB+UOu1bpU2692m2S2bbZkQ==
+bnc-onboard@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/bnc-onboard/-/bnc-onboard-1.1.7.tgz#75b83ad779bb64c4fae286cc4289c7cbcb516214"
+  integrity sha512-c4VAQ0KZ1b80I3RCHDtPwsvgBYRJ/tEpGFOksm3XHHmV3IHzaBjiDQZMI90b2cRqfaBSIlaG1R1E01CxG8rviw==
   dependencies:
     "@portis/web3" "^2.0.0-beta.42"
     "@walletconnect/web3-provider" "^1.0.0-beta.36"
@@ -2998,7 +2998,6 @@ bnc-onboard@^1.1.5:
     bowser "^2.5.2"
     fortmatic "^0.8.2"
     lodash.debounce "^4.0.8"
-    promise-cancelable "^2.1.1"
     regenerator-runtime "^0.13.3"
     squarelink "^1.1.4"
 
@@ -10475,11 +10474,6 @@ progress@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
-
-promise-cancelable@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/promise-cancelable/-/promise-cancelable-2.1.1.tgz#4835a41055bbd0c2768723c61617d7d9ec887753"
-  integrity sha512-tHjRM44/n6ktUY1BohLKl109rYDK6oZ+B/OyMUDQrIMTjDZBdCLvpu/vzv5UqqqLeOw5KfJnFFVmfDtzJtvVTw==
 
 promise-inflight@^1.0.1:
   version "1.0.1"

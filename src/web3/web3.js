@@ -21,7 +21,6 @@ const wallets = [
     apiKey: PORTIS_KEY,
     preferred: true
   }
-  // Currently commented out.
   // { walletName: 'dapper', preferred: true },
   // {
   //   walletName: 'squarelink',
@@ -47,8 +46,11 @@ const initializationOptions = {
   },
   walletSelect: {
     heading: 'Select a Wallet',
-    description: `If your wallet is a smart contract wallet,
-    please ensure that your wallet supports accepting the tokens that you shall receive.`,
+    description: `
+    <h5><u>
+    If your wallet is a smart contract wallet,
+    please ensure that your wallet supports accepting the tokens that you shall receive.
+    </u></h5>`,
     wallets
   }
 };
