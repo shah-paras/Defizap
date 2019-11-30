@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import autobind from 'react-autobind';
 
-import SurveyPageView from './SurveyPageView';
+import SurveyPageView2 from './SurveyPageView2';
 import surveyList from '../../constants/SurveyQuestions';
 import surveyResponse from '../../constants/SurveyResults';
 import { registerEvent } from '../../api/googleAnalytics';
@@ -15,16 +15,25 @@ class SurveyPageContainer extends PureComponent {
       answers: [],
       answer: '',
       isLoading: false,
-      surveyComplete: false
+      surveyComplete: false,
+      activeStep: 0
     };
     autobind(this);
   }
 
   onAnswer = answer => {
     this.setState({
-      answers: [...this.state.answers, answer],
-      questionNumber: this.state.questionNumber + 1
+      answers: [...this.state.answers, answer]
     });
+    this.setActiveStep(this.state.activeStep + 1);
+  };
+
+  setActiveStep = activeStep => {
+    if (activeStep === 4) {
+      const result = this.onCompletion();
+      this.setState({ answer: result });
+    }
+    this.setState({ activeStep });
   };
 
   reDoSurvey = () => {
@@ -35,6 +44,7 @@ class SurveyPageContainer extends PureComponent {
       isLoading: false,
       surveyComplete: false
     });
+    this.setActiveStep(0);
   };
 
   onCompletion = () => {
@@ -45,21 +55,25 @@ class SurveyPageContainer extends PureComponent {
   };
 
   submitResults = () => {
-    this.setState({ isLoading: true, surveyComplete: false });
     registerEvent({
       category: SURVEY_COMPLETED,
       action: 'User clicked on Get Results.'
     });
     const result = this.onCompletion();
-    setTimeout(() => {
-      this.setState({ isLoading: false, surveyComplete: true, answer: result });
-    }, 1500);
+
+    this.setState({ isLoading: false, surveyComplete: true, answer: result });
   };
 
   render() {
-    const { questionNumber, isLoading, answer, surveyComplete } = this.state;
+    const {
+      questionNumber,
+      isLoading,
+      answer,
+      surveyComplete,
+      activeStep
+    } = this.state;
     return (
-      <SurveyPageView
+      <SurveyPageView2
         questionNumber={questionNumber}
         isLoading={isLoading}
         onAnswer={this.onAnswer}
@@ -69,6 +83,8 @@ class SurveyPageContainer extends PureComponent {
         submitResults={this.submitResults}
         surveyComplete={surveyComplete}
         answer={answer}
+        activeStep={activeStep}
+        setActiveStep={this.setActiveStep}
       />
     );
   }

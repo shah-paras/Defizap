@@ -78,6 +78,11 @@ const surveyQuestions = [
         key: 'notSure'
       }
     ]
+  },
+  {
+    questionNumber: 5,
+    question: 'Result',
+    options: []
   }
 ];
 
