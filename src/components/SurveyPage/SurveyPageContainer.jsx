@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import autobind from 'react-autobind';
+import isEmpty from 'lodash/isEmpty';
 
 import SurveyPageView2 from './SurveyPageView2';
 import surveyList from '../../constants/SurveyQuestions';
@@ -11,21 +12,35 @@ class SurveyPageContainer extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      questionNumber: 1,
-      answers: [],
+      answers: {},
       recommendedZaps: [],
       isLoading: false,
       surveyComplete: false,
-      activeStep: 0
+      activeStep: 0,
+      isResultsDisabled: true
     };
     autobind(this);
   }
 
   onAnswer = answer => {
-    this.setState({
-      answers: [...this.state.answers, answer]
-    });
+    const { answers, activeStep } = this.state;
+    this.setState(
+      {
+        answers: {
+          ...answers,
+          [activeStep]: answer
+        }
+      },
+      () => this.calculateAnswerCount()
+    );
     this.setActiveStep(this.state.activeStep + 1);
+  };
+
+  calculateAnswerCount = () => {
+    const { answers } = this.state;
+    if (answers[0] && answers[1] && answers[2] && answers[3]) {
+      this.setState({ isResultsDisabled: false }, () => this.setActiveStep(4));
+    }
   };
 
   setActiveStep = activeStep => {
@@ -36,10 +51,11 @@ class SurveyPageContainer extends PureComponent {
     this.setState({ activeStep });
   };
 
+  moveToStep = step => this.setActiveStep(step);
+
   reDoSurvey = () => {
     this.setState({
-      questionNumber: 1,
-      answers: [],
+      answers: {},
       recommendedZaps: [],
       isLoading: false,
       surveyComplete: false
@@ -49,8 +65,15 @@ class SurveyPageContainer extends PureComponent {
 
   onCompletion = () => {
     const { answers } = this.state;
-    const strategy =
-      surveyResponse[answers[0]][answers[1]][answers[2]][answers[3]];
+    let strategy;
+    if (
+      !isEmpty(answers[0]) &&
+      !isEmpty(answers[1]) &&
+      !isEmpty(answers[2]) &&
+      !isEmpty(answers[3])
+    ) {
+      strategy = surveyResponse[answers[0]][answers[1]][answers[2]][answers[3]];
+    }
     return strategy;
   };
 
@@ -65,15 +88,16 @@ class SurveyPageContainer extends PureComponent {
 
   render() {
     const {
-      questionNumber,
       isLoading,
       recommendedZaps,
       surveyComplete,
-      activeStep
+      activeStep,
+      answers,
+      isResultsDisabled
     } = this.state;
+
     return (
       <SurveyPageView2
-        questionNumber={questionNumber}
         isLoading={isLoading}
         onAnswer={this.onAnswer}
         onCompletion={this.onCompletion}
@@ -84,6 +108,9 @@ class SurveyPageContainer extends PureComponent {
         recommendedZaps={recommendedZaps}
         activeStep={activeStep}
         setActiveStep={this.setActiveStep}
+        moveToStep={this.moveToStep}
+        answers={answers}
+        isResultsDisabled={isResultsDisabled}
       />
     );
   }

@@ -3,15 +3,13 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Spinner from 'react-bootstrap/Spinner';
 import isEmpty from 'lodash/isEmpty';
 
 import { StepLabel, StepContent, Collapse } from '@material-ui/core';
 import NavigationBar from '../NavigationBar';
-import styles from './SurveyPageView.module.css';
+// import styles from './SurveyPageView.module.css';
 import ZapFullView from '../Zaps/ZapFullView';
 import zaps from '../../constants/Zaps';
 import { registerEvent } from '../../api/googleAnalytics';
@@ -19,17 +17,18 @@ import { GENERATE_ZAP, SURVEY_PAGE } from '../../constants/googleAnalytics';
 
 const SurveyPageView = props => {
   const {
-    questionNumber,
     onAnswer,
     surveyList,
     reDoSurvey,
     surveyComplete,
     submitResults,
-    isLoading,
     recommendedZaps,
     onCompletion,
     activeStep,
-    setActiveStep
+    setActiveStep,
+    moveToStep,
+    answers,
+    isResultsDisabled
   } = props;
 
   const getZap = () => {
@@ -101,6 +100,7 @@ const SurveyPageView = props => {
           Start Over
         </Button>
         <Button
+          disabled={isResultsDisabled}
           variant="primary"
           onClick={submitResults}
           className="mx-3 px-3"
@@ -120,14 +120,17 @@ const SurveyPageView = props => {
       Else go with a vertical and !alternativeLabel */}
         <Stepper
           activeStep={activeStep}
+          nonLinear
           orientation="vertical"
           style={{ backgroundColor: 'inherit' }}
         >
-          {/* // Concating adds one more item to the list of questions and returns the new array */}
           {surveyList.map(question => {
             return (
-              <Step key={question.questionNumber}>
-                <StepLabel>
+              <Step
+                key={question.questionNumber}
+                completed={!isEmpty(answers[question.questionNumber])}
+              >
+                <StepLabel onClick={() => moveToStep(question.questionNumber)}>
                   <h5>{question.question}</h5>
                 </StepLabel>
                 <StepContent>
