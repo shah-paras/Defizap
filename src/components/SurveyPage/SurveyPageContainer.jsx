@@ -13,7 +13,7 @@ class SurveyPageContainer extends PureComponent {
     this.state = {
       questionNumber: 1,
       answers: [],
-      answer: '',
+      recommendedZaps: [],
       isLoading: false,
       surveyComplete: false,
       activeStep: 0
@@ -30,8 +30,8 @@ class SurveyPageContainer extends PureComponent {
 
   setActiveStep = activeStep => {
     if (activeStep === 4) {
-      const result = this.onCompletion();
-      this.setState({ answer: result });
+      const recommendedZaps = this.onCompletion();
+      this.setState({ recommendedZaps });
     }
     this.setState({ activeStep });
   };
@@ -40,7 +40,7 @@ class SurveyPageContainer extends PureComponent {
     this.setState({
       questionNumber: 1,
       answers: [],
-      answer: '',
+      recommendedZaps: [],
       isLoading: false,
       surveyComplete: false
     });
@@ -59,16 +59,15 @@ class SurveyPageContainer extends PureComponent {
       category: SURVEY_COMPLETED,
       action: 'User clicked on Get Results.'
     });
-    const result = this.onCompletion();
-
-    this.setState({ isLoading: false, surveyComplete: true, answer: result });
+    const recommendedZaps = this.onCompletion();
+    this.setState({ isLoading: false, surveyComplete: true, recommendedZaps });
   };
 
   render() {
     const {
       questionNumber,
       isLoading,
-      answer,
+      recommendedZaps,
       surveyComplete,
       activeStep
     } = this.state;
@@ -82,7 +81,7 @@ class SurveyPageContainer extends PureComponent {
         reDoSurvey={this.reDoSurvey}
         submitResults={this.submitResults}
         surveyComplete={surveyComplete}
-        answer={answer}
+        recommendedZaps={recommendedZaps}
         activeStep={activeStep}
         setActiveStep={this.setActiveStep}
       />

@@ -5,6 +5,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Spinner from 'react-bootstrap/Spinner';
 import isEmpty from 'lodash/isEmpty';
 
@@ -25,7 +26,7 @@ const SurveyPageView = props => {
     surveyComplete,
     submitResults,
     isLoading,
-    answer,
+    recommendedZaps,
     onCompletion,
     activeStep,
     setActiveStep
@@ -38,12 +39,18 @@ const SurveyPageView = props => {
         <h4>
           You might find this Zap useful: <br />
         </h4>
-        <ZapFullView
-          name={zaps[answer].name}
-          components={zaps[answer].components}
-          isOrderable={zaps[answer].isOrderable}
-          description={zaps[answer].description}
-        />
+        <Row>
+          {recommendedZaps.map(zap => (
+            <Col key={zaps[zap].name}>
+              <ZapFullView
+                name={zaps[zap].name}
+                components={zaps[zap].components}
+                isOrderable={zaps[zap].isOrderable}
+                description={zaps[zap].description}
+              />
+            </Col>
+          ))}
+        </Row>
         <Row className="justify-content-center pb-3">
           <Button
             variant="info"
@@ -57,7 +64,8 @@ const SurveyPageView = props => {
               registerEvent({
                 category: GENERATE_ZAP,
                 action: SURVEY_PAGE
-              })}
+              })
+            }
           >
             Don&apos;t see your Zap? Submit a request and we will create one!
           </Button>
