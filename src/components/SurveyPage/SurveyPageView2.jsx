@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Stepper from '@material-ui/core/Stepper';
+import Spinner from 'react-bootstrap/Spinner';
 import Step from '@material-ui/core/Step';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -20,6 +21,7 @@ const SurveyPageView = props => {
     onAnswer,
     surveyList,
     reDoSurvey,
+    isLoading,
     surveyComplete,
     submitResults,
     recommendedZaps,
@@ -63,8 +65,7 @@ const SurveyPageView = props => {
               registerEvent({
                 category: GENERATE_ZAP,
                 action: SURVEY_PAGE
-              })
-            }
+              })}
           >
             Don&apos;t see your Zap? Submit a request and we will create one!
           </Button>
@@ -108,7 +109,15 @@ const SurveyPageView = props => {
         >
           Get Results
         </Button>
-        {surveyComplete ? getZap() : null}
+        {isLoading ? (
+          <>
+            <Spinner animation="grow" />
+            <Spinner animation="grow" />
+            <Spinner animation="grow" />
+            <Spinner animation="grow" />
+            <Spinner animation="grow" />
+          </>
+        ) : null}
       </>
     );
   };
@@ -116,8 +125,6 @@ const SurveyPageView = props => {
   const surveySteps = () => {
     return (
       <Collapse in={!surveyComplete}>
-        {/* If orientation is horizontal, go with alternativeLabel
-      Else go with a vertical and !alternativeLabel */}
         <Stepper
           activeStep={activeStep}
           nonLinear
@@ -132,6 +139,9 @@ const SurveyPageView = props => {
               >
                 <StepLabel onClick={() => moveToStep(question.questionNumber)}>
                   <h5>{question.question}</h5>
+                  <p className="text-monospace text-uppercase">
+                    {answers[question.questionNumber]}
+                  </p>
                 </StepLabel>
                 <StepContent>
                   <ol type="A">
@@ -169,6 +179,7 @@ const SurveyPageView = props => {
       </h4>
       {surveySteps()}
       {activeStep === 4 ? generateResult() : null}
+      {surveyComplete ? getZap() : null}
     </Container>
   );
 };

@@ -58,7 +58,8 @@ class SurveyPageContainer extends PureComponent {
       answers: {},
       recommendedZaps: [],
       isLoading: false,
-      surveyComplete: false
+      surveyComplete: false,
+      isResultsDisabled: true
     });
     this.setActiveStep(0);
   };
@@ -78,12 +79,20 @@ class SurveyPageContainer extends PureComponent {
   };
 
   submitResults = () => {
+    this.setState({ isLoading: true });
     registerEvent({
       category: SURVEY_COMPLETED,
       action: 'User clicked on Get Results.'
     });
+
     const recommendedZaps = this.onCompletion();
-    this.setState({ isLoading: false, surveyComplete: true, recommendedZaps });
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+        surveyComplete: true,
+        recommendedZaps
+      });
+    }, 1500);
   };
 
   render() {
