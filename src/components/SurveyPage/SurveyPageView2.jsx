@@ -65,7 +65,8 @@ const SurveyPageView = props => {
               registerEvent({
                 category: GENERATE_ZAP,
                 action: SURVEY_PAGE
-              })}
+              })
+            }
           >
             Don&apos;t see your Zap? Submit a request and we will create one!
           </Button>
@@ -95,7 +96,7 @@ const SurveyPageView = props => {
         <Button
           variant="outline-primary"
           onClick={reDoSurvey}
-          className="mx-1 px-1"
+          className="mx-1 my-3 px-1"
           size="lg"
         >
           Start Over
@@ -104,16 +105,13 @@ const SurveyPageView = props => {
           disabled={isResultsDisabled}
           variant="primary"
           onClick={submitResults}
-          className="mx-3 px-3"
+          className="mx-3 my-3 px-3"
           size="lg"
         >
           Get Results
         </Button>
         {isLoading ? (
           <>
-            <Spinner animation="grow" />
-            <Spinner animation="grow" />
-            <Spinner animation="grow" />
             <Spinner animation="grow" />
             <Spinner animation="grow" />
           </>
