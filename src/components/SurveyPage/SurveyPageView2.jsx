@@ -142,23 +142,24 @@ const SurveyPageView = props => {
                   </p>
                 </StepLabel>
                 <StepContent>
-                  <ol type="A">
-                    {question.options.map(option => {
-                      return (
-                        <li key={option.value} className="m-3 pl-2 px-2">
-                          <Button
-                            variant="outline-primary"
-                            size="auto"
-                            onClick={() => onAnswer(option.key)}
-                            className="shadow"
-                            block
-                          >
-                            {option.value}
-                          </Button>
-                        </li>
-                      );
-                    })}
-                  </ol>
+                  {/* <ol type="A"> */}
+                  {question.options.map(option => {
+                    return (
+                      // <li key={option.value} className="m-3 pl-2 px-2">
+                      <Button
+                        key={option.value}
+                        variant="outline-primary"
+                        size="auto"
+                        onClick={() => onAnswer(option.key)}
+                        className="shadow"
+                        block
+                      >
+                        {option.value}
+                      </Button>
+                      // </li>
+                    );
+                  })}
+                  {/* </ol> */}
                 </StepContent>
               </Step>
             );
