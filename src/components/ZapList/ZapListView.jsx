@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 
 import ZapFullView from '../Zaps/ZapFullView';
 import NavigationBar from '../NavigationBar';
-import DoughnutChart from '../PercentageDoughnut/DoughnutChart'
 import Zaps from '../../constants/Zaps';
 import '../../App.css';
 import {
@@ -16,11 +15,6 @@ import { registerEvent } from '../../api/googleAnalytics';
 const ZapListView = () => {
   return (
     <Container>
-      <DoughnutChart data={{name:'Lender', components: [{name:'cSAI', percent:90, color:'#11CEBE'}, ]}}/>
-      <DoughnutChart data={{name:'Moderate Bull', components: [{name:'sETH', percent:50, color:'#11CEBE'},{name:'sBTC', percent:50, color:'#0035C4'} ]}}/>
-
-
-
       <NavigationBar />
       {Object.values(Zaps).map(zap => (
         <ZapFullView
