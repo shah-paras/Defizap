@@ -147,11 +147,11 @@ class DoughtnutChart extends React.Component {
                     center: {
                         // the longest text that could appear in the center
                         maxText: '100%',
-                        text: '',
+                        text: this.props.data.text || '',
                         fontColor: '#FFFFF',
                         fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
                         fontStyle: 'normal',
-                        fontSize: 12,
+                        fontSize: 18,
                         // if a fontSize is NOT specified, it will scale (within the below limits) maxText to take up the maximum space in the center
                         // if these are not specified either, we default to 1 and 256
                         minFontSize: 1,
