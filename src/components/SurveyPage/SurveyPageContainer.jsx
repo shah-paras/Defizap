@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import autobind from 'react-autobind';
 import isEmpty from 'lodash/isEmpty';
 
-import SurveyPageView2 from './SurveyPageView2';
+import SurveyPageView from './SurveyPageView';
 import surveyList from '../../constants/SurveyQuestions';
 import surveyResponse from '../../constants/SurveyResults';
 import { registerEvent } from '../../api/googleAnalytics';
@@ -106,7 +106,7 @@ class SurveyPageContainer extends PureComponent {
     } = this.state;
 
     return (
-      <SurveyPageView2
+      <SurveyPageView
         isLoading={isLoading}
         onAnswer={this.onAnswer}
         onCompletion={this.onCompletion}
