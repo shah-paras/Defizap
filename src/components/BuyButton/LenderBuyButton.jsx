@@ -66,7 +66,7 @@ class LenderBuyButton extends React.Component {
       web3 = new Web3(provider);
     }
     const networkId = await web3.eth.net.getId();
-    const {ens} = web3.eth;
+    const { ens } = web3.eth;
 
     await this.getGas();
     if (networkId !== 1) {
@@ -222,6 +222,7 @@ class LenderBuyButton extends React.Component {
     return (
       <div>
         {isOrderable ? (
+          // eslint-disable-next-line jsx-a11y/accessible-emoji
           <Button
             onClick={() => {
               this.setState({ open: true });
@@ -231,11 +232,11 @@ class LenderBuyButton extends React.Component {
               });
             }}
             disabled={!isOrderable}
-            variant="outline-success"
+            variant="outline-primary"
             size="lg"
             className="m-2"
           >
-            Buy
+            ⚡ Use This Zap
           </Button>
         ) : (
           <Button
@@ -246,7 +247,7 @@ class LenderBuyButton extends React.Component {
             className="m-2"
           >
             Coming Soon
-            </Button>
+          </Button>
         )}
         {this.renderModal()}
       </div>

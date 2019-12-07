@@ -2,15 +2,21 @@ const Zaps = {
   lender: {
     id: 'lender',
     name: 'Lender',
+    text: 'Lender',
     isOrderable: true,
+    output:
+      "This is a great place to start—an emergency fund for life's unplanned hiccups. A safety net is a conservative portfolio. Using your pre‐tax income, we've estimated a target amount of $287.",
+    numberOfInteractions: 4,
     components: [
       {
         name: 'cSAI',
-        percent: 90
+        percent: 90,
+        color: '#11CEBE'
       },
       {
         name: 'dLETH2x',
-        percent: 10
+        percent: 10,
+        color: '#0035C4'
       }
     ],
     description: {
@@ -40,15 +46,20 @@ const Zaps = {
   ETHMaximalist: {
     id: 'ETHMaximalist',
     name: 'ETH Maximalist',
+    text: 'E M',
     isOrderable: true,
+    output: 'Random Sample Output to print',
+    numberOfInteractions: 6,
     components: [
       {
         name: 'dLETH2x',
-        percent: 50
+        percent: 50,
+        color: '#11CEBE'
       },
       {
         name: 'dsWBTC',
-        percent: 50
+        percent: 50,
+        color: '#0035C4'
       }
     ],
     description: {
@@ -73,6 +84,8 @@ const Zaps = {
     id: 'moderatebull',
     name: 'Moderate Bull',
     isOrderable: true,
+    output: 'Random Sample Output to print',
+    numberOfInteractions: 4,
     components: [
       {
         name: 'sETH',
@@ -112,6 +125,8 @@ const Zaps = {
     id: 'doublebull',
     name: 'Double Bull',
     isOrderable: true,
+    output: 'Random Sample Output to print',
+    numberOfInteractions: 4,
     components: [
       {
         name: 'dLETH2x',
@@ -147,6 +162,8 @@ const Zaps = {
     id: 'supersaver',
     name: 'Super Saver',
     isOrderable: true,
+    output: 'Random Sample Output to print',
+    numberOfInteractions: 5,
     components: [
       {
         name: 'cSAI',
