@@ -43,7 +43,9 @@ class ZapFullView extends PureComponent {
               <div className="card-body">
                 <Row className="flex-column">
                   <Row className="justify-content-center">
-                    <h1 className="text-center my-3 hedger">{name}</h1>
+                    <h1 className="text-center my-3 hedger overflow-hidden">
+                      {name}
+                    </h1>
                   </Row>
                   <Row className="justify-content-center">
                     {components.map(item => (
