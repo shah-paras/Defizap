@@ -119,7 +119,6 @@ class DoughtnutChart extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     const half = !(this.props.data.components.length > 1);
     const percentages = this.assignPercentages(half);
     const colors = this.assignColors(half);
@@ -139,6 +138,7 @@ class DoughtnutChart extends React.Component {
         labels: names // Assets being allocated. Accepts array of strings ['cSAI', 'dLETH2x]
       },
       options: {
+        responsive: true,
         tooltips: {
           callbacks: {
             title: (items, data) =>
@@ -150,7 +150,6 @@ class DoughtnutChart extends React.Component {
                 ? `${data.datasets[0].data[items.index]}%`
                 : `${data.datasets[0].data[items.index - 1]}%`
           },
-
           bodyFontSize: 14,
           displayColors: false
         },

@@ -39,14 +39,12 @@ const IndividualZapsPage = props => {
           registerEvent({
             category: GENERATE_ZAP,
             action: INDIVIDUAL_ZAP_PAGE
-          })
-        }
+          })}
       >
         Don&apos;t see your Zap? Submit a request and we will create one!
       </Button>
     </Container>
   );
-  return null;
 };
 
 export default IndividualZapsPage;

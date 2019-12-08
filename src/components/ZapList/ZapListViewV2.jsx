@@ -12,6 +12,7 @@ import {
   GENERATE_ZAP
 } from '../../constants/googleAnalytics';
 import { registerEvent } from '../../api/googleAnalytics';
+import BuyButtonContainer from '../BuyButton/BuyButtonContainer';
 
 const footerButtons = () => (
   <div className="row justify-content-center my-1">
@@ -41,7 +42,6 @@ const footerButtons = () => (
 );
 
 const Zap = props => {
-  console.log('props ', props);
   return (
     <div className="m-4 p-4 bg-white flex-column">
       <Row>
@@ -56,15 +56,27 @@ const Zap = props => {
           <h3>{props.name}</h3>
           {props.output}
           <hr />
-          <Button
-            href={`/zaps/${props.id}`}
-            size="auto"
-            variant="outline-dark"
-            value="Learn More"
-            block
-          >
-            Learn More
-          </Button>
+          <Row>
+            <Col xs={12} md={6} className="m-1">
+              <BuyButtonContainer
+                name={props.name}
+                isOrderable={props.isOrderable}
+                block
+              />
+            </Col>
+            <Col xs={12} md={5}>
+              <Button
+                href={`/zaps/${props.id}`}
+                size="auto"
+                variant="outline-dark"
+                value="Learn More"
+                block
+                className="m-1"
+              >
+                Learn More
+              </Button>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>
@@ -72,7 +84,7 @@ const Zap = props => {
 };
 
 const ZapListView = props => {
-  const { data, filterMethod, columns, showPagination } = props;
+  const { data } = props;
   return (
     <Container>
       <NavigationBar />

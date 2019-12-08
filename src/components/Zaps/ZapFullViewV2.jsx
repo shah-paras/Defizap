@@ -4,16 +4,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Tab from 'react-bootstrap/Tab';
-// import Navbar from 'react-bootstrap/Navbar';
-
 import autobind from 'react-autobind';
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import Nav from 'react-bootstrap/Nav';
 
 import PercentageCircle from '../PercentageCircle';
-import LenderBuyButton from '../BuyButton/LenderBuyButton';
+import BuyButtonContainer from '../BuyButton/BuyButtonContainer';
+import Donut from '../PercentageDoughnut';
 import '../../App.css';
-import mkrUnipool from '../../assets/mkr-unipool.png';
 
 class ZapFullView extends PureComponent {
   constructor(props) {
@@ -37,19 +35,36 @@ class ZapFullView extends PureComponent {
   };
 
   render() {
-    const { name, components, isOrderable, description, output } = this.props;
+    const {
+      name,
+      components,
+      isOrderable,
+      description,
+      output,
+      hasReturnsChart
+    } = this.props;
 
     return (
       <Card className="text-center text-capitalize">
         <Card.Body>
-          <img src={mkrUnipool} width="10%" alt="Save Time" />
+          <Row className="justify-content-center">
+            <Col xs={3}>
+              <Donut data={this.props} />
+            </Col>
+          </Row>
           <Card.Title>
             <div className="h1 bold">{name}</div>
           </Card.Title>
           <Card.Subtitle className="text-muted text-light">
             {output}
           </Card.Subtitle>
-          <LenderBuyButton name={name} isOrderable={isOrderable} />
+          <div className="mt-2">
+            <BuyButtonContainer
+              name={name}
+              size="lg"
+              isOrderable={isOrderable}
+            />
+          </div>
         </Card.Body>
         <Card.Body>
           <Tab.Container id="left-tabs-example" defaultActiveKey="zapinfo">
@@ -58,9 +73,11 @@ class ZapFullView extends PureComponent {
                 <Col>
                   <Nav.Link eventKey="zapinfo">Zap Info</Nav.Link>
                 </Col>
-                <Col>
-                  <Nav.Link eventKey="returns">Returns</Nav.Link>
-                </Col>
+                {hasReturnsChart ? (
+                  <Col>
+                    <Nav.Link eventKey="returns">Returns</Nav.Link>
+                  </Col>
+                ) : null}
                 <Col>
                   <Nav.Link eventKey="tutorial">Tutorial</Nav.Link>
                 </Col>
@@ -80,9 +97,11 @@ class ZapFullView extends PureComponent {
                   ))}
                 </Row>
               </Tab.Pane>
-              <Tab.Pane eventKey="returns">Returns</Tab.Pane>
+              {hasReturnsChart ? (
+                <Tab.Pane eventKey="returns">Returns</Tab.Pane>
+              ) : null}
               <Tab.Pane eventKey="tutorial">
-                <Card.Body className="text-align- text-al">
+                <Card.Body className="text-left">
                   <h3>{description.textQuestion}</h3>
                   {description.textAnswer.map(answer => {
                     return <p key={answer}>{answer}</p>;

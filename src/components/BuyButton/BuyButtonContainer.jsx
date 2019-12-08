@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Row from 'react-bootstrap/Row';
-import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
 
 import '../../App.css';
@@ -17,8 +16,9 @@ import {
   buildOptions,
   checkResponse
 } from '../../api/apiHelpers';
+import { onboard, web3 } from '../../web3/web3';
 
-class LenderBuyButton extends React.Component {
+class BuyButtonContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,9 +26,7 @@ class LenderBuyButton extends React.Component {
       value: '',
       account: null,
       showLoader: false,
-      gasMode: 'average',
-      errorMessage: '',
-      depositTxHash: ''
+      gasMode: 'average'
     };
   }
 
@@ -47,43 +45,36 @@ class LenderBuyButton extends React.Component {
   };
 
   toggle = () => {
-    this.setState({ open: !this.state.open });
+    const { open } = this.state;
+    this.setState({ open: !open });
   };
 
   handleSubmit = async event => {
     event.preventDefault();
+    this.toggle();
     registerEvent({
       category: INITIATE_PURCHASE,
       action: this.props.name
     });
-    await this.initialize();
-    let web3;
-    if (
-      typeof window.ethereum !== 'undefined' ||
-      typeof window.web3 !== 'undefined'
-    ) {
-      const provider = window.ethereum || window.web3.currentProvider;
-      web3 = new Web3(provider);
-    }
-    const networkId = await web3.eth.net.getId();
-    const { ens } = web3.eth;
-
-    await this.getGas();
-    if (networkId !== 1) {
-      alert(
-        'Sorry, you need to be on the Ethereum MainNet to use our services.'
-      );
-    } else {
-      const { contractAbi, contractAddress, gas, gasPrice } = contractProvider(
-        this.props.name
-      );
-      console.log(contractAddress);
-      const newAddress = await ens.getAddress(contractAddress);
-      const valueToInvest = this.state.value;
-      const contract = new web3.eth.Contract(contractAbi, newAddress);
-      this.setState({ showLoader: true });
-      let tx;
-      try {
+    try {
+      const walletSelection = await onboard.walletSelect();
+      const walletCheck = await onboard.walletCheck();
+      if (walletSelection && walletCheck) {
+        const accounts = await web3.eth.getAccounts();
+        this.setState({ account: accounts[0] });
+        const { ens } = web3.eth;
+        await this.getGas();
+        const {
+          contractAbi,
+          contractAddress,
+          gas,
+          gasPrice
+        } = contractProvider(this.props.name);
+        const newAddress = await ens.getAddress(contractAddress);
+        const valueToInvest = this.state.value;
+        const contract = new web3.eth.Contract(contractAbi, newAddress);
+        this.setState({ showLoader: true });
+        let tx;
         if (this.props.name === 'Lender') {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Maximalist') {
@@ -113,26 +104,16 @@ class LenderBuyButton extends React.Component {
             );
             this.setState({ showLoader: false });
           });
-      } catch (error) {
-        console.log(error);
+        console.log('The Transaction is ', tx);
       }
-      console.log(tx);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   setGasMode = async gasMode => {
-    await this.setState({ gasMode });
+    this.setState({ gasMode });
   };
-
-  async initialize() {
-    try {
-      const [account] = await window.ethereum.enable();
-      this.setState({ account });
-    } catch (error) {
-      console.error(error);
-      alert('You will need to connect web3 wallet');
-    }
-  }
 
   renderModal() {
     const { open, value } = this.state;
@@ -218,9 +199,9 @@ class LenderBuyButton extends React.Component {
   }
 
   render() {
-    const { isOrderable, name } = this.props;
+    const { isOrderable, name, block, size } = this.props;
     return (
-      <div>
+      <>
         {isOrderable ? (
           // eslint-disable-next-line jsx-a11y/accessible-emoji
           <Button
@@ -233,8 +214,8 @@ class LenderBuyButton extends React.Component {
             }}
             disabled={!isOrderable}
             variant="outline-primary"
-            size="lg"
-            className="m-2"
+            size={!isEmpty(size) ? size : 'auto'}
+            block={block}
           >
             ⚡ Use This Zap
           </Button>
@@ -244,15 +225,14 @@ class LenderBuyButton extends React.Component {
             disabled={!isOrderable}
             variant="outline-success"
             size="lg"
-            className="m-2"
           >
             Coming Soon
           </Button>
         )}
         {this.renderModal()}
-      </div>
+      </>
     );
   }
 }
 
-export default LenderBuyButton;
+export default BuyButtonContainer;

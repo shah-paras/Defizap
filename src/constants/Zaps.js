@@ -4,6 +4,7 @@ const Zaps = {
     name: 'Lender',
     text: 'Lender',
     isOrderable: true,
+    hasReturnsChart: false,
     output:
       "This is a great place to start—an emergency fund for life's unplanned hiccups. A safety net is a conservative portfolio. Using your pre‐tax income, we've estimated a target amount of $287.",
     numberOfInteractions: 4,
@@ -48,6 +49,7 @@ const Zaps = {
     name: 'ETH Maximalist',
     text: 'E M',
     isOrderable: true,
+    hasReturnsChart: false,
     output: 'Random Sample Output to print',
     numberOfInteractions: 6,
     components: [
@@ -84,6 +86,7 @@ const Zaps = {
     id: 'moderatebull',
     name: 'Moderate Bull',
     isOrderable: true,
+    hasReturnsChart: false,
     output: 'Random Sample Output to print',
     numberOfInteractions: 4,
     components: [
@@ -125,6 +128,7 @@ const Zaps = {
     id: 'doublebull',
     name: 'Double Bull',
     isOrderable: true,
+    hasReturnsChart: false,
     output: 'Random Sample Output to print',
     numberOfInteractions: 4,
     components: [
@@ -162,6 +166,7 @@ const Zaps = {
     id: 'supersaver',
     name: 'Super Saver',
     isOrderable: true,
+    hasReturnsChart: false,
     output: 'Random Sample Output to print',
     numberOfInteractions: 5,
     components: [
