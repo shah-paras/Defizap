@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bnc-onboard": "^1.1.7",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "connected-react-router": "^6.5.2",
@@ -26,7 +27,7 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
-    "web3": "^1.2.1"
+    "web3": "^1.2.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
