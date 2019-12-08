@@ -12,7 +12,7 @@ import Chart from 'chart.js';
 //                 thickness: (chart.outerRadius - chart.innerRadius) / 2 - 1,
 //                 backgroundColor: arc._model.backgroundColor
 //             }
-//         }DoughnutChart
+//         }
 //     },
 
 //     afterDraw: function (chart) {
@@ -119,6 +119,7 @@ class DoughtnutChart extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     const half = !(this.props.data.components.length > 1);
     const percentages = this.assignPercentages(half);
     const colors = this.assignColors(half);
@@ -150,6 +151,7 @@ class DoughtnutChart extends React.Component {
                 ? `${data.datasets[0].data[items.index]}%`
                 : `${data.datasets[0].data[items.index - 1]}%`
           },
+
           bodyFontSize: 14,
           displayColors: false
         },
