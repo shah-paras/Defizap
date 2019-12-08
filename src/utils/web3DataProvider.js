@@ -47,7 +47,7 @@ const contractProvider = name => {
       return {
         contractAbi: SUPER_SAVER_ABI,
         contractAddress: SUPER_SAVER_CONTRACT_ADDRESS,
-        gas: 1500000
+        gas: 2000000
       };
     }
     default:
