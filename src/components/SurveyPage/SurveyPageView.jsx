@@ -10,7 +10,7 @@ import isEmpty from 'lodash/isEmpty';
 
 import { StepLabel, StepContent, Collapse } from '@material-ui/core';
 import NavigationBar from '../NavigationBar';
-import ZapFullView from '../Zaps/ZapFullView';
+import { Zap } from '../ZapList/ZapListViewV2';
 import zaps from '../../constants/Zaps';
 import { registerEvent } from '../../api/googleAnalytics';
 import { GENERATE_ZAP, SURVEY_PAGE } from '../../constants/googleAnalytics';
@@ -35,20 +35,18 @@ const SurveyPageView = props => {
       <>
         <br /> <br />
         <h4>
-          You might find this Zap useful: <br />
+          You might find these Zaps useful: <br />
         </h4>
-        <Row>
-          {recommendedZaps.map(zap => (
-            <Col key={zaps[zap].name}>
-              <ZapFullView
-                name={zaps[zap].name}
-                components={zaps[zap].components}
-                isOrderable={zaps[zap].isOrderable}
-                description={zaps[zap].description}
-              />
-            </Col>
-          ))}
-        </Row>
+        {recommendedZaps.map(zap => (
+          <>
+            <Row key={zaps[zap].name}>
+              <Col>
+                <Zap {...zaps[zap]} />
+              </Col>
+            </Row>
+            <br />
+          </>
+        ))}
         <Row className="justify-content-center pb-3">
           <Button
             variant="info"
@@ -62,7 +60,8 @@ const SurveyPageView = props => {
               registerEvent({
                 category: GENERATE_ZAP,
                 action: SURVEY_PAGE
-              })}
+              })
+            }
           >
             Don&apos;t see your Zap? Submit a request and we will create one!
           </Button>

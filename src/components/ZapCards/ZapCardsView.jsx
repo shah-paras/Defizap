@@ -22,9 +22,9 @@ const ZapCardsView = props => {
             <h3>{name}</h3>
           </div>
           <div className="mt-2 row justify-content-center flex flex-wrap">
-            {components.map(({ name, percent }) => (
+            {components.map(({ name, percent, color }) => (
               <div key={name}>
-                <PercentageCircle percentage={percent} color="#1314ad" />
+                <PercentageCircle percentage={percent} color={color} />
                 <h6 className="text-center mt-3">{name}</h6>
               </div>
             ))}
