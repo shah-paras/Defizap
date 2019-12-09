@@ -314,7 +314,11 @@ const Zaps = {
         }
       ],
       tutorialLink: 'https://google.com'
-    }
+    },
+    whatThisMeans: {
+      text: ['50% converted to DAI, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolmkr: {
     id: 'unipoolmkr',
