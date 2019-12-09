@@ -91,7 +91,7 @@ class ZapFullView extends PureComponent {
                     <div key={item.name}>
                       <PercentageCircle
                         percentage={item.percent}
-                        color="#5540bf"
+                        color={item.color}
                       />
                       <h6 className="text-center mt-3">{item.name}</h6>
                     </div>

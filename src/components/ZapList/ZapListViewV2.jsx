@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Badge from 'react-bootstrap/Badge';
 
 import Donut from '../PercentageDoughnut';
 import NavigationBar from '../NavigationBar';
@@ -43,7 +44,7 @@ const footerButtons = () => (
 
 const Zap = props => {
   return (
-    <div className="m-4 p-4 bg-white flex-column">
+    <div key={props.name} className="m-4 p-4 bg-white flex-column">
       <Row>
         <Col
           xs={12}
