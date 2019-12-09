@@ -36,8 +36,7 @@ const footerButtons = () => (
           registerEvent({
             category: GENERATE_ZAP,
             action: INDIVIDUAL_ZAP_PAGE
-          })
-        }
+          })}
       >
         Don&apos;t see your Zap? Submit a request and we will create one!
       </Button>

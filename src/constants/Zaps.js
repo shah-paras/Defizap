@@ -42,9 +42,14 @@ const Zaps = {
         'https://defitutorials.substack.com/p/lender-zap-walk-through-tutorial'
     },
     whatThisMeans: {
-      text: ['90% auto-converted into SAI + supplied to Compound to mint cSAI,10% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)']
+      text: [
+        '90% auto-converted into SAI + supplied to Compound to mint cSAI,10% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)'
+      ]
     },
-    oneClickAccessTo: [{ text: 'Lending' }, { text: 'Long ETH with 2X Leverage' }],
+    oneClickAccessTo: [
+      { text: 'Lending' },
+      { text: 'Long ETH with 2X Leverage' }
+    ],
     platformsUsed: [
       {
         key: 'Compound',
@@ -57,8 +62,7 @@ const Zaps = {
         url: 'https://fulcrum.trade/#/'
       }
     ],
-    metamaskInteractionsSaved: [{saved: 4}]
-
+    metamaskInteractionsSaved: [{ saved: 4 }]
   },
   ETHMaximalist: {
     id: 'ETHMaximalist',
@@ -95,10 +99,24 @@ const Zaps = {
       ],
       tutorialLink:
         'https://defitutorials.substack.com/p/eth-maximalist-zap-walk-through-tutorial'
-    }, whatThisMeans: {
-      text: ['50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x),50% used to open BTC Short position on Fulcrum (dsWBTC2x)']
-    }
-
+    },
+    whatThisMeans: {
+      text: [
+        '50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x), 50% used to open BTC Short position on Fulcrum (dsWBTC2x)'
+      ]
+    },
+    oneClickAccessTo: [
+      { text: 'Long ETH with 2X Leverage' },
+      { text: 'Shortsell WBTC' }
+    ],
+    platformsUsed: [
+      {
+        key: 'Fulcrum',
+        value: 'Fulcrum',
+        url: 'https://fulcrum.trade/#/'
+      }
+    ],
+    metamaskInteractionsSaved: [{ saved: 2 }]
   },
   moderatebull: {
     id: 'moderatebull',
@@ -142,7 +160,19 @@ const Zaps = {
       ],
       tutorialLink:
         'https://defitutorials.substack.com/p/moderate-bull-defizap-walk-through'
-    }
+    },
+    whatThisMeans: {
+      text: ['50% used to acquire sBTC, 50% used to acquire sETH']
+    },
+    oneClickAccessTo: [{ text: 'Synthetic Asset Trading' }],
+    platformsUsed: [
+      {
+        key: 'Synthetix',
+        value: 'Synthetix',
+        url: 'https://https://synthetix.exchange/'
+      }
+    ],
+    metamaskInteractionsSaved: [{ saved: 3 }]
   },
   doublebull: {
     id: 'doublebull',
@@ -182,7 +212,24 @@ const Zaps = {
       ],
       tutorialLink:
         'https://defitutorials.substack.com/p/double-bull-defizap-walk-through'
-    }
+    },
+    whatThisMeans: {
+      text: [
+        '50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x), 50% used to open BTC Long position with 2X leverage on Fulcrum (dLWBTC2x)'
+      ]
+    },
+    oneClickAccessTo: [
+      { text: 'Long ETH with 2X Leverage' },
+      { text: 'Long BTC with 2X Leverage' }
+    ],
+    platformsUsed: [
+      {
+        key: 'Fulcrum',
+        value: 'Fulcrum',
+        url: 'https://fulcrum.trade/#/'
+      }
+    ],
+    metamaskInteractionsSaved: [{ saved: 2 }]
   },
   supersaver: {
     id: 'supersaver',
@@ -227,7 +274,26 @@ const Zaps = {
       ],
       tutorialLink:
         'https://defitutorials.substack.com/p/super-saver-defizap-walk-through'
-    }
+    },
+    whatThisMeans: {
+      text: [
+        '50% auto-converted into SAI + supplied to Compound to mint cSAI, 50% auto-converted into SAI + supplied to Fulcrum to mint iSAI'
+      ]
+    },
+    oneClickAccessTo: [{ text: 'Lending' }],
+    platformsUsed: [
+      {
+        key: 'Compound',
+        value: 'Compound',
+        url: 'https://compound.finance/'
+      },
+      {
+        key: 'Fulcrum',
+        value: 'Fulcrum',
+        url: 'https://fulcrum.trade/#/'
+      }
+    ],
+    metamaskInteractionsSaved: [{ saved: 4 }]
   },
   unipooldai: {
     id: 'unipooldai',
@@ -264,7 +330,13 @@ const Zaps = {
         }
       ],
       tutorialLink: 'https://google.com'
-    }
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to DAI, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolmkr: {
     id: 'unipoolmkr',
