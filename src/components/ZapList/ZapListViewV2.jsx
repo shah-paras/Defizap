@@ -8,6 +8,8 @@ import Badge from 'react-bootstrap/Badge';
 import Donut from '../PercentageDoughnut';
 import NavigationBar from '../NavigationBar';
 import '../../App.css';
+import ZapListStyles from './ZapList.module.css'; //
+
 import {
   INDIVIDUAL_ZAP_PAGE,
   GENERATE_ZAP
@@ -43,6 +45,7 @@ const footerButtons = () => (
 );
 
 const Zap = props => {
+  console.log(props)
   return (
     <div key={props.name} className="m-4 p-4 bg-white flex-column">
       <Row>
@@ -55,7 +58,17 @@ const Zap = props => {
         </Col>
         <Col xs={12} md={8}>
           <h3>{props.name}</h3>
-          {props.output}
+          {props.oneClickAccessTo ?
+            <span>
+              <h6>1-Click Access To</h6>
+              <h6>{props.oneClickAccessTo.map((access, index) => <Badge variant='primary' className={index === 0 ? 'beforePill' : 'afterPill'} >{access.text}</Badge>)}</h6>
+            </span> : ''}
+          {props.whatThisMeans ?
+            <span>
+              <h6>What this means</h6>
+              <p>{props.whatThisMeans.text}</p>
+            </span> : ''}
+          
           <hr />
           <Row>
             <Col xs={12} md={6} className="m-1">
