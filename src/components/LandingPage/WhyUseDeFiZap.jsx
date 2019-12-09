@@ -24,7 +24,7 @@ const WhyUseDeFiZap = () => (
       </Col>
       <Col sm md lg>
         <img src={SaveGas} width="120px" alt="Save Time" />
-        <h5>Save Gas</h5>
+        <h5>Easy Access</h5>
         <p>
           DeFiZap doesn’t spread your money into 'top 10 on coinmarketcap' -
           Zaps infuse capital into DeFi protocols built on top of Ethereum,
