@@ -66,12 +66,12 @@ const NavigationBar = props => {
             </Navbar.Text>
             <Navbar.Text>
               <Button
-                href="https://t.me/defizap"
+                href="https://discord.gg/h6CGbuN"
                 variant="link"
                 target="_blank"
                 className={styles.anchorSpacing}
               >
-                Telegram
+                Discord
               </Button>
             </Navbar.Text>
           </Nav>
