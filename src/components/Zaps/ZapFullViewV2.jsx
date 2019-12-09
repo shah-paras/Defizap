@@ -4,12 +4,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
-
 import autobind from 'react-autobind';
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
 // import ReturnSparkLine from '../ReturnSparkline';
-import PercentageCircle from '../PercentageCircle';
+// import PercentageCircle from '../PercentageCircle';
 import BuyButtonContainer from '../BuyButton/BuyButtonContainer';
 import Donut from '../PercentageDoughnut';
 import '../../App.css';
@@ -42,32 +40,16 @@ class ZapFullView extends PureComponent {
               <Donut data={this.props} />
             </Col>
           </Row>
-          <Card.Title>
+          {/* <Card.Title>
             <div className="h1 bold">{name}</div>
-          </Card.Title>
-          <div className="mt-2">
-            <BuyButtonContainer
-              name={name}
-              size="lg"
-              isOrderable={isOrderable}
-            />
-            <Button
-              href={description.tutorialLink}
-              variant="outline-primary"
-              target="_blank"
-              size="lg"
-              className="m-2"
-            >
-              View Tutorial
-            </Button>
-          </div>
-        </Card.Body>
-        <Card.Body>
-          <Row>
-            <Col xs={12} md={6}>
+          </Card.Title> */}
+          <br />
+          <BuyButtonContainer name={name} size="lg" isOrderable={isOrderable} />
+          <Row className="justify-content-center align-text-center">
+            <Col xs={12} md={6} className="justify-content-center text-center">
               {oneClickAccessTo ? (
                 <span>
-                  <h5 className="zapFullViewHeader"> 1-Click Access To</h5>
+                  <h5 className="zapFullViewHeader"> 1-click access to:</h5>
                   <h5>
                     {oneClickAccessTo.map((access, index) => (
                       <Badge
@@ -80,12 +62,22 @@ class ZapFullView extends PureComponent {
                     ))}
                   </h5>
                 </span>
-              ) : (
-                ''
-              )}
+              ) : null}
+              {this.props.whatThisMeans ? (
+                <span>
+                  <h5>What this means:</h5>
+                  <ul>
+                    {this.props.whatThisMeans.text.map(item => (
+                      <li key={item} className="text-left">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </span>
+              ) : null}
               {platformsUsed ? (
                 <span>
-                  <h5>Platforms Used</h5>
+                  <h5>Platforms used: </h5>
                   <h5>
                     {platformsUsed.map((platform, index) => (
                       <a
@@ -104,56 +96,41 @@ class ZapFullView extends PureComponent {
                     ))}
                   </h5>
                 </span>
-              ) : (
-                ''
-              )}
+              ) : null}
               {metamaskInteractionsSaved ? (
                 <span>
                   <h5 className="zapFullViewHeader">
-                    Metamask Interactions Saved
+                    Metamask interactions abstracted
                   </h5>
-                  <p>
+                  <h1>
                     {metamaskInteractionsSaved.map(
                       interactions => interactions.saved
                     )}
-                  </p>
+                  </h1>
                 </span>
-              ) : (
-                ''
-              )}
-              <span>
-                <h5>
-                  Input Tokens:{' '}
-                  <Badge variant="dark" className="beforePill">
-                    ETH
-                  </Badge>
-                </h5>
-              </span>
-            </Col>
-            <Col xs={12} md={6}>
-              <h5>Output Tokens: </h5>
-              <br />
-              <Row className="justify-content-center">
-                {components.map(item => (
-                  <div key={item.name}>
-                    <PercentageCircle
-                      percentage={item.percent}
-                      color={item.color}
-                    />
-                    <h6 className="text-center mt-3">{item.name}</h6>
-                  </div>
-                ))}
-              </Row>
-              {/* </Col>
-            <Col xs={12} md={6}> */}
-              {this.props.whatThisMeans ? (
-                <span>
-                  <h5>What this means</h5>
-                  <p>{this.props.whatThisMeans.text}</p>
-                </span>
-              ) : (
-                ''
-              )}
+              ) : null}
+              <div className="mt-2">
+                <Button
+                  href={description.tutorialLink}
+                  variant="outline-primary"
+                  target="_blank"
+                  size="lg"
+                  className="m-2"
+                >
+                  View Tutorial
+                </Button>
+                {this.props.hasReturnsChart ? (
+                  <Button
+                    href={`https://pools.fyi/#/returns/${this.props.tokenAddress}`}
+                    variant="outline-primary"
+                    target="_blank"
+                    size="lg"
+                    className="m-2"
+                  >
+                    Pools.fyi
+                  </Button>
+                ) : null}
+              </div>
             </Col>
           </Row>
         </Card.Body>

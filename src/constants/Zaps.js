@@ -43,7 +43,8 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '90% auto-converted into SAI + supplied to Compound to mint cSAI,10% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)'
+        '90% auto-converted into SAI + supplied to Compound to mint cSAI',
+        '10% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)'
       ]
     },
     oneClickAccessTo: [
@@ -102,7 +103,8 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x), 50% used to open BTC Short position on Fulcrum (dsWBTC2x)'
+        '50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)',
+        '50% used to open BTC Short position on Fulcrum (dsWBTC2x)'
       ]
     },
     oneClickAccessTo: [
@@ -162,7 +164,7 @@ const Zaps = {
         'https://defitutorials.substack.com/p/moderate-bull-defizap-walk-through'
     },
     whatThisMeans: {
-      text: ['50% used to acquire sBTC, 50% used to acquire sETH']
+      text: ['50% used to acquire sBTC', '50% used to acquire sETH']
     },
     oneClickAccessTo: [{ text: 'Synthetic Asset Trading' }],
     platformsUsed: [
@@ -215,7 +217,8 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x), 50% used to open BTC Long position with 2X leverage on Fulcrum (dLWBTC2x)'
+        '50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)',
+        '50% used to open BTC Long position with 2X leverage on Fulcrum (dLWBTC2x)'
       ]
     },
     oneClickAccessTo: [
@@ -277,7 +280,8 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '50% auto-converted into SAI + supplied to Compound to mint cSAI, 50% auto-converted into SAI + supplied to Fulcrum to mint iSAI'
+        '50% auto-converted into SAI + supplied to Compound to mint cSAI',
+        '50% auto-converted into SAI + supplied to Fulcrum to mint iSAI'
       ]
     },
     oneClickAccessTo: [{ text: 'Lending' }],
@@ -297,10 +301,11 @@ const Zaps = {
   },
   unipooldai: {
     id: 'unipooldai',
-    name: 'Unipool DAI',
+    name: 'DAI Unipool',
     text: 'Uni DAI',
     isOrderable: true,
-    hasReturnsChart: false,
+    hasReturnsChart: true,
+    tokenAddress: '0x2a1530c4c41db0b0b2bb646cb5eb1a67b7158667',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -329,21 +334,24 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://defitutorials.substack.com/p/dai-Unipool-defizap-walk-through'
+      tutorialLink:
+        'https://defitutorials.substack.com/p/dai-unipool-defizap-tutorial'
     },
     whatThisMeans: {
       text: [
-        '50% converted to DAI, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+        '50% converted to DAI',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolmkr: {
     id: 'unipoolmkr',
-    name: 'Unipool MKR',
+    name: 'MKR Unipool',
     text: 'Uni MKR',
     isOrderable: true,
-    hasReturnsChart: false,
+    hasReturnsChart: true,
+    tokenAddress: '0x2c4bd064b998838076fa341a83d007fc2fa50957',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -372,18 +380,24 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://defitutorials.substack.com/p/mkr-Unipool-defizap-walk-through'
-    }, whatThisMeans: {
-      text: ['50% converted to MKR, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+      tutorialLink:
+        'https://defitutorials.substack.com/p/mkr-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to MKR',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolsnx: {
     id: 'unipoolsnx',
-    name: 'Unipool SNX',
+    name: 'SNX Unipool ',
     text: 'Uni SNX',
     isOrderable: true,
-    hasReturnsChart: false,
+    hasReturnsChart: true,
+    tokenAddress: '0x3958b4ec427f8fa24eb60f42821760e88d485f7f',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -412,18 +426,24 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://defitutorials.substack.com/p/snx-unipool-defizap-walk-through'
-    }, whatThisMeans: {
-      text: ['50% converted to SNX, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+      tutorialLink:
+        'https://defitutorials.substack.com/p/snx-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to SNX',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolseth: {
     id: 'unipoolseth',
-    name: 'Unipool sETH',
+    name: 'sETH Unipool',
     text: 'Uni sETH',
     isOrderable: true,
-    hasReturnsChart: false,
+    hasReturnsChart: true,
+    tokenAddress: '0xe9cf7887b93150d4f2da7dfc6d502b216438f244',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -452,18 +472,24 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://defitutorials.substack.com/p/sETH-Unipool-defizap-walk-through'
-    }, whatThisMeans: {
-      text: ['50% converted to sETH, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+      tutorialLink:
+        'https://defitutorials.substack.com/p/seth-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to sETH',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolsai: {
     id: 'unipoolsai',
-    name: 'Unipool SAI',
+    name: 'SAI Unipool',
     text: 'Uni SAI',
     isOrderable: true,
-    hasReturnsChart: false,
+    hasReturnsChart: true,
+    tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -492,9 +518,14 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://defitutorials.substack.com/p/SAI-Unipool-defizap-walk-through'
-    }, whatThisMeans: {
-      text: ['50% converted to SAI, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+      tutorialLink:
+        'https://defitutorials.substack.com/p/dai-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to SAI',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
   },

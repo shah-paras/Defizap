@@ -169,7 +169,7 @@ class DoughtnutChart extends React.Component {
           center: {
             // the longest text that could appear in the center
             maxText: '100%',
-            text: this.state.showText ? this.props.data.text || '' : '',
+            text: this.state.showText ? this.props.data.name || '' : '',
             fontColor: '#FFFFF',
             fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
             fontStyle: 'normal',

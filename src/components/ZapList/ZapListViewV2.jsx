@@ -36,8 +36,7 @@ const footerButtons = () => (
           registerEvent({
             category: GENERATE_ZAP,
             action: INDIVIDUAL_ZAP_PAGE
-          })
-        }
+          })}
       >
         Don&apos;t see your Zap? Submit a request and we will create one!
       </Button>
@@ -49,12 +48,34 @@ const Zap = props => {
   console.log(props);
   return (
     <div key={props.name} className="m-4 p-4 bg-white flex-column">
-      <Row className={styles.zapName}>
+      {/* <Row className={styles.zapName}>
         <h3>{props.name}</h3>
-      </Row>
+      </Row> */}
       <Row>
         <Col xs={12} md={4} className="align-text-center">
           <Donut data={props} />
+          <div className="mt-2">
+            <BuyButtonContainer
+              name={props.name}
+              isOrderable={props.isOrderable}
+              block
+            />
+          </div>
+          {/* </Col>
+        <Col> */}
+          {props.isOrderable ? (
+            <div className="mt-2">
+              <Button
+                href={`/zaps/${props.id}`}
+                size="auto"
+                variant="outline-dark"
+                value="Learn More"
+                block
+              >
+                Learn More
+              </Button>
+            </div>
+          ) : null}
         </Col>
         <Col xs={12} md={8}>
           {props.isOrderable ? null : (
@@ -68,7 +89,7 @@ const Zap = props => {
           )}
           {props.oneClickAccessTo ? (
             <span>
-              <h6>1-Click Access To</h6>
+              <h6>1-click access to:</h6>
               <h6>
                 {props.oneClickAccessTo.map((access, index) => (
                   <Badge
@@ -82,11 +103,11 @@ const Zap = props => {
               </h6>
             </span>
           ) : (
-              ''
-            )}
+            ''
+          )}
           {props.platformsUsed ? (
             <span>
-              <h6>Platforms Used:</h6>
+              <h6>Platforms used:</h6>
               <h6>
                 {props.platformsUsed.map((platform, index) => (
                   <a
@@ -106,33 +127,37 @@ const Zap = props => {
               </h6>
             </span>
           ) : (
-              ''
-            )}
+            ''
+          )}
           {props.metamaskInteractionsSaved ? (
             <span>
               <h6>
-                Number of Metamask Interactions Saved:{' '}
-                {props.metamaskInteractionsSaved.map(
-                  interactions => interactions.saved
-                )}
+                <b>
+                  {props.metamaskInteractionsSaved.map(
+                    interactions => interactions.saved
+                  )}
+                </b>{' '}
+                metamask interactions abstracted.
               </h6>
             </span>
-          ) : (
-              ''
-            )}
+          ) : null}
           {props.whatThisMeans ? (
             <span>
-              <h6>What does this mean: </h6>
-              <p>{props.whatThisMeans.text}</p>
+              <h5>What this means:</h5>
+              <ul>
+                {props.whatThisMeans.text.map(item => (
+                  <li key={item} className="text-left">
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </span>
-          ) : (
-              ''
-            )}
+          ) : null}
         </Col>
       </Row>
-      <hr />
-      <Row>
-        <Col xs={12} md={6}>
+      {/* <hr />
+      <Row> */}
+      {/* <Col xs={12} md={6}>
           <div className="mt-2">
             <BuyButtonContainer
               name={props.name}
@@ -155,8 +180,8 @@ const Zap = props => {
               </Button>
             </div>
           ) : null}
-        </Col>
-      </Row>
+        </Col> */}
+      {/* </Row> */}
     </div>
   );
 };
