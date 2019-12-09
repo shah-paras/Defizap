@@ -373,7 +373,10 @@ const Zaps = {
         }
       ],
       tutorialLink: 'https://google.com'
-    }
+    }, whatThisMeans: {
+      text: ['50% converted to MKR, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolsnx: {
     id: 'unipoolsnx',
@@ -410,7 +413,10 @@ const Zaps = {
         }
       ],
       tutorialLink: 'https://google.com'
-    }
+    }, whatThisMeans: {
+      text: ['50% converted to SNX, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolseth: {
     id: 'unipoolseth',
@@ -447,7 +453,10 @@ const Zaps = {
         }
       ],
       tutorialLink: 'https://google.com'
-    }
+    }, whatThisMeans: {
+      text: ['50% converted to sETH, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
   },
   unipoolsai: {
     id: 'unipoolsai',
@@ -484,7 +493,10 @@ const Zaps = {
         }
       ],
       tutorialLink: 'https://google.com'
-    }
+    }, whatThisMeans: {
+      text: ['50% converted to SAI, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
   },
   bullSharpe: {
     id: 'bullSharpe',
