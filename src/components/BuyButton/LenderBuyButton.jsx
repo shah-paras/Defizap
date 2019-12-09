@@ -142,7 +142,8 @@ class LenderBuyButton extends React.Component {
               <div className="buycontents">
                 <p className="buytext pt-4 mr-2">INVEST</p>
                 <input
-                  min="0"
+                  min={0.01}
+                  type="number"
                   value={value}
                   onChange={this.handleChange}
                   placeholder="0.0"
@@ -150,10 +151,10 @@ class LenderBuyButton extends React.Component {
                   style={
                     value && value.length > 3
                       ? {
-                          width: `${80 + value.length * 20}px`
+                          width: `${90 + value.length * 20}px`
                         }
                       : {
-                          width: '80px'
+                          width: '90px'
                         }
                   }
                 />
