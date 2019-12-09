@@ -49,7 +49,7 @@ class ZapFullView extends PureComponent {
       <Card className="text-center text-capitalize">
         <Card.Body>
           <Row className="justify-content-center">
-            <Col xs={3}>
+            <Col xs={12} md={8} lg={4}>
               <Donut data={this.props} />
             </Col>
           </Row>
