@@ -5,8 +5,6 @@ const Zaps = {
     text: 'Lender',
     isOrderable: true,
     hasReturnsChart: false,
-    output:
-      "This is a great place to start—an emergency fund for life's unplanned hiccups. A safety net is a conservative portfolio. Using your pre‐tax income, we've estimated a target amount of $287.",
     numberOfInteractions: 4,
     components: [
       {
@@ -50,7 +48,6 @@ const Zaps = {
     text: 'Eth-Max',
     isOrderable: true,
     hasReturnsChart: false,
-    output: 'Random Sample Output to print',
     numberOfInteractions: 6,
     components: [
       {
@@ -88,7 +85,6 @@ const Zaps = {
     text: 'Mod-Bull',
     isOrderable: true,
     hasReturnsChart: false,
-    output: 'Random Sample Output to print',
     numberOfInteractions: 4,
     components: [
       {
@@ -133,7 +129,6 @@ const Zaps = {
     text: 'Double-Bull',
     isOrderable: true,
     hasReturnsChart: false,
-    output: 'Random Sample Output to print',
     numberOfInteractions: 4,
     components: [
       {
@@ -174,7 +169,6 @@ const Zaps = {
     text: 'SuperSaver',
     isOrderable: true,
     hasReturnsChart: false,
-    output: 'Random Sample Output to print',
     numberOfInteractions: 5,
     components: [
       {
@@ -252,7 +246,7 @@ const Zaps = {
     }
   },
   unipoolmkr: {
-    id: 'unipooldai',
+    id: 'unipoolmkr',
     name: 'Unipool MKR',
     text: 'Uni MKR',
     isOrderable: true,
