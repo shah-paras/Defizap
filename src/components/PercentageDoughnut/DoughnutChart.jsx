@@ -1,5 +1,7 @@
 import React from 'react';
 import Chart from 'chart.js';
+import isEmpty from 'lodash/isEmpty';
+
 // round corners
 // Chart.pluginService.register({
 //     afterUpdate: function (chart) {
@@ -112,14 +114,11 @@ Chart.pluginService.register({
   }
 });
 
-
-
 class DoughtnutChart extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {text:props.data.text, showText:true}
+    this.state = { text: props.data.text, showText: true };
     this.chartRef = React.createRef();
-
   }
 
   componentDidMount() {
@@ -145,111 +144,110 @@ class DoughtnutChart extends React.Component {
         responsive: true,
         maintainAspectRatio: false,
         tooltips: {
-          
-        callbacks: {
-          title: (items, data) =>
-            data.labels[items[0].index]
-              ? data.labels[items[0].index]
-              : data.labels[items[0].index - 1],
-          label: (items, data) =>
-            data.labels[items.index]
-              ? `${data.datasets[0].data[items.index]}%`
-              : `${data.datasets[0].data[items.index - 1]}%`
-        },
+          callbacks: {
+            title: (items, data) =>
+              data.labels[items[0].index]
+                ? data.labels[items[0].index]
+                : data.labels[items[0].index - 1],
+            label: (items, data) =>
+              data.labels[items.index]
+                ? `${data.datasets[0].data[items.index]}%`
+                : `${data.datasets[0].data[items.index - 1]}%`
+          },
 
-        bodyFontSize: 14,
-        displayColors: false
-      },
-      legend: {
-        display: false
-      },
-      cutoutPercentage: 75,
-      elements: {
-        arc: {
-          roundedCornersFor: 0
+          bodyFontSize: 14,
+          displayColors: false
         },
-        center: {
-          // the longest text that could appear in the center
-          maxText: '100%',
-          text: this.state.showText ? this.props.data.text || '' : '',
-          fontColor: '#FFFFF',
-          fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-          fontStyle: 'normal',
-          fontSize: 18,
-          // if a fontSize is NOT specified, it will scale (within the below limits) maxText to take up the maximum space in the center
-          // if these are not specified either, we default to 1 and 256
-          minFontSize: 1,
-          maxFontSize: 256
+        legend: {
+          display: false
+        },
+        cutoutPercentage: 75,
+        elements: {
+          arc: {
+            roundedCornersFor: 0
+          },
+          center: {
+            // the longest text that could appear in the center
+            maxText: '100%',
+            text: this.state.showText ? this.props.data.text || '' : '',
+            fontColor: '#FFFFF',
+            fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+            fontStyle: 'normal',
+            fontSize: 18,
+            // if a fontSize is NOT specified, it will scale (within the below limits) maxText to take up the maximum space in the center
+            // if these are not specified either, we default to 1 and 256
+            minFontSize: 1,
+            maxFontSize: 256
+          }
         }
       }
-    }
     });
-}
+  }
 
+  // Accepts string argument of zap. Returns colors for doughnut chart for that zap
+  // assignColors(zap) {
+  //   const colors = {
+  //     Lender: ['#7CCEFF', '#2023A8'],
+  //     EthMaximalist: ['#5540BF', '#a726f2']
+  //   };
+  //   return colors[zap];
+  // }
 
-// Accepts string argument of zap. Returns colors for doughnut chart for that zap
-assignColors(zap) {
-  const colors = {
-    Lender: ['#7CCEFF', '#2023A8'],
-    EthMaximalist: ['#5540BF', '#a726f2']
+  // For each of the assets provided, assign a random color and remove that color from
+  // the possible assignable colors (to prevent duplicates)
+  // Returns array of colors [''#7CCEFF', '#2023A8',...,'#A726F2']
+  assignRandomColor = () => {
+    const possibleColors = [
+      '#7CCEFF',
+      '#2023A8',
+      '#5540BF',
+      '#A726F2',
+      '#e80ba5',
+      '#0ef448',
+      '#eaa207'
+    ];
+    const color = possibleColors.splice(
+      Math.floor(Math.random() * possibleColors.length),
+      1
+    )[0];
+    return color;
   };
-  return colors[zap];
-}
 
-// For each of the assets provided, assign a random color and remove that color from
-// the possible assignable colors (to prevent duplicates)
-// Returns array of colors [''#7CCEFF', '#2023A8',...,'#A726F2']
-assignRandomColor() {
-  const possibleColors = [
-    '#7CCEFF',
-    '#2023A8',
-    '#5540BF',
-    '#A726F2',
-    '#e80ba5',
-    '#0ef448',
-    '#eaa207'
-  ];
-  const colors = this.props.assets.map(
-    color =>
-      possibleColors.splice(
-        Math.floor(Math.random() * possibleColors.length),
-        1
-      )[0]
-  );
-  return colors;
-}
+  assignPercentages(half) {
+    const percentages = this.props.data.components.map(component => {
+      return component.percent;
+    });
+    if (half) percentages.push(100 - this.props.data.components[0].percent);
+    return percentages;
+  }
 
-assignPercentages(half) {
-  const percentages = this.props.data.components.map(component => {
-    return component.percent;
-  });
-  if (half) percentages.push(100 - this.props.data.components[0].percent);
-  return percentages;
-}
+  assignColors() {
+    const colors = this.props.data.components.map(component => {
+      if (!isEmpty(component.color)) {
+        return component.color;
+      }
+      return this.assignRandomColor();
+    });
+    console.log('colors ', colors);
+    return colors;
+  }
 
-assignColors() {
-  const colors = this.props.data.components.map(component => {
-    return component.color;
-  });
-  return colors;
-}
+  assignNames(half) {
+    const names = this.props.data.components.map(component => {
+      return component.name;
+    });
+    if (half) names.push(null);
 
-assignNames(half) {
-  const names = this.props.data.components.map(component => {
-    return component.name;
-  });
-  if (half) names.push(null);
+    return names;
+  }
 
-  return names;
-}
-
-render() {
-  return (
-    <div>
-      <canvas ref={this.chartRef} />
-    </div>
-  )
-}
+  render() {
+    return (
+      <div>
+        <canvas ref={this.chartRef} />
+      </div>
+    );
+  }
 }
 
 export default DoughtnutChart;

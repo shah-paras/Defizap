@@ -31,7 +31,7 @@ const contractProvider = name => {
         gas: 7000000
       };
     }
-    case 'ETH Maximalist': {
+    case 'ETH Bull': {
       return {
         contractAbi: ETHMAXIMALIST_ABI,
         contractAddress: ETHMAXIMALIST_CONTRACT_ADDRESS,
