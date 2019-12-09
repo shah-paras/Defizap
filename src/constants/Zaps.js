@@ -205,6 +205,191 @@ const Zaps = {
         'https://defitutorials.substack.com/p/super-saver-defizap-walk-through'
     }
   },
+  unipooldai: {
+    id: 'unipooldai',
+    name: 'Unipool DAI',
+    text: 'Unipool DAI',
+    isOrderable: true,
+    hasReturnsChart: false,
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: 'Generate fees by providing liquidity.',
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'DAI Pool token',
+        percent: 100,
+        color: '#D34FEE'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink: 'https://google.com'
+    }
+  },
+  unipoolmkr: {
+    id: 'unipooldai',
+    name: 'Unipool MKR',
+    text: 'Unipool MKR',
+    isOrderable: true,
+    hasReturnsChart: false,
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: 'Generate fees by providing liquidity.',
+    numberOfInteractions: 3,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'MKR Pool token',
+        percent: 100,
+        color: '#D34FEE'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink: 'https://google.com'
+    }
+  },
+  unipoolsnx: {
+    id: 'unipoolsnx',
+    name: 'Unipool SNX',
+    text: 'Unipool SNX',
+    isOrderable: true,
+    hasReturnsChart: false,
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: 'Generate fees by providing liquidity.',
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'SNX Pool token',
+        percent: 100,
+        color: '#D34FEE'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink: 'https://google.com'
+    }
+  },
+  unipoolseth: {
+    id: 'unipoolseth',
+    name: 'Unipool sETH',
+    text: 'Unipool sETH',
+    isOrderable: true,
+    hasReturnsChart: false,
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: 'Generate fees by providing liquidity.',
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'sETH Pool token',
+        percent: 100,
+        color: '#D34FEE'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink: 'https://google.com'
+    }
+  },
+  unipoolsai: {
+    id: 'unipoolsai',
+    name: 'Unipool SAI',
+    text: 'Unipool SAI',
+    isOrderable: true,
+    hasReturnsChart: false,
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: 'Generate fees by providing liquidity.',
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'SAI Pool token',
+        percent: 100,
+        color: '#D34FEE'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink: 'https://google.com'
+    }
+  },
   bullSharpe: {
     id: 'bullSharpe',
     name: 'Conservative Bull',
