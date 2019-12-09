@@ -42,10 +42,23 @@ const Zaps = {
         'https://defitutorials.substack.com/p/lender-zap-walk-through-tutorial'
     },
     whatThisMeans: {
-       text: ['90% auto-converted into SAI + supplied to Compound to mint cSAI,10% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)']
+      text: ['90% auto-converted into SAI + supplied to Compound to mint cSAI,10% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)']
+    },
+    oneClickAccessTo: [{ text: 'Lending' }, { text: 'Long ETH with 2X Leverage' }],
+    platformsUsed: [
+      {
+        key: 'Compound',
+        value: 'Compound',
+        url: 'https://compound.finance/'
       },
-    oneClickAccessTo: [{text:'Lending'}, {text:'Long ETH with 2X Leverage'}]
-    
+      {
+        key: 'Fulcrum',
+        value: 'Fulcrum',
+        url: 'https://fulcrum.trade/#/'
+      }
+    ],
+    metamaskInteractionsSaved: [{saved: 4}]
+
   },
   ETHMaximalist: {
     id: 'ETHMaximalist',
@@ -82,7 +95,7 @@ const Zaps = {
       ],
       tutorialLink:
         'https://defitutorials.substack.com/p/eth-maximalist-zap-walk-through-tutorial'
-    }, whatThisMeans: { 
+    }, whatThisMeans: {
       text: ['50% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x),50% used to open BTC Short position on Fulcrum (dsWBTC2x)']
     }
 
@@ -229,7 +242,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{text:'Generate fees by providing liquidity.'}],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -266,7 +279,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{text:'Generate fees by providing liquidity.'}],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -303,7 +316,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{text:'Generate fees by providing liquidity.'}],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -340,7 +353,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{text:'Generate fees by providing liquidity.'}],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -377,7 +390,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{text:'Generate fees by providing liquidity.'}],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
