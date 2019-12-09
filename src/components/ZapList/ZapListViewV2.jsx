@@ -63,16 +63,19 @@ const Zap = props => {
               <h6>1-Click Access To</h6>
               <h6>{props.oneClickAccessTo.map((access, index) => <Badge variant='primary' className={index === 0 ? 'beforePill' : 'afterPill'} >{access.text}</Badge>)}</h6>
             </span> : ''}
+
             {props.platformsUsed ?
             <span>
               <h6>Platforms Used</h6>
               <h6>{props.platformsUsed.map((platform, index) => <Badge variant='success' className={index === 0 ? 'beforePill' : 'afterPill'} >{platform.value}</Badge>)}</h6>
             </span> : ''}
+
             {props.metamaskInteractionsSaved ?
             <span>
               <h6>Number Metamask Interactions Saved</h6>
               <p>{props.metamaskInteractionsSaved.map(interactions => interactions.saved)}</p>
             </span> : ''}
+            
           {props.whatThisMeans ?
             <span>
               <h6>What this means</h6>
