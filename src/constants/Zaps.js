@@ -47,7 +47,7 @@ const Zaps = {
   ETHMaximalist: {
     id: 'ETHMaximalist',
     name: 'ETH Maximalist',
-    text: 'E M',
+    text: 'Eth-Max',
     isOrderable: true,
     hasReturnsChart: false,
     output: 'Random Sample Output to print',
@@ -56,12 +56,12 @@ const Zaps = {
       {
         name: 'dLETH2x',
         percent: 50,
-        color: '#11CEBE'
+        color: '#5540BF'
       },
       {
         name: 'dsWBTC',
         percent: 50,
-        color: '#0035C4'
+        color: '#A726f2'
       }
     ],
     description: {
@@ -85,6 +85,7 @@ const Zaps = {
   moderatebull: {
     id: 'moderatebull',
     name: 'Moderate Bull',
+    text: 'Mod-Bull',
     isOrderable: true,
     hasReturnsChart: false,
     output: 'Random Sample Output to print',
@@ -92,11 +93,13 @@ const Zaps = {
     components: [
       {
         name: 'sETH',
-        percent: 50
+        percent: 50,
+        color: '#01ad75'
       },
       {
         name: 'sBTC',
-        percent: 50
+        percent: 50,
+        color: '#53B267'
       }
     ],
     description: {
@@ -127,6 +130,7 @@ const Zaps = {
   doublebull: {
     id: 'doublebull',
     name: 'Double Bull',
+    text: 'Double-Bull',
     isOrderable: true,
     hasReturnsChart: false,
     output: 'Random Sample Output to print',
@@ -134,11 +138,13 @@ const Zaps = {
     components: [
       {
         name: 'dLETH2x',
-        percent: 50
+        percent: 50,
+        color: '#D42351'
       },
       {
         name: 'dLWBTC2x',
-        percent: 50
+        percent: 50,
+        color: '#6E2001'
       }
     ],
     description: {
@@ -165,6 +171,7 @@ const Zaps = {
   supersaver: {
     id: 'supersaver',
     name: 'Super Saver',
+    text: 'SuperSaver',
     isOrderable: true,
     hasReturnsChart: false,
     output: 'Random Sample Output to print',
@@ -172,11 +179,13 @@ const Zaps = {
     components: [
       {
         name: 'cSAI',
-        percent: 50
+        percent: 50,
+        color: '#01D691'
       },
       {
         name: 'iSAI',
-        percent: 50
+        percent: 50,
+        color: '#0062CD'
       }
     ],
     description: {
@@ -208,7 +217,7 @@ const Zaps = {
   unipooldai: {
     id: 'unipooldai',
     name: 'Unipool DAI',
-    text: 'Unipool DAI',
+    text: 'Uni DAI',
     isOrderable: true,
     hasReturnsChart: false,
     platformsUsed: [
@@ -227,7 +236,7 @@ const Zaps = {
       {
         name: 'DAI Pool token',
         percent: 100,
-        color: '#D34FEE'
+        color: '#F59D0D'
       }
     ],
     description: {
@@ -245,7 +254,7 @@ const Zaps = {
   unipoolmkr: {
     id: 'unipooldai',
     name: 'Unipool MKR',
-    text: 'Unipool MKR',
+    text: 'Uni MKR',
     isOrderable: true,
     hasReturnsChart: false,
     platformsUsed: [
@@ -282,7 +291,7 @@ const Zaps = {
   unipoolsnx: {
     id: 'unipoolsnx',
     name: 'Unipool SNX',
-    text: 'Unipool SNX',
+    text: 'Uni SNX',
     isOrderable: true,
     hasReturnsChart: false,
     platformsUsed: [
@@ -301,7 +310,7 @@ const Zaps = {
       {
         name: 'SNX Pool token',
         percent: 100,
-        color: '#D34FEE'
+        color: '#000000'
       }
     ],
     description: {
@@ -319,7 +328,7 @@ const Zaps = {
   unipoolseth: {
     id: 'unipoolseth',
     name: 'Unipool sETH',
-    text: 'Unipool sETH',
+    text: 'Uni sETH',
     isOrderable: true,
     hasReturnsChart: false,
     platformsUsed: [
@@ -338,7 +347,7 @@ const Zaps = {
       {
         name: 'sETH Pool token',
         percent: 100,
-        color: '#D34FEE'
+        color: '#01D691'
       }
     ],
     description: {
@@ -356,7 +365,7 @@ const Zaps = {
   unipoolsai: {
     id: 'unipoolsai',
     name: 'Unipool SAI',
-    text: 'Unipool SAI',
+    text: 'Uni SAI',
     isOrderable: true,
     hasReturnsChart: false,
     platformsUsed: [
@@ -375,7 +384,7 @@ const Zaps = {
       {
         name: 'SAI Pool token',
         percent: 100,
-        color: '#D34FEE'
+        color: '#1F8FF9'
       }
     ],
     description: {
