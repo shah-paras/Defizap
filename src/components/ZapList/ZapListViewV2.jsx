@@ -9,7 +9,7 @@ import Donut from '../PercentageDoughnut';
 import NavigationBar from '../NavigationBar';
 
 import '../../App.css';
-// import ZapListStyles from './ZapList.module.css';
+import styles from './ZapList.module.css';
 
 import {
   INDIVIDUAL_ZAP_PAGE,
@@ -36,7 +36,8 @@ const footerButtons = () => (
           registerEvent({
             category: GENERATE_ZAP,
             action: INDIVIDUAL_ZAP_PAGE
-          })}
+          })
+        }
       >
         Don&apos;t see your Zap? Submit a request and we will create one!
       </Button>
@@ -48,7 +49,7 @@ const Zap = props => {
   console.log(props);
   return (
     <div key={props.name} className="m-4 p-4 bg-white flex-column">
-      <Row className="justify-content-center">
+      <Row className={styles.zapName}>
         <h3>{props.name}</h3>
       </Row>
       <Row>
@@ -132,23 +133,27 @@ const Zap = props => {
       <hr />
       <Row>
         <Col xs={12} md={6}>
-          <BuyButtonContainer
-            name={props.name}
-            isOrderable={props.isOrderable}
-            block
-          />
+          <div className="mt-2">
+            <BuyButtonContainer
+              name={props.name}
+              isOrderable={props.isOrderable}
+              block
+            />
+          </div>
         </Col>
         <Col xs={12} md={6}>
           {props.isOrderable ? (
-            <Button
-              href={`/zaps/${props.id}`}
-              size="auto"
-              variant="outline-dark"
-              value="Learn More"
-              block
-            >
-              Learn More
-            </Button>
+            <div className="mt-2">
+              <Button
+                href={`/zaps/${props.id}`}
+                size="auto"
+                variant="outline-dark"
+                value="Learn More"
+                block
+              >
+                Learn More
+              </Button>
+            </div>
           ) : null}
         </Col>
       </Row>
