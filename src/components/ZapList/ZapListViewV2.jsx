@@ -82,11 +82,11 @@ const Zap = props => {
               </h6>
             </span>
           ) : (
-            ''
-          )}
+              ''
+            )}
           {props.platformsUsed ? (
             <span>
-              <h6>Platforms Used</h6>
+              <h6>Platforms Used:</h6>
               <h6>
                 {props.platformsUsed.map((platform, index) => (
                   <a
@@ -106,28 +106,28 @@ const Zap = props => {
               </h6>
             </span>
           ) : (
-            ''
-          )}
+              ''
+            )}
           {props.metamaskInteractionsSaved ? (
             <span>
               <h6>
-                Number Metamask Interactions Saved:{' '}
+                Number of Metamask Interactions Saved:{' '}
                 {props.metamaskInteractionsSaved.map(
                   interactions => interactions.saved
                 )}
               </h6>
             </span>
           ) : (
-            ''
-          )}
+              ''
+            )}
           {props.whatThisMeans ? (
             <span>
-              <h6>What this means</h6>
+              <h6>What does this mean: </h6>
               <p>{props.whatThisMeans.text}</p>
             </span>
           ) : (
-            ''
-          )}
+              ''
+            )}
         </Col>
       </Row>
       <hr />

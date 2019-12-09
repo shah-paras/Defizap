@@ -308,7 +308,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -329,7 +329,7 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://google.com'
+      tutorialLink: 'https://defitutorials.substack.com/p/dai-Unipool-defizap-walk-through'
     },
     whatThisMeans: {
       text: [
@@ -351,7 +351,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -372,7 +372,7 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://google.com'
+      tutorialLink: 'https://defitutorials.substack.com/p/mkr-Unipool-defizap-walk-through'
     }, whatThisMeans: {
       text: ['50% converted to MKR, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
     },
@@ -391,7 +391,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -412,7 +412,7 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://google.com'
+      tutorialLink: 'https://defitutorials.substack.com/p/snx-unipool-defizap-walk-through'
     }, whatThisMeans: {
       text: ['50% converted to SNX, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
     },
@@ -431,7 +431,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -452,7 +452,7 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://google.com'
+      tutorialLink: 'https://defitutorials.substack.com/p/sETH-Unipool-defizap-walk-through'
     }, whatThisMeans: {
       text: ['50% converted to sETH, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
     },
@@ -471,7 +471,7 @@ const Zaps = {
         url: 'https://uniswap.io/'
       }
     ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity.' }],
+    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -492,7 +492,7 @@ const Zaps = {
           hyperlink: 'https://google.com'
         }
       ],
-      tutorialLink: 'https://google.com'
+      tutorialLink: 'https://defitutorials.substack.com/p/SAI-Unipool-defizap-walk-through'
     }, whatThisMeans: {
       text: ['50% converted to SAI, 50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens']
     },
