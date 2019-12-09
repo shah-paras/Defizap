@@ -64,7 +64,7 @@ class ZapFullView extends PureComponent {
         </Card.Body>
         <Card.Body>
           <Row>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={6}>
               {oneClickAccessTo ? (
                 <span>
                   <h5 className="zapFullViewHeader"> 1-Click Access To</h5>
@@ -121,34 +121,31 @@ class ZapFullView extends PureComponent {
               ) : (
                 ''
               )}
-            </Col>
-            <Col xs={12} md={4}>
-              <Row>
+              <span>
                 <h5>
-                  <span>
-                    Input:{' '}
-                    <Badge variant="dark" className="beforePill">
-                      ETH
-                    </Badge>
-                  </span>
+                  Input Tokens:{' '}
+                  <Badge variant="dark" className="beforePill">
+                    ETH
+                  </Badge>
                 </h5>
-              </Row>
-              <Row>
-                <h6>Output</h6>
-                <Row className="justify-content-center">
-                  {components.map(item => (
-                    <div key={item.name}>
-                      <PercentageCircle
-                        percentage={item.percent}
-                        color={item.color}
-                      />
-                      <h6 className="text-center mt-3">{item.name}</h6>
-                    </div>
-                  ))}
-                </Row>
-              </Row>
+              </span>
             </Col>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={6}>
+              <h5>Output Tokens: </h5>
+              <br />
+              <Row className="justify-content-center">
+                {components.map(item => (
+                  <div key={item.name}>
+                    <PercentageCircle
+                      percentage={item.percent}
+                      color={item.color}
+                    />
+                    <h6 className="text-center mt-3">{item.name}</h6>
+                  </div>
+                ))}
+              </Row>
+              {/* </Col>
+            <Col xs={12} md={6}> */}
               {this.props.whatThisMeans ? (
                 <span>
                   <h5>What this means</h5>
