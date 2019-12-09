@@ -49,7 +49,7 @@ const Zaps = {
   },
   ETHMaximalist: {
     id: 'ETHMaximalist',
-    name: 'ETH Maximalist',
+    name: 'ETH Bull',
     text: 'Eth-Max',
     isOrderable: true,
     hasReturnsChart: false,

@@ -112,3 +112,5 @@ const ZapListView = props => {
 };
 
 export default ZapListView;
+
+export { Zap };

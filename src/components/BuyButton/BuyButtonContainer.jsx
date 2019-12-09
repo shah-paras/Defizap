@@ -87,7 +87,7 @@ class LenderBuyButton extends React.Component {
         let tx;
         if (this.props.name === 'Lender') {
           tx = await contract.methods.SafeNotSorryZapInvestment();
-        } else if (this.props.name === 'ETH Maximalist') {
+        } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
         } else {
           tx = await contract.methods.LetsInvest();
@@ -246,8 +246,9 @@ class LenderBuyButton extends React.Component {
           <Button
             onClick={() => this.setState({ open: true })}
             disabled={!isOrderable}
-            variant="outline-success"
-            size="lg"
+            variant="outline-primary"
+            size={!isEmpty(size) ? size : 'auto'}
+            block={block}
           >
             Coming Soon
           </Button>
