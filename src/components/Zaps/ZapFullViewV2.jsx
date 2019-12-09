@@ -8,6 +8,7 @@ import autobind from 'react-autobind';
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import Nav from 'react-bootstrap/Nav';
 
+import ReturnSparkLine from '../ReturnSparkline';
 import PercentageCircle from '../PercentageCircle';
 import BuyButtonContainer from '../BuyButton/BuyButtonContainer';
 import Donut from '../PercentageDoughnut';
@@ -98,7 +99,14 @@ class ZapFullView extends PureComponent {
                 </Row>
               </Tab.Pane>
               {hasReturnsChart ? (
-                <Tab.Pane eventKey="returns">Returns</Tab.Pane>
+                <Tab.Pane eventKey="returns">
+                  {
+                    <ReturnSparkLine
+                      exchange="0xe9cf7887b93150d4f2da7dfc6d502b216438f244"
+                      periodTabValue="30"
+                    />
+                  }
+                </Tab.Pane>
               ) : null}
               <Tab.Pane eventKey="tutorial">
                 <Card.Body className="text-left">

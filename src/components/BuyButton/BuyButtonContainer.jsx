@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import Row from 'react-bootstrap/Row';
+import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
 
 import '../../App.css';
@@ -16,9 +17,8 @@ import {
   buildOptions,
   checkResponse
 } from '../../api/apiHelpers';
-import { onboard, web3 } from '../../web3/web3';
 
-class BuyButtonContainer extends React.Component {
+class LenderBuyButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +26,9 @@ class BuyButtonContainer extends React.Component {
       value: '',
       account: null,
       showLoader: false,
-      gasMode: 'average'
+      gasMode: 'average',
+      errorMessage: '',
+      depositTxHash: ''
     };
   }
 
@@ -45,25 +47,33 @@ class BuyButtonContainer extends React.Component {
   };
 
   toggle = () => {
-    const { open } = this.state;
-    this.setState({ open: !open });
+    this.setState({ open: !this.state.open });
   };
 
   handleSubmit = async event => {
     event.preventDefault();
-    this.toggle();
     registerEvent({
       category: INITIATE_PURCHASE,
       action: this.props.name
     });
     try {
-      const walletSelection = await onboard.walletSelect();
-      const walletCheck = await onboard.walletCheck();
-      if (walletSelection && walletCheck) {
-        const accounts = await web3.eth.getAccounts();
-        this.setState({ account: accounts[0] });
-        const { ens } = web3.eth;
-        await this.getGas();
+      await this.initialize();
+      let web3;
+      if (
+        typeof window.ethereum !== 'undefined' ||
+        typeof window.web3 !== 'undefined'
+      ) {
+        const provider = window.ethereum || window.web3.currentProvider;
+        web3 = new Web3(provider);
+      }
+      const networkId = await web3.eth.net.getId();
+      const { ens } = web3.eth;
+      await this.getGas();
+      if (networkId !== 1) {
+        alert(
+          'Sorry, you need to be on the Ethereum MainNet to use our services.'
+        );
+      } else {
         const {
           contractAbi,
           contractAddress,
@@ -104,16 +114,27 @@ class BuyButtonContainer extends React.Component {
             );
             this.setState({ showLoader: false });
           });
-        console.log('The Transaction is ', tx);
+        console.log(tx);
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   setGasMode = async gasMode => {
-    this.setState({ gasMode });
+    await this.setState({ gasMode });
   };
+
+  async initialize() {
+    try {
+      const [account] = await window.ethereum.enable();
+      this.setState({ account });
+    } catch (error) {
+      console.error(error);
+      alert('You will need to connect web3 wallet');
+      throw error;
+    }
+  }
 
   renderModal() {
     const { open, value } = this.state;
@@ -127,7 +148,9 @@ class BuyButtonContainer extends React.Component {
               <div className="buycontents">
                 <p className="buytext pt-4 mr-2">INVEST</p>
                 <input
-                  min="0"
+                  min={0.01}
+                  type="number"
+                  step={0.001}
                   value={value}
                   onChange={this.handleChange}
                   placeholder="0.0"
@@ -135,10 +158,10 @@ class BuyButtonContainer extends React.Component {
                   style={
                     value && value.length > 3
                       ? {
-                          width: `${80 + value.length * 20}px`
+                          width: `${90 + value.length * 20}px`
                         }
                       : {
-                          width: '80px'
+                          width: '90px'
                         }
                   }
                 />
@@ -235,4 +258,4 @@ class BuyButtonContainer extends React.Component {
   }
 }
 
-export default BuyButtonContainer;
+export default LenderBuyButton;
