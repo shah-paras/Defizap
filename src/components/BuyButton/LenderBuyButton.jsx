@@ -144,6 +144,7 @@ class LenderBuyButton extends React.Component {
                 <input
                   min={0.01}
                   type="number"
+                  step={0.001}
                   value={value}
                   onChange={this.handleChange}
                   placeholder="0.0"
