@@ -88,7 +88,7 @@ class ZapFullView extends PureComponent {
                       target="_blank"
                     >
                       <Badge
-                        variant="success"
+                        variant="info"
                       >
                         {ensAddress}
                       </Badge>

@@ -1,4 +1,239 @@
 const Zaps = {
+  unipooldai: {
+    id: 'unipooldai',
+    name: 'DAI Unipool',
+    text: 'Uni DAI',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'DAIUnipool.DeFiZap.eth',
+    tokenAddress: '0x2a1530c4c41db0b0b2bb646cb5eb1a67b7158667',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'DAI Pool token',
+        percent: 100,
+        color: '#F59D0D'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/dai-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to DAI',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
+  },
+  unipoolmkr: {
+    id: 'unipoolmkr',
+    name: 'MKR Unipool',
+    text: 'Uni MKR',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'MKRUnipool.DeFiZap.eth',
+    tokenAddress: '0x2c4bd064b998838076fa341a83d007fc2fa50957',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    numberOfInteractions: 3,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'MKR Pool token',
+        percent: 100,
+        color: '#D34FEE'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/mkr-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to MKR',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
+  },
+  unipoolsnx: {
+    id: 'unipoolsnx',
+    name: 'SNX Unipool',
+    text: 'Uni SNX',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'SNXUnipool.DeFiZap.eth',
+    tokenAddress: '0x3958b4ec427f8fa24eb60f42821760e88d485f7f',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'SNX Pool token',
+        percent: 100,
+        color: '#000000'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/snx-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to SNX',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
+  },
+  unipoolseth: {
+    id: 'unipoolseth',
+    name: 'sETH Unipool',
+    text: 'Uni sETH',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'sETHUnipool.DeFiZap.eth',
+    tokenAddress: '0xe9cf7887b93150d4f2da7dfc6d502b216438f244',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'sETH Pool token',
+        percent: 100,
+        color: '#01D691'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/seth-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to sETH',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
+  },
+  unipoolsai: {
+    id: 'unipoolsai',
+    name: 'SAI Unipool',
+    text: 'Uni SAI',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'SAIUnipool.DeFiZap.eth',
+    tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'SAI Pool token',
+        percent: 100,
+        color: '#1F8FF9'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/dai-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to SAI',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
+  },
   lender: {
     id: 'lender',
     name: 'Lender',
@@ -73,7 +308,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 6,
-    ensAddress: 'Ethmax.DeFiZap.eth',
+    ensAddress: 'EthBull.DeFiZap.eth',
     components: [
       {
         name: 'dLETH2x',
@@ -111,7 +346,7 @@ const Zaps = {
     },
     oneClickAccessTo: [
       { text: 'Long ETH with 2X Leverage' },
-      { text: 'Shortsell WBTC' }
+      { text: 'Short-sell WBTC' }
     ],
     platformsUsed: [
       {
@@ -129,7 +364,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 4,
-    ensAddress: 'Mderatebull.DeFiZap.eth',
+    ensAddress: 'ModerateBull.DeFiZap.eth',
     components: [
       {
         name: 'sETH',
@@ -186,7 +421,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 4,
-    ensAddress: 'Doublebull.DeFiZap.eth',
+    ensAddress: 'DoubleBull.DeFiZap.eth',
     components: [
       {
         name: 'dLETH2x',
@@ -245,7 +480,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 5,
-    ensAddress: 'Supersaver.DeFiZap.eth',
+    ensAddress: 'SuperSaver.DeFiZap.eth',
     components: [
       {
         name: 'cSAI',
@@ -304,241 +539,7 @@ const Zaps = {
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]
   },
-  unipooldai: {
-    id: 'unipooldai',
-    name: 'DAI Unipool',
-    text: 'Uni DAI',
-    isOrderable: true,
-    hasReturnsChart: true,
-    ensAddress: 'DAIunipool.DeFiZap.eth',
-    tokenAddress: '0x2a1530c4c41db0b0b2bb646cb5eb1a67b7158667',
-    platformsUsed: [
-      {
-        key: 'uniswap',
-        value: 'Uniswap',
-        url: 'https://uniswap.io/'
-      }
-    ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
-    numberOfInteractions: 5,
-    outperformsDuring: ['Choppy Markets'],
-    whatHappensUnderTheHood: '',
-    whatHappensAfter: '',
-    components: [
-      {
-        name: 'DAI Pool token',
-        percent: 100,
-        color: '#F59D0D'
-      }
-    ],
-    description: {
-      textQuestion: 'What does this Zap do?',
-      textAnswer: ['Sample text'],
-      textLink: [
-        {
-          text: 'dummy text',
-          hyperlink: 'https://google.com'
-        }
-      ],
-      tutorialLink:
-        'https://defitutorials.substack.com/p/dai-unipool-defizap-tutorial'
-    },
-    whatThisMeans: {
-      text: [
-        '50% converted to DAI',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
-      ]
-    },
-    metamaskInteractionsSaved: [{ saved: 3 }]
-  },
-  unipoolmkr: {
-    id: 'unipoolmkr',
-    name: 'MKR Unipool',
-    text: 'Uni MKR',
-    isOrderable: true,
-    hasReturnsChart: true,
-    ensAddress: 'MKRunipool.DeFiZap.eth',
-    tokenAddress: '0x2c4bd064b998838076fa341a83d007fc2fa50957',
-    platformsUsed: [
-      {
-        key: 'uniswap',
-        value: 'Uniswap',
-        url: 'https://uniswap.io/'
-      }
-    ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
-    numberOfInteractions: 3,
-    outperformsDuring: ['Choppy Markets'],
-    whatHappensUnderTheHood: '',
-    whatHappensAfter: '',
-    components: [
-      {
-        name: 'MKR Pool token',
-        percent: 100,
-        color: '#D34FEE'
-      }
-    ],
-    description: {
-      textQuestion: 'What does this Zap do?',
-      textAnswer: ['Sample text'],
-      textLink: [
-        {
-          text: 'dummy text',
-          hyperlink: 'https://google.com'
-        }
-      ],
-      tutorialLink:
-        'https://defitutorials.substack.com/p/mkr-unipool-defizap-tutorial'
-    },
-    whatThisMeans: {
-      text: [
-        '50% converted to MKR',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
-      ]
-    },
-    metamaskInteractionsSaved: [{ saved: 3 }]
-  },
-  unipoolsnx: {
-    id: 'unipoolsnx',
-    name: 'SNX Unipool',
-    text: 'Uni SNX',
-    isOrderable: true,
-    hasReturnsChart: true,
-    ensAddress: 'SNXunipool.DeFiZap.eth',
-    tokenAddress: '0x3958b4ec427f8fa24eb60f42821760e88d485f7f',
-    platformsUsed: [
-      {
-        key: 'uniswap',
-        value: 'Uniswap',
-        url: 'https://uniswap.io/'
-      }
-    ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
-    numberOfInteractions: 5,
-    outperformsDuring: ['Choppy Markets'],
-    whatHappensUnderTheHood: '',
-    whatHappensAfter: '',
-    components: [
-      {
-        name: 'SNX Pool token',
-        percent: 100,
-        color: '#000000'
-      }
-    ],
-    description: {
-      textQuestion: 'What does this Zap do?',
-      textAnswer: ['Sample text'],
-      textLink: [
-        {
-          text: 'dummy text',
-          hyperlink: 'https://google.com'
-        }
-      ],
-      tutorialLink:
-        'https://defitutorials.substack.com/p/snx-unipool-defizap-tutorial'
-    },
-    whatThisMeans: {
-      text: [
-        '50% converted to SNX',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
-      ]
-    },
-    metamaskInteractionsSaved: [{ saved: 3 }]
-  },
-  unipoolseth: {
-    id: 'unipoolseth',
-    name: 'sETH Unipool',
-    text: 'Uni sETH',
-    isOrderable: true,
-    hasReturnsChart: true,
-    ensAddress: 'sETHunipool.DeFiZap.eth',
-    tokenAddress: '0xe9cf7887b93150d4f2da7dfc6d502b216438f244',
-    platformsUsed: [
-      {
-        key: 'uniswap',
-        value: 'Uniswap',
-        url: 'https://uniswap.io/'
-      }
-    ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
-    numberOfInteractions: 5,
-    outperformsDuring: ['Choppy Markets'],
-    whatHappensUnderTheHood: '',
-    whatHappensAfter: '',
-    components: [
-      {
-        name: 'sETH Pool token',
-        percent: 100,
-        color: '#01D691'
-      }
-    ],
-    description: {
-      textQuestion: 'What does this Zap do?',
-      textAnswer: ['Sample text'],
-      textLink: [
-        {
-          text: 'dummy text',
-          hyperlink: 'https://google.com'
-        }
-      ],
-      tutorialLink:
-        'https://defitutorials.substack.com/p/seth-unipool-defizap-tutorial'
-    },
-    whatThisMeans: {
-      text: [
-        '50% converted to sETH',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
-      ]
-    },
-    metamaskInteractionsSaved: [{ saved: 3 }]
-  },
-  unipoolsai: {
-    id: 'unipoolsai',
-    name: 'SAI Unipool',
-    text: 'Uni SAI',
-    isOrderable: true,
-    hasReturnsChart: true,
-    ensAddress: 'SAIunipool.DeFiZap.eth',
-    tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
-    platformsUsed: [
-      {
-        key: 'uniswap',
-        value: 'Uniswap',
-        url: 'https://uniswap.io/'
-      }
-    ],
-    oneClickAccessTo: [{ text: 'Generate fees by providing liquidity' }],
-    numberOfInteractions: 5,
-    outperformsDuring: ['Choppy Markets'],
-    whatHappensUnderTheHood: '',
-    whatHappensAfter: '',
-    components: [
-      {
-        name: 'SAI Pool token',
-        percent: 100,
-        color: '#1F8FF9'
-      }
-    ],
-    description: {
-      textQuestion: 'What does this Zap do?',
-      textAnswer: ['Sample text'],
-      textLink: [
-        {
-          text: 'dummy text',
-          hyperlink: 'https://google.com'
-        }
-      ],
-      tutorialLink:
-        'https://defitutorials.substack.com/p/dai-unipool-defizap-tutorial'
-    },
-    whatThisMeans: {
-      text: [
-        '50% converted to SAI',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
-      ]
-    },
-    metamaskInteractionsSaved: [{ saved: 3 }]
-  },
+
   bullSharpe: {
     id: 'bullSharpe',
     name: 'Conservative Bull',
