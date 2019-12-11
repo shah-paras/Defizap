@@ -11,10 +11,11 @@ const Zaps = {
       {
         key: 'uniswap',
         value: 'Uniswap',
-        url: 'https://uniswap.io/'
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -58,10 +59,12 @@ const Zaps = {
       {
         key: 'uniswap',
         value: 'Uniswap',
-        url: 'https://uniswap.io/'
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
+
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -105,10 +108,11 @@ const Zaps = {
       {
         key: 'uniswap',
         value: 'Uniswap',
-        url: 'https://uniswap.io/'
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -152,10 +156,11 @@ const Zaps = {
       {
         key: 'uniswap',
         value: 'Uniswap',
-        url: 'https://uniswap.io/'
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -199,10 +204,12 @@ const Zaps = {
       {
         key: 'uniswap',
         value: 'Uniswap',
-        url: 'https://uniswap.io/'
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
+
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity' }],
+    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -284,19 +291,21 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Lending' },
-      { text: 'Long ETH with 2X Leverage' }
+      { text: 'Lending',color:'#0bef3d' },
+      { text: 'Long ETH with 2X Leverage', color:'#007BFF' }
     ],
     platformsUsed: [
       {
         key: 'Compound',
         value: 'Compound',
-        url: 'https://compound.finance/'
+        url: 'https://compound.finance/',
+        color: '#28A745'
       },
       {
         key: 'Fulcrum',
         value: 'Fulcrum',
-        url: 'https://fulcrum.trade/#/'
+        url: 'https://fulcrum.trade/#/',
+        color:'#407BF7'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]
@@ -345,14 +354,15 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Long ETH with 2X Leverage' },
-      { text: 'Short-sell WBTC' }
+      { text: 'Long ETH with 2X Leverage', color:'#007BFF' },
+      { text: 'Short-sell WBTC', color:'#DC3545' }
     ],
     platformsUsed: [
       {
         key: 'Fulcrum',
         value: 'Fulcrum',
-        url: 'https://fulcrum.trade/#/'
+        url: 'https://fulcrum.trade/#/',
+        color:'#407BF7'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 2 }]
@@ -404,12 +414,13 @@ const Zaps = {
     whatThisMeans: {
       text: ['50% used to acquire sBTC', '50% used to acquire sETH']
     },
-    oneClickAccessTo: [{ text: 'Synthetic Asset Trading' }],
+    oneClickAccessTo: [{ text: 'Synthetic Asset Trading', color:'#6C757D' }],
     platformsUsed: [
       {
         key: 'Synthetix',
         value: 'Synthetix',
-        url: 'https://https://synthetix.exchange/'
+        url: 'https://https://synthetix.exchange/',
+        color: '#282C34'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -461,14 +472,16 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Long ETH with 2X Leverage' },
-      { text: 'Long BTC with 2X Leverage' }
+      { text: 'Long ETH with 2X Leverage', color:'#007BFF' },
+      { text: 'Long BTC with 2X Leverage', color:'#FFC107' }
     ],
     platformsUsed: [
       {
         key: 'Fulcrum',
         value: 'Fulcrum',
-        url: 'https://fulcrum.trade/#/'
+        url: 'https://fulcrum.trade/#/',
+        color:'#407BF7'
+
       }
     ],
     metamaskInteractionsSaved: [{ saved: 2 }]
@@ -524,17 +537,20 @@ const Zaps = {
         '50% auto-converted into SAI + supplied to Fulcrum to mint iSAI'
       ]
     },
-    oneClickAccessTo: [{ text: 'Lending' }],
+    oneClickAccessTo: [{ text: 'Lending', color:'#0bef3d' }],
     platformsUsed: [
       {
         key: 'Compound',
         value: 'Compound',
-        url: 'https://compound.finance/'
+        url: 'https://compound.finance/',
+        color: '#28A745'
       },
       {
         key: 'Fulcrum',
         value: 'Fulcrum',
-        url: 'https://fulcrum.trade/#/'
+        url: 'https://fulcrum.trade/#/',
+        color:'#407BF7'
+
       }
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]
