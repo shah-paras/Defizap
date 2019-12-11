@@ -55,6 +55,7 @@ class ZapFullView extends PureComponent {
                     {oneClickAccessTo.map((access, index) => (
                       <Badge
                         key={access.text}
+                        style={{backgroundColor:access.color}}
                         variant="primary"
                         className={index === 0 ? 'beforePill' : 'afterPill'}
                       >
@@ -74,6 +75,41 @@ class ZapFullView extends PureComponent {
                       </li>
                     ))}
                   </ul>
+                </span>
+              ) : null}
+              {platformsUsed ? (
+                <span>
+                  <h5>Platforms used: </h5>
+                  <h5>
+                    {platformsUsed.map((platform, index) => (
+                      <a
+                        href={platform.url}
+                        key={platform.value}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <Badge
+                        style={{backgroundColor:platform.color}}
+                          variant="success"
+                          className={index === 0 ? 'beforePill' : 'afterPill'}
+                        >
+                          {platform.value}
+                        </Badge>
+                      </a>
+                    ))}
+                  </h5>
+                </span>
+              ) : null}
+              {metamaskInteractionsSaved ? (
+                <span>
+                  <h5>
+                  Wallet interactions saved:
+                  </h5>
+                  <h1>
+                    {metamaskInteractionsSaved.map(
+                      interactions => interactions.saved
+                    )}
+                  </h1>
                 </span>
               ) : null}
               {ensAddress ? (
@@ -96,41 +132,6 @@ class ZapFullView extends PureComponent {
                   </h5>
                 </span>
               ) : null}
-              {platformsUsed ? (
-                <span>
-                  <h5>Platforms used: </h5>
-                  <h5>
-                    {platformsUsed.map((platform, index) => (
-                      <a
-                        href={platform.url}
-                        key={platform.value}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <Badge
-                          variant="success"
-                          className={index === 0 ? 'beforePill' : 'afterPill'}
-                        >
-                          {platform.value}
-                        </Badge>
-                      </a>
-                    ))}
-                  </h5>
-                </span>
-              ) : null}
-              {metamaskInteractionsSaved ? (
-                <span>
-                  <h5>
-                    Metamask interactions abstracted
-                  </h5>
-                  <h1>
-                    {metamaskInteractionsSaved.map(
-                      interactions => interactions.saved
-                    )}
-                  </h1>
-                </span>
-              ) : null}
-
               <div className="mt-2">
                 <Button
                   href={description.tutorialLink}

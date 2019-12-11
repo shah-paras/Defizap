@@ -94,6 +94,7 @@ const Zap = props => {
                 {props.oneClickAccessTo.map((access, index) => (
                   <Badge
                     key={access.text}
+                    style={{backgroundColor:access.color}}
                     variant="primary"
                     className={index === 0 ? 'beforePill' : 'afterPill'}
                   >
@@ -117,6 +118,7 @@ const Zap = props => {
                     target="_blank"
                   >
                     <Badge
+                      style={{backgroundColor: platform.color}}
                       variant="success"
                       className={index === 0 ? 'beforePill' : 'afterPill'}
                     >
