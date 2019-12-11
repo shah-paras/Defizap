@@ -6,6 +6,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 4,
+    ensAddress: 'Lender.DeFiZap.eth',
     components: [
       {
         name: 'cSAI',
@@ -72,6 +73,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 6,
+    ensAddress: 'Ethmax.DeFiZap.eth',
     components: [
       {
         name: 'dLETH2x',
@@ -127,6 +129,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 4,
+    ensAddress: 'Mderatebull.DeFiZap.eth',
     components: [
       {
         name: 'sETH',
@@ -183,6 +186,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 4,
+    ensAddress: 'Doublebull.DeFiZap.eth',
     components: [
       {
         name: 'dLETH2x',
@@ -241,6 +245,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: false,
     numberOfInteractions: 5,
+    ensAddress: 'Supersaver.DeFiZap.eth',
     components: [
       {
         name: 'cSAI',
@@ -305,6 +310,7 @@ const Zaps = {
     text: 'Uni DAI',
     isOrderable: true,
     hasReturnsChart: true,
+    ensAddress: 'DAIunipool.DeFiZap.eth',
     tokenAddress: '0x2a1530c4c41db0b0b2bb646cb5eb1a67b7158667',
     platformsUsed: [
       {
@@ -351,6 +357,7 @@ const Zaps = {
     text: 'Uni MKR',
     isOrderable: true,
     hasReturnsChart: true,
+    ensAddress: 'MKRunipool.DeFiZap.eth',
     tokenAddress: '0x2c4bd064b998838076fa341a83d007fc2fa50957',
     platformsUsed: [
       {
@@ -397,6 +404,7 @@ const Zaps = {
     text: 'Uni SNX',
     isOrderable: true,
     hasReturnsChart: true,
+    ensAddress: 'SNXunipool.DeFiZap.eth',
     tokenAddress: '0x3958b4ec427f8fa24eb60f42821760e88d485f7f',
     platformsUsed: [
       {
@@ -443,6 +451,7 @@ const Zaps = {
     text: 'Uni sETH',
     isOrderable: true,
     hasReturnsChart: true,
+    ensAddress: 'sETHunipool.DeFiZap.eth',
     tokenAddress: '0xe9cf7887b93150d4f2da7dfc6d502b216438f244',
     platformsUsed: [
       {
@@ -489,6 +498,7 @@ const Zaps = {
     text: 'Uni SAI',
     isOrderable: true,
     hasReturnsChart: true,
+    ensAddress: 'SAIunipool.DeFiZap.eth',
     tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
     platformsUsed: [
       {
