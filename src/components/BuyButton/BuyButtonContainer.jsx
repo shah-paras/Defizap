@@ -146,7 +146,7 @@ class LenderBuyButton extends React.Component {
             <div className="buycontainer">
               <h1>{name}</h1>
               <div className="buycontents">
-                <p className="buytext pt-4 mr-2">INVEST</p>
+                <p className="buytext pt-4 mr-2">INPUT</p>
                 <input
                   min={0.01}
                   type="number"

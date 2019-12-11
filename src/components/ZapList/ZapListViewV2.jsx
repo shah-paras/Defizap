@@ -45,7 +45,6 @@ const footerButtons = () => (
 );
 
 const Zap = props => {
-  console.log(props);
   return (
     <div key={props.name} className="m-4 p-4 bg-white flex-column">
       {/* <Row className={styles.zapName}>
@@ -87,6 +86,7 @@ const Zap = props => {
               </h4>
             </>
           )}
+
           {props.oneClickAccessTo ? (
             <span>
               <h6>1-click access to:</h6>
@@ -94,6 +94,7 @@ const Zap = props => {
                 {props.oneClickAccessTo.map((access, index) => (
                   <Badge
                     key={access.text}
+                    style={{backgroundColor:access.color}}
                     variant="primary"
                     className={index === 0 ? 'beforePill' : 'afterPill'}
                   >
@@ -103,8 +104,8 @@ const Zap = props => {
               </h6>
             </span>
           ) : (
-            ''
-          )}
+              ''
+            )}
           {props.platformsUsed ? (
             <span>
               <h6>Platforms used:</h6>
@@ -117,6 +118,7 @@ const Zap = props => {
                     target="_blank"
                   >
                     <Badge
+                      style={{backgroundColor: platform.color}}
                       variant="success"
                       className={index === 0 ? 'beforePill' : 'afterPill'}
                     >
@@ -127,21 +129,41 @@ const Zap = props => {
               </h6>
             </span>
           ) : (
-            ''
-          )}
-          {props.metamaskInteractionsSaved ? (
+              ''
+            )}
+                      {props.ensAddress ? (
             <span>
               <h6>
-                <b>
+                View contract on Etherscan
+                </h6>
+              <h6>
+                <a
+                  href={`https://etherscan.io/address/${props.ensAddress}`}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Badge
+                    variant="info"
+                  >
+                    {props.ensAddress}
+                  </Badge>
+                </a>
+              </h6>
+            </span>
+          ) : null}
+          {props.metamaskInteractionsSaved ? (
+            <span>
+              <h6 >
+              Wallet interactions saved:
+                <b style={{fontSize:'1.4em', display:'flex'}}>
                   {props.metamaskInteractionsSaved.map(
                     interactions => interactions.saved
                   )}
                 </b>{' '}
-                metamask interactions abstracted.
               </h6>
             </span>
           ) : null}
-          {props.whatThisMeans ? (
+          {/* {props.whatThisMeans ? (
             <span>
               <h5>What this means:</h5>
               <ul>
@@ -152,7 +174,7 @@ const Zap = props => {
                 ))}
               </ul>
             </span>
-          ) : null}
+          ) : null} */}
         </Col>
       </Row>
       {/* <hr />
