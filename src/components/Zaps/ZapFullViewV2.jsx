@@ -29,7 +29,8 @@ class ZapFullView extends PureComponent {
       hasReturnsChart,
       oneClickAccessTo,
       platformsUsed,
-      metamaskInteractionsSaved
+      metamaskInteractionsSaved,
+      ensAddress
     } = this.props;
 
     return (
@@ -75,6 +76,26 @@ class ZapFullView extends PureComponent {
                   </ul>
                 </span>
               ) : null}
+              {ensAddress ? (
+                <span>
+                  <h5>
+                    View contract on Etherscan
+                </h5>
+                  <h5>
+                    <a
+                      href={`https://etherscan.io/address/${ensAddress}`}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <Badge
+                        variant="success"
+                      >
+                        {ensAddress}
+                      </Badge>
+                    </a>
+                  </h5>
+                </span>
+              ) : null}
               {platformsUsed ? (
                 <span>
                   <h5>Platforms used: </h5>
@@ -99,7 +120,7 @@ class ZapFullView extends PureComponent {
               ) : null}
               {metamaskInteractionsSaved ? (
                 <span>
-                  <h5 className="zapFullViewHeader">
+                  <h5>
                     Metamask interactions abstracted
                   </h5>
                   <h1>
@@ -109,6 +130,7 @@ class ZapFullView extends PureComponent {
                   </h1>
                 </span>
               ) : null}
+
               <div className="mt-2">
                 <Button
                   href={description.tutorialLink}
