@@ -3,12 +3,19 @@ import { Modal, ModalBody } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row';
 import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
 
 import '../../App.css';
 import Loading from '../Loading';
+import Confirmed from '../Confirmed';
+import Rejected from '../Rejected'
+
 import contractProvider from '../../utils/web3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
@@ -26,6 +33,8 @@ class LenderBuyButton extends React.Component {
       value: '',
       account: null,
       showLoader: false,
+      showCross: false,
+      showCheck: false,
       gasMode: 'average',
       errorMessage: '',
       depositTxHash: ''
@@ -47,7 +56,7 @@ class LenderBuyButton extends React.Component {
   };
 
   toggle = () => {
-    this.setState({ open: !this.state.open });
+    this.setState({ open: !this.state.open, showCheck:false, showCross:false });
   };
 
   handleSubmit = async event => {
@@ -83,7 +92,7 @@ class LenderBuyButton extends React.Component {
         const newAddress = await ens.getAddress(contractAddress);
         const valueToInvest = this.state.value;
         const contract = new web3.eth.Contract(contractAbi, newAddress);
-        this.setState({ showLoader: true });
+        this.setState({ showLoader: true, showCross:false, showCheck:false });
         let tx;
         if (this.props.name === 'Lender') {
           tx = await contract.methods.SafeNotSorryZapInvestment();
@@ -105,14 +114,16 @@ class LenderBuyButton extends React.Component {
             );
             this.setState({
               depositTxHash: receipt.transactionHash,
-              showLoader: false
+              showLoader: false,
+              showCheck: true
             });
           })
           .on('error', error => {
+            this.setState({ showLoader: false, showCross: true });
+
             alert(
               'Sorry, we encountered an error, please try again or reach out to us if this persists.'
             );
-            this.setState({ showLoader: false });
           });
         console.log(tx);
       }
@@ -136,6 +147,7 @@ class LenderBuyButton extends React.Component {
     }
   }
 
+
   renderModal() {
     const { open, value } = this.state;
     const { name } = this.props;
@@ -158,19 +170,35 @@ class LenderBuyButton extends React.Component {
                   style={
                     value && value.length > 3
                       ? {
-                          width: `${90 + value.length * 20}px`
-                        }
+                        width: `${90 + value.length * 20}px`
+                      }
                       : {
-                          width: '90px'
-                        }
+                        width: '90px'
+                      }
                   }
                 />
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
+              {/* <div className='justify-content-center pl-4'>Slippage</div> */}
+
+              <Row className="justify-content-center pe-4 pt-2">
+                <div className='justify-content-center pl-4'>
+                  Slippage{' '}
+                  <OverlayTrigger
+                    overlay={<Tooltip>Our zaps are designed to reject any transaction which will not be executed under 5% max slippage rate. We do not control the slippage that eventually gets executed (under 5%) on UniSwap.</Tooltip>}
+                    placement="right"
+                  >
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+
+                  </OverlayTrigger>
+                </div>
+
+              </Row>
               <Row className="justify-content-center py-3">
                 Select Transaction Speed:{' '}
               </Row>
-              <Row className="justify-content-center py-2">
+
+              <Row className="justify-content-center">
                 <ToggleButtonGroup
                   type="radio"
                   name="gasOptions"
@@ -199,7 +227,9 @@ class LenderBuyButton extends React.Component {
                     Fast
                   </ToggleButton>
                 </ToggleButtonGroup>
+
               </Row>
+              <Row className='justify-content-center pt-2'>1 Gwei ($0.79)</Row>
             </div>
             <div className="my-4 row justify-content-center">
               <input
@@ -214,6 +244,9 @@ class LenderBuyButton extends React.Component {
                 Cancel
               </div>
               {this.state.showLoader ? <Loading /> : null}
+              {this.state.showCross ? <Rejected /> : null}
+              {this.state.showCheck ? <Confirmed /> : null}
+
             </div>
           </form>
         </ModalBody>
@@ -243,16 +276,16 @@ class LenderBuyButton extends React.Component {
             ⚡ Use This Zap
           </Button>
         ) : (
-          <Button
-            onClick={() => this.setState({ open: true })}
-            disabled={!isOrderable}
-            variant="outline-primary"
-            size={!isEmpty(size) ? size : 'auto'}
-            block={block}
-          >
-            Coming Soon
+            <Button
+              onClick={() => this.setState({ open: true })}
+              disabled={!isOrderable}
+              variant="outline-primary"
+              size={!isEmpty(size) ? size : 'auto'}
+              block={block}
+            >
+              Coming Soon
           </Button>
-        )}
+          )}
         {this.renderModal()}
       </>
     );
