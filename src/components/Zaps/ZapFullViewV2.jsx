@@ -46,7 +46,7 @@ class ZapFullView extends PureComponent {
             <div className="h1 bold">{name}</div>
           </Card.Title> */}
           <br />
-          <BuyButtonContainer name={name} size="lg" isOrderable={isOrderable} />
+          <BuyButtonContainer name={name} ensAddress={ensAddress} gasLimitRequirement={gasLimitRequirement} size="lg" isOrderable={isOrderable} />
           <Row className="justify-content-center align-text-center">
             <Col xs={12} md={6} className="justify-content-center text-center">
               {oneClickAccessTo ? (
@@ -131,7 +131,7 @@ class ZapFullView extends PureComponent {
                       </Badge>
                     </a>
                   </h5>
-              <p style={{fontSize:'0.75em'}}>Alternatively send funds directly to this address using<i> minimum </i>{gasLimitRequirement/1000000}M gas.</p>
+              <p style={{fontSize:'0.75em'}}>Alternatively send ETH directly to this address using<i> minimum </i>{gasLimitRequirement/1000000}M gas.</p>
                 </span>
               ) : null}
               <div className="mt-2">

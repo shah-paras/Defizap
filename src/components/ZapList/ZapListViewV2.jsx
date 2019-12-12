@@ -57,6 +57,8 @@ const Zap = props => {
             <BuyButtonContainer
               name={props.name}
               isOrderable={props.isOrderable}
+              ensAddress={props.ensAddress} 
+              gasLimitRequirement={props.gasLimitRequirement}
               block
             />
           </div>
