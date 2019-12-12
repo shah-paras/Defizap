@@ -57,6 +57,9 @@ const Zap = props => {
             <BuyButtonContainer
               name={props.name}
               isOrderable={props.isOrderable}
+              hasReturnsChart = {props.hasReturnsChart}
+              ensAddress={props.ensAddress} 
+              gasLimitRequirement={props.gasLimitRequirement}
               block
             />
           </div>
