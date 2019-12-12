@@ -151,7 +151,7 @@ class LenderBuyButton extends React.Component {
 
   renderModal() {
     const { open, value} = this.state;
-    const { name, ensAddress, gasLimitRequirement } = this.props;
+    const { name, ensAddress, gasLimitRequirement, hasReturnsChart } = this.props;
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
         <ModalBody>
@@ -181,7 +181,7 @@ class LenderBuyButton extends React.Component {
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
-
+              {hasReturnsChart ? 
               <Row className="justify-content-center pe-4 pt-2">
                 <div className='justify-content-center pl-4'>
                   Slippage{' '}
@@ -193,8 +193,8 @@ class LenderBuyButton extends React.Component {
 
                   </OverlayTrigger>
                 </div>
-
               </Row>
+              : null}
               <Row className="justify-content-center py-3">
                 Select Transaction Speed:{' '}
               </Row>
@@ -231,7 +231,7 @@ class LenderBuyButton extends React.Component {
 
               </Row>
               {/* <Row className='justify-content-center py-2'>1.3 Gwei ($0.28)</Row> */}
-              <p className='pt-2'style={{fontSize:'0.75em'}}>Alternatively send ETH directly to {ensAddress} using<i> minimum </i>{gasLimitRequirement/1000000}M gas.</p>
+              <p className='pt-2'style={{fontSize:'0.75em'}}>Alternatively send ETH directly to {ensAddress} using<i> minimum </i>{gasLimitRequirement} gas.</p>
             </div>
             <div className="my-4 row justify-content-center">
               <input
