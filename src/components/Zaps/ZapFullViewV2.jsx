@@ -30,7 +30,8 @@ class ZapFullView extends PureComponent {
       oneClickAccessTo,
       platformsUsed,
       metamaskInteractionsSaved,
-      ensAddress
+      ensAddress,
+      gasLimitRequirement
     } = this.props;
 
     return (
@@ -130,6 +131,7 @@ class ZapFullView extends PureComponent {
                       </Badge>
                     </a>
                   </h5>
+              <p style={{fontSize:'0.75em'}}>Alternatively send funds directly to this address using<i> minimum </i>{gasLimitRequirement/1000000}M gas.</p>
                 </span>
               ) : null}
               <div className="mt-2">
