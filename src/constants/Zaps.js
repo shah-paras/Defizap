@@ -16,7 +16,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
+    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -66,7 +66,7 @@ const Zaps = {
 
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
+    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -115,7 +115,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
+    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -164,7 +164,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
+    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -214,7 +214,7 @@ const Zaps = {
 
       }
     ],
-    oneClickAccessTo: [{ text: 'Pool Liquidity', color:'#18722b' }],
+    oneClickAccessTo: [{ text: 'Adding Liquidity to generate fees', color:'#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -441,7 +441,7 @@ const Zaps = {
     hasReturnsChart: false,
     numberOfInteractions: 4,
     ensAddress: 'DoubleBull.DeFiZap.eth',
-    gasLimitRequirement:'2000000',
+    gasLimitRequirement:'7000000',
     components: [
       {
         name: 'dLETH2x',
