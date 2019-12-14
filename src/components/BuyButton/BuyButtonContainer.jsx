@@ -8,6 +8,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row';
+import Column from 'react-bootstrap/Col';
 import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
 
@@ -181,12 +182,12 @@ class LenderBuyButton extends React.Component {
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
-              {hasReturnsChart ? 
+              {/* {hasReturnsChart ? 
               <Row className="justify-content-center pe-4 pt-2">
                 <div className='justify-content-center pl-4'>
                   Slippage{' '}
                   <OverlayTrigger
-                    overlay={<Tooltip>Our zaps are designed to reject any transaction which will not be executed under 5% max slippage rate. We do not control the slippage that eventually gets executed (under 5%) on UniSwap.</Tooltip>}
+                    overlay={<Tooltip>Our zaps are designed to reject any transaction that registers over 5% slippage. We do not control the slippage that eventually gets executed (under 5%) on UniSwap.</Tooltip>}
                     placement="right"
                   >
                     <FontAwesomeIcon icon={faQuestionCircle} />
@@ -194,7 +195,7 @@ class LenderBuyButton extends React.Component {
                   </OverlayTrigger>
                 </div>
               </Row>
-              : null}
+              : null} */}
               <Row className="justify-content-center py-3">
                 Select Transaction Speed:{' '}
               </Row>
@@ -231,7 +232,11 @@ class LenderBuyButton extends React.Component {
 
               </Row>
               {/* <Row className='justify-content-center py-2'>1.3 Gwei ($0.28)</Row> */}
-              <p className='pt-2'style={{fontSize:'0.75em'}}>Alternatively send ETH directly to {ensAddress} using<i> minimum </i>{gasLimitRequirement} gas.</p>
+              <Row>
+                <Column sm={12} mb={8}>
+                <p className='pt-2'style={{fontSize:'0.75em'}}>Alternatively send ETH directly to {ensAddress} using<i> minimum </i><span onCopy={gasLimitRequirement}></span>{gasLimitRequirement} gas.</p>
+                </Column>
+              </Row>
             </div>
             <div className="my-4 row justify-content-center">
               <input
