@@ -64,7 +64,7 @@ const Zap = props => {
             />
           </div>
           {props.isOrderable ? (
-            <div className="mt-2">
+            <div className="mt-md-2 mt-2 pb-md-0 pb-3 "> 
               <Button
                 href={`/zaps/${props.id}`}
                 size="auto"
