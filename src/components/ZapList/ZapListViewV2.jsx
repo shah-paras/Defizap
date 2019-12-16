@@ -57,14 +57,12 @@ const Zap = props => {
             <BuyButtonContainer
               name={props.name}
               isOrderable={props.isOrderable}
-              hasReturnsChart = {props.hasReturnsChart}
-              ensAddress={props.ensAddress} 
+              hasReturnsChart={props.hasReturnsChart}
+              ensAddress={props.ensAddress}
               gasLimitRequirement={props.gasLimitRequirement}
               block
             />
           </div>
-          {/* </Col>
-        <Col> */}
           {props.isOrderable ? (
             <div className="mt-2">
               <Button
@@ -89,83 +87,89 @@ const Zap = props => {
               </h4>
             </>
           )}
-
-          {props.oneClickAccessTo ? (
-            <span>
-              <h6>1-click access to:</h6>
-              <h6>
-                {props.oneClickAccessTo.map((access, index) => (
-                  <Badge
-                    key={access.text}
-                    style={{backgroundColor:access.color}}
-                    variant="primary"
-                    className={index === 0 ? 'beforePill' : 'afterPill'}
-                  >
-                    {access.text}
-                  </Badge>
-                ))}
-              </h6>
-            </span>
-          ) : (
-              ''
-            )}
-          {props.platformsUsed ? (
-            <span>
-              <h6>Platforms used:</h6>
-              <h6>
-                {props.platformsUsed.map((platform, index) => (
-                  <a
-                    href={platform.url}
-                    key={platform.value}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <Badge
-                      style={{backgroundColor: platform.color}}
-                      variant="success"
-                      className={index === 0 ? 'beforePill' : 'afterPill'}
-                    >
-                      {platform.value}
-                    </Badge>
-                  </a>
-                ))}
-              </h6>
-            </span>
-          ) : (
-              ''
-            )}
-                      {props.ensAddress ? (
-            <span>
-              <h6>
-                View contract on Etherscan
+          <Row className="text-center text-md-left" >
+            <Col xs={12} md={6} className="text-sm-center text-md-left">
+              {props.oneClickAccessTo ? (
+                <span>
+                  <h6>1-click access to:</h6>
+                  <h6>
+                    {props.oneClickAccessTo.map((access, index) => (
+                      <Badge
+                        key={access.text}
+                        style={{ backgroundColor: access.color }}
+                        variant="primary"
+                        className={index === 0 ? 'beforePill' : 'afterPill'}
+                      >
+                        {access.text}
+                      </Badge>
+                    ))}
+                  </h6>
+                </span>
+              ) : (
+                  ''
+                )}
+              {props.platformsUsed ? (
+                <span>
+                  <h6>Platforms used:</h6>
+                  <h6>
+                    {props.platformsUsed.map((platform, index) => (
+                      <a
+                        href={platform.url}
+                        key={platform.value}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <Badge
+                          style={{ backgroundColor: platform.color }}
+                          variant="success"
+                          className={index === 0 ? 'beforePill' : 'afterPill'}
+                        >
+                          {platform.value}
+                        </Badge>
+                      </a>
+                    ))}
+                  </h6>
+                </span>
+              ) : (
+                  ''
+                )}
+              {props.ensAddress ? (
+                <span>
+                  <h6>
+                    View contract on Etherscan:
                 </h6>
-              <h6>
-                <a
-                  href={`https://etherscan.io/address/${props.ensAddress}`}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <Badge
-                    variant="info"
-                  >
-                    {props.ensAddress}
-                  </Badge>
-                </a>
-              </h6>
-            </span>
-          ) : null}
-          {props.metamaskInteractionsSaved ? (
-            <span>
-              <h6 >
-              Wallet interactions saved:
-                <b style={{fontSize:'1.4em', display:'flex'}}>
-                  {props.metamaskInteractionsSaved.map(
-                    interactions => interactions.saved
-                  )}
-                </b>{' '}
-              </h6>
-            </span>
-          ) : null}
+                  <h6>
+                    <a
+                      href={`https://etherscan.io/address/${props.ensAddress}`}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <Badge
+                        variant="info"
+                      >
+                        {props.ensAddress}
+                      </Badge>
+                    </a>
+                  </h6>
+                </span>
+              ) : null}
+              {props.metamaskInteractionsSaved ? (
+                <span>
+                  <h6 >
+                    Wallet interactions saved: <br/>
+
+                <b style={{ fontSize: '1.4em', }}>
+                      {props.metamaskInteractionsSaved.map(
+                        interactions => interactions.saved
+                      )}
+                    </b>
+                  </h6>
+
+                </span>
+              ) : null}
+            </Col>
+          </Row>
+
           {/* {props.whatThisMeans ? (
             <span>
               <h5>What this means:</h5>
