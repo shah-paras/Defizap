@@ -42,8 +42,9 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '50% converted to CHAI interest bearing token',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+        '50% of your ETH input is first converted to DAI on Kyber to avoid ETH->CHAI slippage',
+        'Converted DAI is then wrapped into CHAI. Learn more on chai.money',
+        'CHAI + other 50% ETH input are added to the ETH/CHAI Liquidity Pool on Uniswap and you receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 5 }]
