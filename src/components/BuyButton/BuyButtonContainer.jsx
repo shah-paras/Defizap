@@ -100,7 +100,7 @@ class LenderBuyButton extends React.Component {
         } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
         } else if (this.props.name === 'CHAI Unipool') {
-          tx = await contract.methods.LetsInvest('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', window.web3.currentProvider.selectedAddress, 3)
+          tx = await contract.methods.LetsInvest('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', window.web3.currentProvider.selectedAddress, 5)
         } else {
           tx = await contract.methods.LetsInvest();
         }
