@@ -57,7 +57,7 @@ class LenderBuyButton extends React.Component {
   };
 
   toggle = () => {
-    this.setState({ open: !this.state.open, showCheck:false, showCross:false });
+    this.setState({ open: !this.state.open, showCheck: false, showCross: false });
   };
 
   handleSubmit = async event => {
@@ -93,12 +93,14 @@ class LenderBuyButton extends React.Component {
         const newAddress = await ens.getAddress(contractAddress);
         const valueToInvest = this.state.value;
         const contract = new web3.eth.Contract(contractAbi, newAddress);
-        this.setState({ showLoader: true, showCross:false, showCheck:false });
+        this.setState({ showLoader: true, showCross: false, showCheck: false });
         let tx;
         if (this.props.name === 'Lender') {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
+        } else if (this.props.name === 'CHAI Unipool') {
+          tx = await contract.methods.LetsInvest('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', window.web3.currentProvider.selectedAddress, 5)
         } else {
           tx = await contract.methods.LetsInvest();
         }
@@ -151,7 +153,7 @@ class LenderBuyButton extends React.Component {
 
 
   renderModal() {
-    const { open, value} = this.state;
+    const { open, value } = this.state;
     const { name, ensAddress, gasLimitRequirement, hasReturnsChart } = this.props;
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
@@ -234,7 +236,7 @@ class LenderBuyButton extends React.Component {
               {/* <Row className='justify-content-center py-2'>1.3 Gwei ($0.28)</Row> */}
               <Row>
                 <Column sm={12} mb={8}>
-                <p className='pt-2'style={{fontSize:'0.75em'}}>Alternatively send ETH directly to {ensAddress} using<i> minimum </i><span onCopy={gasLimitRequirement}></span>{gasLimitRequirement} gas.</p>
+                  <p className='pt-2' style={{ fontSize: '0.75em' }}>Alternatively send ETH directly to {ensAddress} using<i> minimum </i><span onCopy={gasLimitRequirement}></span>{gasLimitRequirement} gas.</p>
                 </Column>
               </Row>
             </div>

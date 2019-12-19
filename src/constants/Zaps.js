@@ -1,4 +1,54 @@
 const Zaps = {
+  unipoolchai: {
+    id: 'unipoolchai',
+    name: 'CHAI Unipool',
+    text: 'Uni CHAI',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'CHAIUnipool.DeFiZap.eth',
+    tokenAddress: '0x6c3942b383bc3d0efd3f36efa1cbe7c8e12c8a2b ',
+    gasLimitRequirement:'1500000',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'CHAI Pool token',
+        percent: 100,
+        color: '#ad7213'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/chai-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% of your ETH input is first converted to DAI on Kyber to avoid ETH->CHAI slippage',
+        'Converted DAI is then wrapped into CHAI. Learn more on chai.money',
+        'CHAI + other 50% ETH input are added to the ETH/CHAI Liquidity Pool on Uniswap and you receive minted liquidity tracking tokens back to your wallet.'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 5 }]
+  },
   unipooldai: {
     id: 'unipooldai',
     name: 'DAI Unipool',
