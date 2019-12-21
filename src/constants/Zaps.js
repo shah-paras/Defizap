@@ -7,7 +7,7 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'CHAIUnipool.DeFiZap.eth',
     tokenAddress: '0x6c3942b383bc3d0efd3f36efa1cbe7c8e12c8a2b ',
-    gasLimitRequirement:'1500000',
+    gasLimitRequirement: '1500000',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -16,7 +16,9 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    oneClickAccessTo: [
+      { text: 'Add Liquidity to generate fees', color: '#18722b' }
+    ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -57,7 +59,7 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'DAIUnipool.DeFiZap.eth',
     tokenAddress: '0x2a1530c4c41db0b0b2bb646cb5eb1a67b7158667',
-    gasLimitRequirement:'1500000',
+    gasLimitRequirement: '1500000',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -66,7 +68,9 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    oneClickAccessTo: [
+      { text: 'Add Liquidity to generate fees', color: '#18722b' }
+    ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -106,17 +110,18 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'MKRUnipool.DeFiZap.eth',
     tokenAddress: '0x2c4bd064b998838076fa341a83d007fc2fa50957',
-    gasLimitRequirement:'1500000',
+    gasLimitRequirement: '1500000',
     platformsUsed: [
       {
         key: 'uniswap',
         value: 'Uniswap',
         url: 'https://uniswap.io/',
         color: '#AF2CE4'
-
       }
     ],
-    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    oneClickAccessTo: [
+      { text: 'Add Liquidity to generate fees', color: '#18722b' }
+    ],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -156,7 +161,7 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'SNXUnipool.DeFiZap.eth',
     tokenAddress: '0x3958b4ec427f8fa24eb60f42821760e88d485f7f',
-    gasLimitRequirement:'1500000',
+    gasLimitRequirement: '1500000',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -165,7 +170,9 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    oneClickAccessTo: [
+      { text: 'Add Liquidity to generate fees', color: '#18722b' }
+    ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -205,7 +212,7 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'sETHUnipool.DeFiZap.eth',
     tokenAddress: '0xe9cf7887b93150d4f2da7dfc6d502b216438f244',
-    gasLimitRequirement:'1500000',
+    gasLimitRequirement: '1500000',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -214,7 +221,9 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    oneClickAccessTo: [
+      { text: 'Add Liquidity to generate fees', color: '#18722b' }
+    ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -254,17 +263,18 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'SAIUnipool.DeFiZap.eth',
     tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
-    gasLimitRequirement:'1500000',
+    gasLimitRequirement: '1500000',
     platformsUsed: [
       {
         key: 'uniswap',
         value: 'Uniswap',
         url: 'https://uniswap.io/',
         color: '#AF2CE4'
-
       }
     ],
-    oneClickAccessTo: [{ text: 'Adding Liquidity to generate fees', color:'#18722b' }],
+    oneClickAccessTo: [
+      { text: 'Adding Liquidity to generate fees', color: '#18722b' }
+    ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -304,7 +314,7 @@ const Zaps = {
     hasReturnsChart: false,
     numberOfInteractions: 4,
     ensAddress: 'Lender.DeFiZap.eth',
-    gasLimitRequirement:'7000000',
+    gasLimitRequirement: '7000000',
     components: [
       {
         name: 'cSAI',
@@ -347,8 +357,8 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Lending',color:'#0bef3d' },
-      { text: 'Long ETH with 2X Leverage', color:'#007BFF' }
+      { text: 'Lending', color: '#0bef3d' },
+      { text: 'Long ETH with 2X Leverage', color: '#007BFF' }
     ],
     platformsUsed: [
       {
@@ -361,7 +371,7 @@ const Zaps = {
         key: 'Fulcrum',
         value: 'Fulcrum',
         url: 'https://fulcrum.trade/#/',
-        color:'#407BF7'
+        color: '#407BF7'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]
@@ -374,7 +384,7 @@ const Zaps = {
     hasReturnsChart: false,
     numberOfInteractions: 6,
     ensAddress: 'EthBull.DeFiZap.eth',
-    gasLimitRequirement:'7000000',
+    gasLimitRequirement: '7000000',
     components: [
       {
         name: 'dLETH2x',
@@ -411,15 +421,15 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Long ETH with 2X Leverage', color:'#007BFF' },
-      { text: 'Short-sell WBTC', color:'#DC3545' }
+      { text: 'Long ETH with 2X Leverage', color: '#007BFF' },
+      { text: 'Short-sell WBTC', color: '#DC3545' }
     ],
     platformsUsed: [
       {
         key: 'Fulcrum',
         value: 'Fulcrum',
         url: 'https://fulcrum.trade/#/',
-        color:'#407BF7'
+        color: '#407BF7'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 2 }]
@@ -432,7 +442,7 @@ const Zaps = {
     hasReturnsChart: false,
     numberOfInteractions: 4,
     ensAddress: 'ModerateBull.DeFiZap.eth',
-    gasLimitRequirement:'2000000',
+    gasLimitRequirement: '2000000',
     components: [
       {
         name: 'sETH',
@@ -472,12 +482,12 @@ const Zaps = {
     whatThisMeans: {
       text: ['50% used to acquire sBTC', '50% used to acquire sETH']
     },
-    oneClickAccessTo: [{ text: 'Synthetic Asset Trading', color:'#6C757D' }],
+    oneClickAccessTo: [{ text: 'Synthetic Asset Trading', color: '#6C757D' }],
     platformsUsed: [
       {
         key: 'Synthetix',
         value: 'Synthetix',
-        url: 'https://https://synthetix.exchange/',
+        url: 'https://synthetix.exchange/',
         color: '#282C34'
       }
     ],
@@ -491,7 +501,7 @@ const Zaps = {
     hasReturnsChart: false,
     numberOfInteractions: 4,
     ensAddress: 'DoubleBull.DeFiZap.eth',
-    gasLimitRequirement:'7000000',
+    gasLimitRequirement: '7000000',
     components: [
       {
         name: 'dLETH2x',
@@ -531,16 +541,15 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Long ETH with 2X Leverage', color:'#007BFF' },
-      { text: 'Long BTC with 2X Leverage', color:'#FFC107' }
+      { text: 'Long ETH with 2X Leverage', color: '#007BFF' },
+      { text: 'Long BTC with 2X Leverage', color: '#FFC107' }
     ],
     platformsUsed: [
       {
         key: 'Fulcrum',
         value: 'Fulcrum',
         url: 'https://fulcrum.trade/#/',
-        color:'#407BF7'
-
+        color: '#407BF7'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 2 }]
@@ -553,7 +562,7 @@ const Zaps = {
     hasReturnsChart: false,
     numberOfInteractions: 5,
     ensAddress: 'SuperSaver.DeFiZap.eth',
-    gasLimitRequirement:'3000000',
+    gasLimitRequirement: '3000000',
     components: [
       {
         name: 'cSAI',
@@ -597,7 +606,7 @@ const Zaps = {
         '50% auto-converted into SAI + supplied to Fulcrum to mint iSAI'
       ]
     },
-    oneClickAccessTo: [{ text: 'Lending', color:'#0bef3d' }],
+    oneClickAccessTo: [{ text: 'Lending', color: '#0bef3d' }],
     platformsUsed: [
       {
         key: 'Compound',
@@ -609,8 +618,7 @@ const Zaps = {
         key: 'Fulcrum',
         value: 'Fulcrum',
         url: 'https://fulcrum.trade/#/',
-        color:'#407BF7'
-
+        color: '#407BF7'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]

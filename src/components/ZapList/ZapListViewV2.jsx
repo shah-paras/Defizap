@@ -46,172 +46,119 @@ const footerButtons = () => (
 
 const Zap = props => {
   return (
-    <div key={props.name} className="m-4 p-4 bg-white flex-column">
-      {/* <Row className={styles.zapName}>
-        <h3>{props.name}</h3>
-      </Row> */}
-      <Row>
-        <Col xs={12} md={4} className="align-text-center">
-          <Donut data={props} />
-          <div className="mt-2">
-            <BuyButtonContainer
-              name={props.name}
-              isOrderable={props.isOrderable}
-              hasReturnsChart={props.hasReturnsChart}
-              ensAddress={props.ensAddress}
-              gasLimitRequirement={props.gasLimitRequirement}
+    <Col xs={12} md={4} lg={3} key={props.name} className="m-4 p-4 bg-white flex-column">
+      <Col className="align-text-center">
+        <Donut data={props} />
+        <div className="mt-2">
+          <BuyButtonContainer
+            name={props.name}
+            isOrderable={props.isOrderable}
+            hasReturnsChart={props.hasReturnsChart}
+            ensAddress={props.ensAddress}
+            gasLimitRequirement={props.gasLimitRequirement}
+            block
+          />
+        </div>
+        {props.isOrderable ? (
+          <div className="mt-md-2 mt-2 pb-md-0 pb-3 ">
+            <Button
+              href={`/zaps/${props.id}`}
+              size="auto"
+              variant="outline-dark"
+              value="Learn More"
               block
-            />
+            >
+              Learn More
+            </Button>
           </div>
-          {props.isOrderable ? (
-            <div className="mt-md-2 mt-2 pb-md-0 pb-3 "> 
-              <Button
-                href={`/zaps/${props.id}`}
-                size="auto"
-                variant="outline-dark"
-                value="Learn More"
-                block
-              >
-                Learn More
-              </Button>
-            </div>
-          ) : null}
-        </Col>
-        <Col xs={12} md={8}>
-          {props.isOrderable ? null : (
-            <>
-              <h4>This Zap is still under development.</h4>
-              <h4>
-                In the meantime, check out our available Zaps{' '}
-                <a href="/zaps">here</a>.
-              </h4>
-            </>
-          )}
-          <Row className="text-center text-md-left" >
-            <Col xs={12} md={6} className="text-sm-center text-md-left">
-              {props.oneClickAccessTo ? (
-                <span>
-                  <h6>1-click access to:</h6>
-                  <h6>
-                    {props.oneClickAccessTo.map((access, index) => (
-                      <Badge
-                        key={access.text}
-                        style={{ backgroundColor: access.color }}
-                        variant="primary"
-                        className={index === 0 ? 'beforePill' : 'afterPill'}
-                      >
-                        {access.text}
-                      </Badge>
-                    ))}
-                  </h6>
-                </span>
-              ) : (
-                  ''
-                )}
-              {props.platformsUsed ? (
-                <span>
-                  <h6>Platforms used:</h6>
-                  <h6>
-                    {props.platformsUsed.map((platform, index) => (
-                      <a
-                        href={platform.url}
-                        key={platform.value}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        <Badge
-                          style={{ backgroundColor: platform.color }}
-                          variant="success"
-                          className={index === 0 ? 'beforePill' : 'afterPill'}
-                        >
-                          {platform.value}
-                        </Badge>
-                      </a>
-                    ))}
-                  </h6>
-                </span>
-              ) : (
-                  ''
-                )}
-              {props.ensAddress ? (
-                <span>
-                  <h6>
-                    View contract on Etherscan:
+        ) : null}
+      </Col>
+      <Col>
+        {props.isOrderable ? null : (
+          <>
+            <h4>This Zap is still under development.</h4>
+            <h4>
+              In the meantime, check out our available Zaps{' '}
+              <a href="/zaps">here</a>.
+            </h4>
+          </>
+        )}
+        <Row className="text-center">
+          <Col className="text-sm-center">
+            {props.oneClickAccessTo ? (
+              <span>
+                <h6>1-click access to:</h6>
+                <h6>
+                  {props.oneClickAccessTo.map((access, index) => (
+                    <Badge
+                      key={access.text}
+                      style={{ backgroundColor: access.color }}
+                      variant="primary"
+                      className={index === 0 ? 'beforePill' : 'afterPill'}
+                    >
+                      {access.text}
+                    </Badge>
+                  ))}
                 </h6>
-                  <h6>
+              </span>
+            ) : (
+              ''
+            )}
+            {props.platformsUsed ? (
+              <span>
+                <h6>Platforms used:</h6>
+                <h6>
+                  {props.platformsUsed.map((platform, index) => (
                     <a
-                      href={`https://etherscan.io/address/${props.ensAddress}`}
+                      href={platform.url}
+                      key={platform.value}
                       rel="noopener noreferrer"
                       target="_blank"
                     >
                       <Badge
-                        variant="info"
+                        style={{ backgroundColor: platform.color }}
+                        variant="success"
+                        className={index === 0 ? 'beforePill' : 'afterPill'}
                       >
-                        {props.ensAddress}
+                        {platform.value}
                       </Badge>
                     </a>
-                  </h6>
-                </span>
-              ) : null}
-              {props.metamaskInteractionsSaved ? (
-                <span>
-                  <h6 >
-                    Wallet interactions saved: <br/>
-
-                <b style={{ fontSize: '1.4em', }}>
-                      {props.metamaskInteractionsSaved.map(
-                        interactions => interactions.saved
-                      )}
-                    </b>
-                  </h6>
-
-                </span>
-              ) : null}
-            </Col>
-          </Row>
-
-          {/* {props.whatThisMeans ? (
-            <span>
-              <h5>What this means:</h5>
-              <ul>
-                {props.whatThisMeans.text.map(item => (
-                  <li key={item} className="text-left">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </span>
-          ) : null} */}
-        </Col>
-      </Row>
-      {/* <hr />
-      <Row> */}
-      {/* <Col xs={12} md={6}>
-          <div className="mt-2">
-            <BuyButtonContainer
-              name={props.name}
-              isOrderable={props.isOrderable}
-              block
-            />
-          </div>
-        </Col>
-        <Col xs={12} md={6}>
-          {props.isOrderable ? (
-            <div className="mt-2">
-              <Button
-                href={`/zaps/${props.id}`}
-                size="auto"
-                variant="outline-dark"
-                value="Learn More"
-                block
-              >
-                Learn More
-              </Button>
-            </div>
-          ) : null}
-        </Col> */}
-      {/* </Row> */}
-    </div>
+                  ))}
+                </h6>
+              </span>
+            ) : (
+              ''
+            )}
+            {props.ensAddress ? (
+              <span>
+                <h6>View contract on Etherscan:</h6>
+                <h6>
+                  <a
+                    href={`https://etherscan.io/address/${props.ensAddress}`}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <Badge variant="info">{props.ensAddress}</Badge>
+                  </a>
+                </h6>
+              </span>
+            ) : null}
+            {props.metamaskInteractionsSaved ? (
+              <span>
+                <h6>
+                  Wallet interactions saved: <br />
+                  <b style={{ fontSize: '1.4em' }}>
+                    {props.metamaskInteractionsSaved.map(
+                      interactions => interactions.saved
+                    )}
+                  </b>
+                </h6>
+              </span>
+            ) : null}
+          </Col>
+        </Row>
+      </Col>
+    </Col>
   );
 };
 
@@ -220,7 +167,7 @@ const ZapListView = props => {
   return (
     <Container>
       <NavigationBar />
-      {data.filter(zap => zap.isOrderable).map(zap => Zap(zap))}
+      <Row>{data.filter(zap => zap.isOrderable).map(zap => Zap(zap))}</Row>
       <hr />
       {footerButtons()}
       <br />
