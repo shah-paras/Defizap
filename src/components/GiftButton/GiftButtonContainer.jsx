@@ -11,8 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Column from 'react-bootstrap/Col';
 import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
-import styles from './BuyButton.module.css';
-
+import styles from './GiftButton.module.css';
 import '../../App.css';
 import Loading from '../Loading';
 import Confirmed from '../Confirmed';
@@ -27,7 +26,7 @@ import {
   checkResponse
 } from '../../api/apiHelpers';
 
-class LenderBuyButton extends React.Component {
+class GiftButtonContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -104,12 +103,6 @@ class LenderBuyButton extends React.Component {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
-        } else if (this.props.name === 'CHAI Unipool') {
-          tx = await contract.methods.LetsInvest(
-            '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-            window.web3.currentProvider.selectedAddress,
-            5
-          );
         } else {
           tx = await contract.methods.LetsInvest();
         }
@@ -173,6 +166,10 @@ class LenderBuyButton extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="buycontainer">
               <h1>{name}</h1>
+              <div className="sendcontents">
+                <span className="buytext pt-4 mr-2">To</span>
+                <input type="text" required />
+              </div>
               <div className="buycontents">
                 <p className="buytext pt-4 mr-2">INPUT</p>
                 <input
@@ -193,6 +190,7 @@ class LenderBuyButton extends React.Component {
                         }
                   }
                 />
+
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
@@ -205,7 +203,6 @@ class LenderBuyButton extends React.Component {
                     placement="right"
                   >
                     <FontAwesomeIcon icon={faQuestionCircle} />
-
                   </OverlayTrigger>
                 </div>
               </Row>
@@ -285,7 +282,7 @@ class LenderBuyButton extends React.Component {
         {isOrderable ? (
           // eslint-disable-next-line jsx-a11y/accessible-emoji
           <Button
-            className={`${styles.buyButton}`}
+            className={`${styles.giftButton}`}
             onClick={() => {
               this.setState({ open: true });
               registerEvent({
@@ -294,11 +291,11 @@ class LenderBuyButton extends React.Component {
               });
             }}
             disabled={!isOrderable}
-            // variant="outline-primary"
+            // variant="outline-danger"
             size={!isEmpty(size) ? size : 'lg'}
             block={block}
           >
-            ⚡ Use This Zap
+            🎁 Gift This Zap
           </Button>
         ) : (
           <Button
@@ -316,5 +313,4 @@ class LenderBuyButton extends React.Component {
     );
   }
 }
-
-export default LenderBuyButton;
+export default GiftButtonContainer;

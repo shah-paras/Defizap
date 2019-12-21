@@ -5,18 +5,17 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 
+import '../../App.css';
 import Donut from '../PercentageDoughnut';
 import NavigationBar from '../NavigationBar';
-
-import '../../App.css';
 import styles from './ZapList.module.css';
-
 import {
   INDIVIDUAL_ZAP_PAGE,
   GENERATE_ZAP
 } from '../../constants/googleAnalytics';
 import { registerEvent } from '../../api/googleAnalytics';
 import BuyButtonContainer from '../BuyButton/BuyButtonContainer';
+import GiftButton from '../GiftButton';
 
 const footerButtons = () => (
   <div className="row justify-content-center my-1">
@@ -46,32 +45,9 @@ const footerButtons = () => (
 
 const Zap = props => {
   return (
-    <Col xs={12} md={4} lg={3} key={props.name} className="m-4 p-4 bg-white flex-column">
+    <Col xs={12} md={4} lg={3} key={props.name} className="m-4 bg-white">
       <Col className="align-text-center">
         <Donut data={props} />
-        <div className="mt-2">
-          <BuyButtonContainer
-            name={props.name}
-            isOrderable={props.isOrderable}
-            hasReturnsChart={props.hasReturnsChart}
-            ensAddress={props.ensAddress}
-            gasLimitRequirement={props.gasLimitRequirement}
-            block
-          />
-        </div>
-        {props.isOrderable ? (
-          <div className="mt-md-2 mt-2 pb-md-0 pb-3 ">
-            <Button
-              href={`/zaps/${props.id}`}
-              size="auto"
-              variant="outline-dark"
-              value="Learn More"
-              block
-            >
-              Learn More
-            </Button>
-          </div>
-        ) : null}
       </Col>
       <Col>
         {props.isOrderable ? null : (
@@ -157,6 +133,25 @@ const Zap = props => {
             ) : null}
           </Col>
         </Row>
+      </Col>
+      <Col>
+        {props.isOrderable ? (
+          <div className="mt-md-2 mt-2 pb-md-0 pb-3 d-flex justify-content-center">
+            <a href={`/zaps/${props.id}`}>Learn More</a>
+          </div>
+        ) : null}
+        <div className="my-2 text-center">
+          <BuyButtonContainer
+            name={props.name}
+            isOrderable={props.isOrderable}
+            hasReturnsChart={props.hasReturnsChart}
+            ensAddress={props.ensAddress}
+            gasLimitRequirement={props.gasLimitRequirement}
+            block
+          />
+          <span> <i>or</i> </span>
+          <GiftButton {...props} block />
+        </div>
       </Col>
     </Col>
   );

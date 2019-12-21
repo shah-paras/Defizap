@@ -1,0 +1,5 @@
+.buyButton {
+    background: linear-gradient(180deg, #6615DC 21.33%, #F03154 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* border-radius: 1.5px 0px 0px 1.5px; */
+  }
