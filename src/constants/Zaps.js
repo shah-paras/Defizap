@@ -9,7 +9,9 @@ const Zaps = {
     tokenAddress: '0x6c3942b383bc3d0efd3f36efa1cbe7c8e12c8a2b ',
     tokenInfo: {
       address: '0x06AF07097C9Eeb7fD685c692751D5C66dB49c215',
-      name: 'CHAI'
+      name: 'CHAI',
+      uniswapAddress: '0x6C3942B383bc3d0efd3F36eFa1CBE7C8E12C8A2B'
+
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -63,7 +65,8 @@ const Zaps = {
     tokenAddress: '0x2a1530c4c41db0b0b2bb646cb5eb1a67b7158667',
     tokenInfo: {
       address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
-      name: 'DAI'
+      name: 'DAI',
+      uniswapAddress: '0x2a1530C4C41db0B0b2bB646CB5Eb1A67b7158667',
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -116,7 +119,8 @@ const Zaps = {
     tokenAddress: '0x2c4bd064b998838076fa341a83d007fc2fa50957',
     tokenInfo: {
       address: '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2',
-      name: 'MKR'
+      name: 'MKR',
+      uniswapAddress: '0x2C4Bd064b998838076fa341A83d007FC2FA50957',
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -170,7 +174,9 @@ const Zaps = {
     tokenAddress: '0x3958b4ec427f8fa24eb60f42821760e88d485f7f',
     tokenInfo: {
       address: '0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F',
-      name: 'SNX'
+      name: 'SNX',
+      uniswapAddress: '0x3958B4eC427F8fa24eB60F42821760e88d485f7F',
+
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -223,7 +229,8 @@ const Zaps = {
     tokenAddress: '0xe9cf7887b93150d4f2da7dfc6d502b216438f244',
     tokenInfo: {
       address: '0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb',
-      name: 'sETH'
+      name: 'sETH',
+      uniswapAddress:'0xe9Cf7887b93150D4F2Da7dFc6D502B216438F244',
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -276,7 +283,8 @@ const Zaps = {
     tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
     tokenInfo: {
       address: '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359',
-      name: 'SAI'
+      name: 'SAI',
+      uniswapAddress: '0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14'
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [

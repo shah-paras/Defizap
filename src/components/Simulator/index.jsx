@@ -18,10 +18,10 @@ class Simulator extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            exchangeRate: 122.46,
             value: props.value,
             chainId: 1,
-            decimals: 18
+            decimals: 18,
+            totalSupply: 0,
         };
 
         autobind(this);
@@ -31,6 +31,7 @@ class Simulator extends PureComponent {
         // console.log(this.props)
         const tradeDetails = await this.getTradeDetails(this.props.value || 0, this.props.tokenInfo.address)
         this.processTradeDetails(tradeDetails)
+        await this.getUniswapTokenBalance(this.props.tokenInfo.uniswapAddress)
     }
 
     async componentDidUpdate(prevProps) {
@@ -67,6 +68,17 @@ class Simulator extends PureComponent {
         this.setState({ ethReserves, tokenReserves, marketRate, execRate })
     }
 
+    // In relation to uniswap liquidity tokens (i.e Uniswap V1 tokens)
+     getUniswapTokenBalance = async (uniswapAddress) =>{
+        let tokenInfo = await (await fetch(`https://api.ethplorer.io/getTokenInfo/${uniswapAddress}?apiKey=freekey`)).json()
+        const liquidityTokenSupply = tokenInfo.totalSupply / (10 ** this.state.decimals)
+        this.setState({liquidityTokenSupply})
+    }
+
+    getLiquidityTokenOutput = (value, execRate, tokenReserves, liquidityTokenSupply) => {
+        return ((((value * 0.505) * execRate)/tokenReserves) * liquidityTokenSupply).toFixed(3)
+    }
+
     render() {
         const {
             value,
@@ -77,13 +89,14 @@ class Simulator extends PureComponent {
             ethReserves,
             tokenReserves,
             marketRate,
-            execRate
+            execRate,
+            liquidityTokenSupply
         } = this.state
 
         if (ethReserves && tokenReserves && marketRate)
             return (
                 <div style={{ fontSize: '0.85em' }}>
-                    <Row className="justify-content-right pt-2">
+                    {/* <Row className="justify-content-right pt-2">
                         <Col style={{ whiteSpace: 'nowrap' }}>
                             Exchange Rate:
                         </Col>
@@ -98,30 +111,46 @@ class Simulator extends PureComponent {
                                         </Col>
                         <Col>
                             {execRate > 0 ? `1 ETH = ${execRate} ${tokenInfo.name}` : `-`}
-                            </Col>
-                    </Row>
+                        </Col>
+                    </Row> */}
 
 
-                    <Row className="justify-content-left">
+                    <Row className="justify-content-left pt-2">
                         <Col>
                             Current Pool Size:
-                    </Col>
-                        <Col>
+                        </Col>
+                        <Col style={{ whiteSpace: 'nowrap' }}>
                             {Humanize.compactInteger(ethReserves, 1)} ETH + {Humanize.compactInteger(tokenReserves, 1)} {tokenInfo.name}
 
                         </Col>
                     </Row>
                     <Row className="justify-content-left">
                         <Col>
-                            Est. Output:
-                    </Col>
-                        <Col style={{ color: value ? '#28a745' : null, whiteSpace: 'noWrap' }}>
+                            <OverlayTrigger
+                                overlay={<Tooltip>{tokenInfo.name === 'CHAI' ? `In order to avoid excessive slippage, half of your input ETH is converted to DAI on Kyber before being wrapped into CHAI. Estimated Pool Share includes slippage and fees (charged by Kyber/Uniswap) associated with exchanging ETH to DAI before minting and returning liquidity tokens to you.` : `Estimated Pool Share includes slippage and fees (charged by Kyber/Uniswap) associated with exchanging ETH to ${tokenInfo.name} before minting and returning liquidity tokens to you.`}</Tooltip>}
+                                placement="right"
+                            >
+                                <FontAwesomeIcon icon={faQuestionCircle} />
+
+                            </OverlayTrigger>
+                            {' '}Est. Pool Share:
+                        </Col>
+                        <Col style={{ color: value ? '#eb9100' : null, whiteSpace: 'noWrap' }}>
                             {`${(value * 0.495).toFixed(3)} ETH + ${((value * 0.505) * execRate).toFixed(3)} ${tokenInfo.name}`}
                         </Col>
                     </Row>
-                    <Row className="justify-content-left">
+                    <Row className="justify-content-right">
                         <Col>
-                            Fee:
+                            Est. Ouput:
+                    </Col>
+                    <Col style={{ color: value ? '#28a745' : null, whiteSpace: 'noWrap' }}>
+                            {value && execRate > 0 ? `${this.getLiquidityTokenOutput(value, execRate, tokenReserves, liquidityTokenSupply) } UNI-V1` : `0 UNI-V1`}
+
+                        </Col>
+                    </Row>
+                    <Row className="justify-content-right">
+                        <Col>
+                            DeFiZap Fee:
                     </Col>
                         <Col>
                             {value && execRate > 0 ? 'FREE' : `-`}
