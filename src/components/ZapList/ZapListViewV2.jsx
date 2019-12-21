@@ -140,7 +140,7 @@ const Zap = props => {
             <a href={`/zaps/${props.id}`}>Learn More</a>
           </div>
         ) : null}
-        <div className="my-2 text-center">
+        <div className="my-3 text-center">
           <BuyButtonContainer
             name={props.name}
             isOrderable={props.isOrderable}
