@@ -7,6 +7,10 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'CHAIUnipool.DeFiZap.eth',
     tokenAddress: '0x6c3942b383bc3d0efd3f36efa1cbe7c8e12c8a2b ',
+    tokenInfo: {
+      address: '0x06AF07097C9Eeb7fD685c692751D5C66dB49c215',
+      name: 'CHAI'
+    },
     gasLimitRequirement:'1500000',
     platformsUsed: [
       {
@@ -57,6 +61,10 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'DAIUnipool.DeFiZap.eth',
     tokenAddress: '0x2a1530c4c41db0b0b2bb646cb5eb1a67b7158667',
+    tokenInfo: {
+      address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
+      name: 'DAI'
+    },
     gasLimitRequirement:'1500000',
     platformsUsed: [
       {
@@ -106,6 +114,10 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'MKRUnipool.DeFiZap.eth',
     tokenAddress: '0x2c4bd064b998838076fa341a83d007fc2fa50957',
+    tokenInfo: {
+      address: '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2',
+      name: 'MKR'
+    },
     gasLimitRequirement:'1500000',
     platformsUsed: [
       {
@@ -156,6 +168,10 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'SNXUnipool.DeFiZap.eth',
     tokenAddress: '0x3958b4ec427f8fa24eb60f42821760e88d485f7f',
+    tokenInfo: {
+      address: '0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F',
+      name: 'SNX'
+    },
     gasLimitRequirement:'1500000',
     platformsUsed: [
       {
@@ -205,6 +221,10 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'sETHUnipool.DeFiZap.eth',
     tokenAddress: '0xe9cf7887b93150d4f2da7dfc6d502b216438f244',
+    tokenInfo: {
+      address: '0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb',
+      name: 'sETH'
+    },
     gasLimitRequirement:'1500000',
     platformsUsed: [
       {
@@ -254,6 +274,10 @@ const Zaps = {
     hasReturnsChart: true,
     ensAddress: 'SAIUnipool.DeFiZap.eth',
     tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
+    tokenInfo: {
+      address: '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359',
+      name: 'SAI'
+    },
     gasLimitRequirement:'1500000',
     platformsUsed: [
       {
