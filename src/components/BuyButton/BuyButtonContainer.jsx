@@ -43,6 +43,7 @@ class LenderBuyButton extends React.Component {
     };
   }
 
+
   async getGas() {
     const response = await fetchRequest(
       'https://ethgasstation.info/json/ethgasAPI.json',
@@ -58,7 +59,7 @@ class LenderBuyButton extends React.Component {
   };
 
   toggle = () => {
-    this.setState({ open: !this.state.open, showCheck: false, showCross: false });
+    this.setState({ open: !this.state.open, showCheck: false, showCross: false});
   };
 
   handleSubmit = async event => {
@@ -119,7 +120,8 @@ class LenderBuyButton extends React.Component {
             this.setState({
               depositTxHash: receipt.transactionHash,
               showLoader: false,
-              showCheck: true
+              showCheck: true,
+              txId: receipt.transactionHash
             });
           })
           .on('error', error => {
@@ -257,8 +259,7 @@ class LenderBuyButton extends React.Component {
               </div>
               {this.state.showLoader ? <Loading /> : null}
               {this.state.showCross ? <Rejected /> : null}
-              {this.state.showCheck ? <Confirmed /> : null}
-
+              {this.state.showCheck ? <Confirmed txId={this.state.txId}/> : null}
             </div>
           </form>
         </ModalBody>
