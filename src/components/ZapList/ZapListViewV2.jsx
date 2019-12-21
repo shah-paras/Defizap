@@ -60,6 +60,7 @@ const Zap = props => {
               hasReturnsChart={props.hasReturnsChart}
               ensAddress={props.ensAddress}
               gasLimitRequirement={props.gasLimitRequirement}
+              tokenInfo={props.tokenInfo}
               block
             />
           </div>
