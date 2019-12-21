@@ -16,6 +16,7 @@ import '../../App.css';
 import Loading from '../Loading';
 import Confirmed from '../Confirmed';
 import Rejected from '../Rejected'
+import Simulator from '../Simulator'
 
 import contractProvider from '../../utils/web3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
@@ -154,7 +155,7 @@ class LenderBuyButton extends React.Component {
 
   renderModal() {
     const { open, value } = this.state;
-    const { name, ensAddress, gasLimitRequirement, hasReturnsChart } = this.props;
+    const { name, ensAddress, gasLimitRequirement, hasReturnsChart, tokenInfo } = this.props;
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
         <ModalBody>
@@ -183,6 +184,8 @@ class LenderBuyButton extends React.Component {
                 />
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
+              {hasReturnsChart ? <Simulator value={this.state.value} tokenInfo={tokenInfo}/> : null}
+
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
               {/* {hasReturnsChart ? 
               <Row className="justify-content-center pe-4 pt-2">
