@@ -141,15 +141,11 @@ const Zap = props => {
           </div>
         ) : null}
         <div className="my-3 text-center">
-          <BuyButtonContainer
-            name={props.name}
-            isOrderable={props.isOrderable}
-            hasReturnsChart={props.hasReturnsChart}
-            ensAddress={props.ensAddress}
-            gasLimitRequirement={props.gasLimitRequirement}
-            block
-          />
-          <span> <i>or</i> </span>
+          <BuyButtonContainer {...props} block />
+          <span>
+            {' '}
+            <i>or</i>{' '}
+          </span>
           <GiftButton {...props} block />
         </div>
       </Col>

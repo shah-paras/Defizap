@@ -49,14 +49,7 @@ class ZapFullView extends PureComponent {
           <Row className="d-flex justify-content-center align-items-center">
             <Col xs={12} sm={4}>
               <div className="my-1">
-                <BuyButtonContainer
-                  name={name}
-                  ensAddress={ensAddress}
-                  gasLimitRequirement={gasLimitRequirement}
-                  hasReturnsChart={hasReturnsChart}
-                  size="lg"
-                  isOrderable={isOrderable}
-                />
+                <BuyButtonContainer {...this.props} size="lg" />
               </div>
             </Col>
             <i> or </i>
