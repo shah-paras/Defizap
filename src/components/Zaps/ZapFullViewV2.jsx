@@ -32,7 +32,8 @@ class ZapFullView extends PureComponent {
       metamaskInteractionsSaved,
       ensAddress,
       gasLimitRequirement,
-      tokenInfo
+      tokenInfo,
+      tokenAddress
     } = this.props;
 
     return (
@@ -53,6 +54,7 @@ class ZapFullView extends PureComponent {
             gasLimitRequirement={gasLimitRequirement} 
             hasReturnsChart = {hasReturnsChart}
             tokenInfo = {tokenInfo}
+            tokenAddress = {tokenAddress}
             size="lg" 
             isOrderable={isOrderable} 
           />

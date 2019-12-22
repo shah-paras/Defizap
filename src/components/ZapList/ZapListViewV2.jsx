@@ -61,6 +61,7 @@ const Zap = props => {
               ensAddress={props.ensAddress}
               gasLimitRequirement={props.gasLimitRequirement}
               tokenInfo={props.tokenInfo}
+              tokenAddress={props.tokenAddress}
               block
             />
           </div>
