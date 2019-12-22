@@ -9,6 +9,7 @@ import autobind from 'react-autobind';
 // import ReturnSparkLine from '../ReturnSparkline';
 // import PercentageCircle from '../PercentageCircle';
 import BuyButtonContainer from '../BuyButton/BuyButtonContainer';
+import GiftButton from '../GiftButton';
 import Donut from '../PercentageDoughnut';
 import '../../App.css';
 
@@ -42,18 +43,27 @@ class ZapFullView extends PureComponent {
               <Donut data={this.props} />
             </Col>
           </Row>
-          {/* <Card.Title>
-            <div className="h1 bold">{name}</div>
-          </Card.Title> */}
           <br />
-          <BuyButtonContainer 
-            name={name} 
-            ensAddress={ensAddress} 
-            gasLimitRequirement={gasLimitRequirement} 
-            hasReturnsChart = {hasReturnsChart}
-            size="lg" 
-            isOrderable={isOrderable} 
-          />
+          <Row className="d-flex justify-content-center align-items-center">
+            <Col xs={12} sm={4}>
+              <div className="my-1">
+                <BuyButtonContainer
+                  name={name}
+                  ensAddress={ensAddress}
+                  gasLimitRequirement={gasLimitRequirement}
+                  hasReturnsChart={hasReturnsChart}
+                  size="lg"
+                  isOrderable={isOrderable}
+                />
+              </div>
+            </Col>
+            <i> or </i>
+            <Col xs={12} sm={4} className="justify-content-start">
+              <div className="my-1">
+                <GiftButton {...this.props} />
+              </div>
+            </Col>
+          </Row>
           <Row className="justify-content-center align-text-center">
             <Col xs={12} md={6} className="justify-content-center text-center">
               {oneClickAccessTo ? (
@@ -63,7 +73,7 @@ class ZapFullView extends PureComponent {
                     {oneClickAccessTo.map((access, index) => (
                       <Badge
                         key={access.text}
-                        style={{backgroundColor:access.color}}
+                        style={{ backgroundColor: access.color }}
                         variant="primary"
                         className={index === 0 ? 'beforePill' : 'afterPill'}
                       >
@@ -85,6 +95,14 @@ class ZapFullView extends PureComponent {
                   </ul>
                 </span>
               ) : null}
+              <a
+                href={description.tutorialLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="my-1"
+              >
+                <h5>View Tutorial</h5>
+              </a>
               {platformsUsed ? (
                 <span>
                   <h5>Platforms used: </h5>
@@ -97,7 +115,7 @@ class ZapFullView extends PureComponent {
                         target="_blank"
                       >
                         <Badge
-                        style={{backgroundColor:platform.color}}
+                          style={{ backgroundColor: platform.color }}
                           variant="success"
                           className={index === 0 ? 'beforePill' : 'afterPill'}
                         >
@@ -110,9 +128,7 @@ class ZapFullView extends PureComponent {
               ) : null}
               {metamaskInteractionsSaved ? (
                 <span>
-                  <h5>
-                  Wallet interactions saved:
-                  </h5>
+                  <h5>Wallet interactions saved:</h5>
                   <h1>
                     {metamaskInteractionsSaved.map(
                       interactions => interactions.saved
@@ -122,45 +138,33 @@ class ZapFullView extends PureComponent {
               ) : null}
               {ensAddress ? (
                 <span>
-                  <h5>
-                    View contract on Etherscan
-                </h5>
+                  <h5>View contract on Etherscan</h5>
                   <h5>
                     <a
                       href={`https://etherscan.io/address/${ensAddress}`}
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      <Badge
-                        variant="info"
-                      >
-                        {ensAddress}
-                      </Badge>
+                      <Badge variant="info">{ensAddress}</Badge>
                     </a>
                   </h5>
-              <p style={{fontSize:'0.75em'}}>Alternatively send ETH directly to this address using<i> minimum </i>{gasLimitRequirement} gas.</p>
+                  <p style={{ fontSize: '0.75em' }}>
+                    Alternatively send ETH directly to this address using
+                    <i> minimum </i>
+                    {gasLimitRequirement} gas.
+                  </p>
                 </span>
               ) : null}
               <div className="mt-2">
-                <Button
-                  href={description.tutorialLink}
-                  variant="outline-primary"
-                  target="_blank"
-                  size="lg"
-                  className="m-2"
-                >
-                  View Tutorial
-                </Button>
                 {this.props.hasReturnsChart ? (
-                  <Button
+                  <a
                     href={`https://pools.fyi/#/returns/${this.props.tokenAddress}`}
-                    variant="outline-primary"
                     target="_blank"
-                    size="lg"
-                    className="m-2"
+                    rel="noopener noreferrer"
+                    className="my-1"
                   >
-                    Pools.fyi
-                  </Button>
+                    <h5>Pools.fyi</h5>
+                  </a>
                 ) : null}
               </div>
             </Col>
