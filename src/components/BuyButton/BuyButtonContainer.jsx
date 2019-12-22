@@ -17,6 +17,7 @@ import '../../App.css';
 import Loading from '../Loading';
 import Confirmed from '../Confirmed';
 import Rejected from '../Rejected';
+import Simulator from '../Simulator';
 
 import contractProvider from '../../utils/web3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
@@ -104,7 +105,10 @@ class LenderBuyButton extends React.Component {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
-        } else if (this.props.name === 'CHAI Unipool') {
+        } else if (
+          this.props.name === 'CHAI Unipool' ||
+          this.props.name === 'cDAI Unipool'
+        ) {
           tx = await contract.methods.LetsInvest(
             '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
             window.web3.currentProvider.selectedAddress,
@@ -127,7 +131,8 @@ class LenderBuyButton extends React.Component {
             this.setState({
               depositTxHash: receipt.transactionHash,
               showLoader: false,
-              showCheck: true
+              showCheck: true,
+              txId: receipt.transactionHash
             });
           })
           .on('error', error => {
@@ -165,7 +170,9 @@ class LenderBuyButton extends React.Component {
       name,
       ensAddress,
       gasLimitRequirement,
-      hasReturnsChart
+      hasReturnsChart,
+      tokenInfo,
+      tokenAddress
     } = this.props;
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
@@ -195,6 +202,14 @@ class LenderBuyButton extends React.Component {
                 />
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
+              {hasReturnsChart ? (
+                <Simulator
+                  value={this.state.value}
+                  tokenInfo={tokenInfo}
+                  tokenAddress={tokenAddress}
+                />
+              ) : null}
+
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
               {/* {hasReturnsChart ? 
               <Row className="justify-content-center pe-4 pt-2">
@@ -270,7 +285,9 @@ class LenderBuyButton extends React.Component {
               </div>
               {this.state.showLoader ? <Loading /> : null}
               {this.state.showCross ? <Rejected /> : null}
-              {this.state.showCheck ? <Confirmed /> : null}
+              {this.state.showCheck ? (
+                <Confirmed txId={this.state.txId} />
+              ) : null}
             </div>
           </form>
         </ModalBody>

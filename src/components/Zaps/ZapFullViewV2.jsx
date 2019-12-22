@@ -32,7 +32,9 @@ class ZapFullView extends PureComponent {
       platformsUsed,
       metamaskInteractionsSaved,
       ensAddress,
-      gasLimitRequirement
+      gasLimitRequirement,
+      tokenInfo,
+      tokenAddress
     } = this.props;
 
     return (
