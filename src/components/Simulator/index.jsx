@@ -28,10 +28,9 @@ class Simulator extends PureComponent {
     }
 
     async componentDidMount() {
-        // console.log(this.props)
         const tradeDetails = await this.getTradeDetails(this.props.value || 0, this.props.tokenInfo.address)
         this.processTradeDetails(tradeDetails)
-        await this.getUniswapTokenBalance(this.props.tokenInfo.uniswapAddress)
+        await this.getUniswapTokenBalance(this.props.tokenAddress)
     }
 
     async componentDidUpdate(prevProps) {
@@ -55,28 +54,30 @@ class Simulator extends PureComponent {
 
     getTradeDetails = async (_tradeAmount, tokenAddress) => {
         const marketDetails = await this.getMarketDetails(tokenAddress)
-        const tradeAmount = (new BigNumber(_tradeAmount)).multipliedBy(10 ** this.state.decimals)
+        const tradeAmount = (new BigNumber(_tradeAmount)).multipliedBy(10 ** this.props.tokenInfo.decimals)
         const tradeDetails = await getTradeDetails(true, tradeAmount, marketDetails)
         return tradeDetails
     }
 
     processTradeDetails = (tradeDetails) => {
         const ethReserves = formatFixedDecimals(tradeDetails.marketDetailsPre.outputReserves.ethReserve.amount, 18, { decimalPlaces: 2 })
-        const tokenReserves = formatFixedDecimals(tradeDetails.marketDetailsPre.outputReserves.tokenReserve.amount, 18, { decimalPlaces: 2 })
+        const tokenReserves = formatFixedDecimals(tradeDetails.marketDetailsPre.outputReserves.tokenReserve.amount, this.props.tokenInfo.decimals, { decimalPlaces: 2 })
         const marketRate = formatFixed(tradeDetails.marketDetailsPre.marketRate.rate, { decimalPlaces: 2 })
         const execRate = formatFixed(tradeDetails.executionRate.rate, { decimalPlaces: 2 })
+        // console.log(ethReserves, tokenReserves, marketRate, execRate)
         this.setState({ ethReserves, tokenReserves, marketRate, execRate })
     }
 
     // In relation to uniswap liquidity tokens (i.e Uniswap V1 tokens)
-     getUniswapTokenBalance = async (uniswapAddress) =>{
+    getUniswapTokenBalance = async (uniswapAddress) => {
         let tokenInfo = await (await fetch(`https://api.ethplorer.io/getTokenInfo/${uniswapAddress}?apiKey=freekey`)).json()
-        const liquidityTokenSupply = tokenInfo.totalSupply / (10 ** this.state.decimals)
-        this.setState({liquidityTokenSupply})
+        const liquidityTokenSupply = tokenInfo.totalSupply / (10 ** 18)
+        this.setState({ liquidityTokenSupply })
     }
 
     getLiquidityTokenOutput = (value, execRate, tokenReserves, liquidityTokenSupply) => {
-        return ((((value * 0.505) * execRate)/tokenReserves) * liquidityTokenSupply).toFixed(3)
+        return ((((value * 0.505) * execRate) / tokenReserves) * liquidityTokenSupply).toFixed(3)
+
     }
 
     render() {
@@ -96,25 +97,6 @@ class Simulator extends PureComponent {
         if (ethReserves && tokenReserves && marketRate)
             return (
                 <div style={{ fontSize: '0.85em' }}>
-                    {/* <Row className="justify-content-right pt-2">
-                        <Col style={{ whiteSpace: 'nowrap' }}>
-                            Exchange Rate:
-                        </Col>
-                        <Col>
-                            1 ETH = {marketRate} {tokenInfo.name}
-                        </Col>
-                    </Row>
-
-                    <Row className="justify-content-right">
-                        <Col style={{ whiteSpace: 'nowrap' }}>
-                            Recieved Rate:
-                                        </Col>
-                        <Col>
-                            {execRate > 0 ? `1 ETH = ${execRate} ${tokenInfo.name}` : `-`}
-                        </Col>
-                    </Row> */}
-
-
                     <Row className="justify-content-left pt-2">
                         <Col>
                             Current Pool Size:
@@ -143,8 +125,8 @@ class Simulator extends PureComponent {
                         <Col>
                             Est. Ouput:
                     </Col>
-                    <Col style={{ color: value ? '#28a745' : null, whiteSpace: 'noWrap' }}>
-                            {value && execRate > 0 ? `${this.getLiquidityTokenOutput(value, execRate, tokenReserves, liquidityTokenSupply) } UNI-V1` : `0 UNI-V1`}
+                        <Col style={{ color: value ? '#28a745' : null, whiteSpace: 'noWrap' }}>
+                            {value && execRate > 0 ? `${this.getLiquidityTokenOutput(value, execRate, tokenReserves, liquidityTokenSupply)} ${tokenInfo.name} Pool Token` : `0 ${tokenInfo.name} Pool Token`}
 
                         </Col>
                     </Row>
