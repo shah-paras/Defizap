@@ -101,7 +101,7 @@ class LenderBuyButton extends React.Component {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
-        } else if (this.props.name === 'CHAI Unipool') {
+        } else if (this.props.name === 'CHAI Unipool' || this.props.name === 'cDAI Unipool') {
           tx = await contract.methods.LetsInvest('0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', window.web3.currentProvider.selectedAddress, 5)
         } else {
           tx = await contract.methods.LetsInvest();
@@ -157,7 +157,7 @@ class LenderBuyButton extends React.Component {
 
   renderModal() {
     const { open, value } = this.state;
-    const { name, ensAddress, gasLimitRequirement, hasReturnsChart, tokenInfo } = this.props;
+    const { name, ensAddress, gasLimitRequirement, hasReturnsChart, tokenInfo, tokenAddress } = this.props;
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
         <ModalBody>
@@ -186,7 +186,7 @@ class LenderBuyButton extends React.Component {
                 />
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
-              {hasReturnsChart ? <Simulator value={this.state.value} tokenInfo={tokenInfo}/> : null}
+              {hasReturnsChart ? <Simulator value={this.state.value} tokenInfo={tokenInfo} tokenAddress={tokenAddress}/> : null}
 
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
               {/* {hasReturnsChart ? 

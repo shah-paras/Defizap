@@ -1,4 +1,65 @@
 const Zaps = {
+  unipoolcdai: {
+    id: 'unipoolcdai',
+    name: 'cDAI Unipool',
+    text: 'Uni cDAI',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'cDAIPool.DeFiZap.eth',
+    tokenAddress: '0x34E89740adF97C3A9D3f63Cc2cE4a914382c230b',
+    tokenInfo: {
+      address: '0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643',
+      name: 'cDAI',
+      decimals: 8
+    },
+    gasLimitRequirement:'1500000',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
+      },
+      {
+        key: 'kyber',
+        value: 'Kyber',
+        url: 'https://kyberswap.com/swap/',
+        color: '#FB795D'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'cDAI Pool token',
+        percent: 100,
+        color: '#00D395'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/cdai-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% of your ETH input is first converted to DAI on Kyber',
+        'Converted DAI is then wrapped into cDAI',
+        'cDAI + other 50% ETH input are added to the ETH/cDAI Liquidity Pool on Uniswap and you receive minted liquidity tracking tokens back to your wallet.'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 3 }]
+  },
   unipoolchai: {
     id: 'unipoolchai',
     name: 'CHAI Unipool',
@@ -6,11 +67,11 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: true,
     ensAddress: 'CHAIUnipool.DeFiZap.eth',
-    tokenAddress: '0x6c3942b383bc3d0efd3f36efa1cbe7c8e12c8a2b ',
+    tokenAddress: '0x6c3942b383bc3d0efd3f36efa1cbe7c8e12c8a2b',
     tokenInfo: {
       address: '0x06AF07097C9Eeb7fD685c692751D5C66dB49c215',
       name: 'CHAI',
-      uniswapAddress: '0x6C3942B383bc3d0efd3F36eFa1CBE7C8E12C8A2B'
+      decimals: 18
 
     },
     gasLimitRequirement:'1500000',
@@ -20,6 +81,12 @@ const Zaps = {
         value: 'Uniswap',
         url: 'https://uniswap.io/',
         color: '#AF2CE4'
+      },
+      {
+        key: 'kyber',
+        value: 'Kyber',
+        url: 'https://kyberswap.com/swap/',
+        color: '#FB795D'
       }
     ],
     oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
@@ -66,7 +133,8 @@ const Zaps = {
     tokenInfo: {
       address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
       name: 'DAI',
-      uniswapAddress: '0x2a1530C4C41db0B0b2bB646CB5Eb1A67b7158667',
+      decimals: 18
+
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -120,7 +188,8 @@ const Zaps = {
     tokenInfo: {
       address: '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2',
       name: 'MKR',
-      uniswapAddress: '0x2C4Bd064b998838076fa341A83d007FC2FA50957',
+      decimals: 18
+
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -175,8 +244,7 @@ const Zaps = {
     tokenInfo: {
       address: '0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F',
       name: 'SNX',
-      uniswapAddress: '0x3958B4eC427F8fa24eB60F42821760e88d485f7F',
-
+      decimals: 18
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -230,7 +298,7 @@ const Zaps = {
     tokenInfo: {
       address: '0x5e74C9036fb86BD7eCdcb084a0673EFc32eA31cb',
       name: 'sETH',
-      uniswapAddress:'0xe9Cf7887b93150D4F2Da7dFc6D502B216438F244',
+      decimals: 18
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
@@ -284,7 +352,8 @@ const Zaps = {
     tokenInfo: {
       address: '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359',
       name: 'SAI',
-      uniswapAddress: '0x09cabEC1eAd1c0Ba254B09efb3EE13841712bE14'
+      decimals: 18
+
     },
     gasLimitRequirement:'1500000',
     platformsUsed: [
