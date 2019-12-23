@@ -75,6 +75,9 @@ const Zap = props => {
                       </Badge>
                     </Row>
                   ))}
+                  {props.oneClickAccessTo.length === 1 ? (
+                  <div className="my-3 pb-2"/>
+                  ): null}
                 </h6>
               </span>
             ) : (
@@ -154,7 +157,9 @@ const ZapListView = props => {
   return (
     <Container>
       <NavigationBar />
-      <Row>{data.filter(zap => zap.isOrderable).map(zap => Zap(zap))}</Row>
+      <Row className="d-flex justify-content-around">
+        {data.filter(zap => zap.isOrderable).map(zap => Zap(zap))}
+      </Row>
       <hr />
       {footerButtons()}
       <br />
