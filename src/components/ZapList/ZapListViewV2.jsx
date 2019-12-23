@@ -53,7 +53,7 @@ const Zap = props => {
           <>
             <h4>This Zap is still under development.</h4>
             <h4>
-              In the meantime, check out our available Zaps{' '}
+              In the meantime, check out available Zaps{' '}
               <a href="/zaps">here</a>.
             </h4>
           </>
@@ -123,20 +123,22 @@ const Zap = props => {
                 </h6>
               </span>
             ) : null}
-            <span>
-              <h6 style={{ fontSize: '0.9em' }}>DEPOYED THROUGH THIS ZAP:</h6>
-              <h6>
-                <b style={{ fontSize: '1.8em' }}>
-                  {props.volume ? props.volume : '-'} ETH
-                </b>
-                <p
-                  className="pt-1"
-                  style={{ fontSize: '0.6em', opacity: '70%' }}
-                >
-                  Updated every 6 hours
-                </p>
-              </h6>
-            </span>
+            {props.volume ? (
+              <span>
+                <h6 style={{ fontSize: '0.9em' }}>DEPOYED THROUGH THIS ZAP:</h6>
+                <h6>
+                  <b style={{ fontSize: '1.8em' }}>
+                    {props.volume ? props.volume : '-'} ETH
+                  </b>
+                  <p
+                    className="pt-1"
+                    style={{ fontSize: '0.6em', opacity: '70%' }}
+                  >
+                    Updated every 6 hours
+                  </p>
+                </h6>
+              </span>
+            ) : null}
           </Col>
         </Row>
       </Col>
