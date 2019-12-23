@@ -5,20 +5,18 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 // import Tooltip from 'react-bootstrap/Tooltip';
 // import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Row from 'react-bootstrap/Row';
 import Column from 'react-bootstrap/Col';
 import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
-import styles from './BuyButton.module.css';
+
+import styles from './GiftButton.module.css';
 import '../../App.css';
 import Loading from '../Loading';
 import Confirmed from '../Confirmed';
 import Rejected from '../Rejected';
 import Simulator from '../Simulator';
-
-import contractProvider from '../../utils/web3DataProvider';
+import contractProvider from '../../utils/giftweb3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
 import {
@@ -27,7 +25,7 @@ import {
   checkResponse
 } from '../../api/apiHelpers';
 
-class LenderBuyButton extends React.Component {
+class GiftButtonContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,6 +36,7 @@ class LenderBuyButton extends React.Component {
       showCross: false,
       showCheck: false,
       gasMode: 'average',
+      toAddress: '',
       txId: ''
     };
   }
@@ -82,11 +81,21 @@ class LenderBuyButton extends React.Component {
       }
       const networkId = await web3.eth.net.getId();
       const { ens } = web3.eth;
+      const isInvalidAddress = !(await web3.utils.isAddress(
+        this.state.toAddress
+      ));
       await this.getGas();
-      if (networkId !== 1) {
-        alert(
-          'Sorry, you need to be on the Ethereum MainNet to use our services.'
-        );
+      if (networkId !== 1 || isInvalidAddress) {
+        if (isInvalidAddress) {
+          alert(
+            'Sorry, it seems like the ETH Address you entered is not valid.'
+          );
+        }
+        if (networkId !== 1) {
+          alert(
+            'Sorry, you need to be on the Ethereum MainNet to use our services.'
+          );
+        }
       } else {
         const {
           contractAbi,
@@ -100,33 +109,43 @@ class LenderBuyButton extends React.Component {
         this.setState({ showLoader: true, showCross: false, showCheck: false });
         let tx;
         if (this.props.name === 'Lender') {
-          tx = await contract.methods.LetsInvest(
-            window.web3.currentProvider.selectedAddress,
-            90,
-            5
-          );
+          tx = await contract.methods.LetsInvest(this.state.toAddress, 90, 5);
         } else if (
           this.props.name === 'ETH Bull' ||
           this.props.name === 'Double Bull' ||
           this.props.name === 'Super Saver' ||
           this.props.name === 'Moderate Bull'
         ) {
-          tx = await contract.methods.LetsInvest(
-            window.web3.currentProvider.selectedAddress,
-            50,
-            5
-          );
+          tx = await contract.methods.LetsInvest(this.state.toAddress, 50, 5);
         } else if (
           this.props.name === 'CHAI Unipool' ||
           this.props.name === 'cDAI Unipool'
         ) {
           tx = await contract.methods.LetsInvest(
             '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
-            window.web3.currentProvider.selectedAddress,
+            this.state.toAddress,
             5
           );
-        } else {
-          tx = await contract.methods.LetsInvest();
+        } else if (this.props.name === 'DAI Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0x6b175474e89094c44da98b954eedeac495271d0f',
+            this.state.toAddress
+          );
+        } else if (this.props.name === 'MKR Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2',
+            this.state.toAddress
+          );
+        } else if (this.props.name === 'SNX Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f',
+            this.state.toAddress
+          );
+        } else if (this.props.name === 'sETH Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0x5e74c9036fb86bd7ecdcb084a0673efc32ea31cb',
+            this.state.toAddress
+          );
         }
         tx.send({
           from: this.state.account,
@@ -147,7 +166,6 @@ class LenderBuyButton extends React.Component {
           })
           .on('error', error => {
             this.setState({ showLoader: false, showCross: true });
-
             alert(
               'Sorry, we encountered an error, please try again or reach out to us if this persists.'
             );
@@ -157,6 +175,10 @@ class LenderBuyButton extends React.Component {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  handleAddressChange = async event => {
+    this.setState({ toAddress: event.target.value });
   };
 
   setGasMode = async gasMode => {
@@ -175,7 +197,7 @@ class LenderBuyButton extends React.Component {
   }
 
   renderModal() {
-    const { open, value } = this.state;
+    const { open, value, toAddress } = this.state;
     const {
       name,
       ensAddress,
@@ -190,6 +212,31 @@ class LenderBuyButton extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="buycontainer">
               <h1>{name}</h1>
+              <Row className="d-flex justify-content-center my-1 py-0">
+                <Column xs={12}>Send to</Column>
+                <Column xs={12}>
+                  <input
+                    type="text"
+                    required
+                    onChange={this.handleAddressChange}
+                    value={toAddress}
+                    placeholder="Enter Ethereum address..."
+                    style={{ width: '80%' }}
+                  />
+                </Column>
+                <Column>
+                  <b>
+                    No ETH Wallet?{' '}
+                    <a
+                      href="https://docs.ethhub.io/ethereum-basics/resources/#wallets"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Make one
+                    </a>
+                  </b>
+                </Column>
+              </Row>
               <div className="buycontents">
                 <p className="buytext pt-4 mr-2">INPUT</p>
                 <input
@@ -229,7 +276,6 @@ class LenderBuyButton extends React.Component {
                     placement="right"
                   >
                     <FontAwesomeIcon icon={faQuestionCircle} />
-
                   </OverlayTrigger>
                 </div>
               </Row>
@@ -237,7 +283,6 @@ class LenderBuyButton extends React.Component {
               <Row className="justify-content-center py-3">
                 Select Transaction Speed:{' '}
               </Row>
-
               <Row className="justify-content-center">
                 <ToggleButtonGroup
                   type="radio"
@@ -307,43 +352,41 @@ class LenderBuyButton extends React.Component {
   render() {
     const { isOrderable, name, block, size } = this.props;
     return (
-      <Row className='justify-content-center'>
-
-      <>
-        {isOrderable ? (
-          // eslint-disable-next-line jsx-a11y/accessible-emoji
-          <Button
-            className={`${styles.buyButton}`}
-            onClick={() => {
-              this.setState({ open: true });
-              registerEvent({
-                category: BUY_ZAP,
-                action: name
-              });
-            }}
-            disabled={!isOrderable}
-            // variant="outline-primary"
-            size={!isEmpty(size) ? size : 'md'}
-            block={block}
-          >
-            ⚡ Use This Zap
-          </Button>
-        ) : (
-          <Button
-            onClick={() => this.setState({ open: true })}
-            disabled={!isOrderable}
-            variant="outline-primary"
-            size={!isEmpty(size) ? size : 'auto'}
-            block={block}
-          >
-            Coming Soon
-          </Button>
-        )}
-        {this.renderModal()}
-      </>
+      <Row className="justify-content-center">
+        <>
+          {isOrderable ? (
+            // eslint-disable-next-line jsx-a11y/accessible-emoji
+            <Button
+              className={`${styles.giftButton}`}
+              onClick={() => {
+                this.setState({ open: true });
+                registerEvent({
+                  category: BUY_ZAP,
+                  action: name
+                });
+              }}
+              disabled={!isOrderable}
+              // variant="outline-danger"
+              size={!isEmpty(size) ? size : 'md'}
+              block={block}
+            >
+              🎁 Gift This Zap
+            </Button>
+          ) : (
+            <Button
+              onClick={() => this.setState({ open: true })}
+              disabled={!isOrderable}
+              variant="outline-primary"
+              size={!isEmpty(size) ? size : 'auto'}
+              block={block}
+            >
+              Coming Soon
+            </Button>
+          )}
+          {this.renderModal()}
+        </>
       </Row>
     );
   }
 }
-
-export default LenderBuyButton;
+export default GiftButtonContainer;

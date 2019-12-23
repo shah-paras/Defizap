@@ -164,6 +164,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .afterPill{
   margin: 5px;
 }
+.badgePadding{
+  margin:3px
+}
 
 .zapFullViewHeader{
   padding-top: 15px;

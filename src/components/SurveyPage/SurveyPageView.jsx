@@ -5,7 +5,6 @@ import Stepper from '@material-ui/core/Stepper';
 import Spinner from 'react-bootstrap/Spinner';
 import Step from '@material-ui/core/Step';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import isEmpty from 'lodash/isEmpty';
 
 import { StepLabel, StepContent, Collapse } from '@material-ui/core';
@@ -37,16 +36,12 @@ const SurveyPageView = props => {
         <h4>
           You might find these Zaps useful: <br />
         </h4>
-        {recommendedZaps.map(zap => (
-          <>
-            <Row key={zaps[zap].name}>
-              <Col>
-                <Zap {...zaps[zap]} />
-              </Col>
-            </Row>
-            <br />
-          </>
-        ))}
+        <Row className="justify-content-center">
+          {recommendedZaps.map(zap => (
+            <Zap key={zaps[zap].name} {...zaps[zap]} />
+          ))}
+        </Row>
+        <br />
         <Row className="justify-content-center pb-3">
           <Button
             variant="info"

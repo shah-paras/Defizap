@@ -4,12 +4,9 @@ import {
   DOUBLE_BULL_CONTRACT_ADDRESS,
   MODERATE_BULL_CONTRACT_ADDRESS,
   SUPER_SAVER_CONTRACT_ADDRESS,
-  UNIPOOL_DAI_CONTRACT_ADDRESS,
-  UNIPOOL_MKR_CONTRACT_ADDRESS,
-  UNIPOOL_SNX_CONTRACT_ADDRESS,
-  UNIPOOL_SETH_CONTRACT_ADDRESS,
   UNIPOOL_CHAI_CONTRACT_ADDRESS,
-  UNIPOOL_CDAI_CONTRACT_ADDRESS
+  UNIPOOL_CDAI_CONTRACT_ADDRESS,
+  UNIPOOL_GENERAL_CONTRACT_ADDRESS
 } from '../web3/address';
 
 import LENDER_ABI from '../web3/lenderAbi';
@@ -17,12 +14,9 @@ import ETHMAXIMALIST_ABI from '../web3/ethmaxAbi';
 import SHORTTERMBULL_ABI from '../web3/DoubleBullAbi';
 import MODERATE_BULL_ABI from '../web3/moderateBullAbi';
 import SUPER_SAVER_ABI from '../web3/superSaverAbi';
-import UNIPOOL_DAI_ABI from '../web3/unipoolDaiAbi';
-import UNIPOOL_MKR_ABI from '../web3/unipoolMkrAbi';
-import UNIPOOL_SNX_ABI from '../web3/unipoolSnxAbi';
-import UNIPOOL_SETH_ABI from '../web3/unipoolSEthAbi';
 import UNIPOOL_CHAI_ABI from '../web3/unipoolChaiAbi';
 import UNIPOOL_CDAI_ABI from '../web3/unipoolCdaiAbi';
+import UNIPOOL_GENERAL_ABI from '../web3/unipoolGeneralAbi';
 
 const contractProvider = name => {
   switch (name) {
@@ -62,34 +56,6 @@ const contractProvider = name => {
         gas: 3000000
       };
     }
-    case 'DAI Unipool': {
-      return {
-        contractAbi: UNIPOOL_DAI_ABI,
-        contractAddress: UNIPOOL_DAI_CONTRACT_ADDRESS,
-        gas: 1500000
-      };
-    }
-    case 'MKR Unipool': {
-      return {
-        contractAbi: UNIPOOL_MKR_ABI,
-        contractAddress: UNIPOOL_MKR_CONTRACT_ADDRESS,
-        gas: 1500000
-      };
-    }
-    case 'SNX Unipool': {
-      return {
-        contractAbi: UNIPOOL_SNX_ABI,
-        contractAddress: UNIPOOL_SNX_CONTRACT_ADDRESS,
-        gas: 1500000
-      };
-    }
-    case 'sETH Unipool': {
-      return {
-        contractAbi: UNIPOOL_SETH_ABI,
-        contractAddress: UNIPOOL_SETH_CONTRACT_ADDRESS,
-        gas: 1500000
-      };
-    }
     case 'CHAI Unipool': {
       return {
         contractAbi: UNIPOOL_CHAI_ABI,
@@ -101,6 +67,34 @@ const contractProvider = name => {
       return {
         contractAbi: UNIPOOL_CDAI_ABI,
         contractAddress: UNIPOOL_CDAI_CONTRACT_ADDRESS,
+        gas: 1500000
+      };
+    }
+    case 'DAI Unipool': {
+      return {
+        contractAbi: UNIPOOL_GENERAL_ABI,
+        contractAddress: UNIPOOL_GENERAL_CONTRACT_ADDRESS,
+        gas: 1500000
+      };
+    }
+    case 'MKR Unipool': {
+      return {
+        contractAbi: UNIPOOL_GENERAL_ABI,
+        contractAddress: UNIPOOL_GENERAL_CONTRACT_ADDRESS,
+        gas: 1500000
+      };
+    }
+    case 'SNX Unipool': {
+      return {
+        contractAbi: UNIPOOL_GENERAL_ABI,
+        contractAddress: UNIPOOL_GENERAL_CONTRACT_ADDRESS,
+        gas: 1500000
+      };
+    }
+    case 'sETH Unipool': {
+      return {
+        contractAbi: UNIPOOL_GENERAL_ABI,
+        contractAddress: UNIPOOL_GENERAL_CONTRACT_ADDRESS,
         gas: 1500000
       };
     }

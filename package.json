@@ -7,12 +7,15 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@material-ui/core": "^4.7.0",
+    "@uniswap/sdk": "^1.0.0-beta.4",
     "bnc-onboard": "^1.1.7",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "connected-react-router": "^6.5.2",
     "history": "^4.9.0",
+    "humanize-plus": "^1.8.2",
     "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-autobind": "^1.0.6",
     "react-bootstrap": "^1.0.0-beta.14",
@@ -41,8 +44,7 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4",
-    "prop-types": "^15.7.2"
+    "prettier": "^1.16.4"
   },
   "scripts": {
     "build": "react-scripts build",
