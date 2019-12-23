@@ -13,6 +13,8 @@ const Zaps = {
       decimals: 8
     },
     gasLimitRequirement: '1500000',
+    volume: '2',
+    illustration: 'cdai_illustration.svg',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -25,10 +27,16 @@ const Zaps = {
         value: 'Kyber',
         url: 'https://kyberswap.com/swap/',
         color: '#FB795D'
+      },
+      {
+        key: 'Compound',
+        value: 'Compound',
+        url: 'https://compound.finance/',
+        color: '#28A745'
       }
     ],
     oneClickAccessTo: [
-      { text: '🦄 Pooling', color: '#18722b' },
+      { text: '🦄 Pooling', color: '#66098e' },
       { text: '💸 Lending', color: '#63d37b' }
     ],
     numberOfInteractions: 5,
@@ -78,6 +86,8 @@ const Zaps = {
       icon: 'chai_logo.svg'
     },
     gasLimitRequirement: '1500000',
+    volume: '29',
+    illustration: 'chai_illustration.svg',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -90,10 +100,16 @@ const Zaps = {
         value: 'Kyber',
         url: 'https://kyberswap.com/swap/',
         color: '#FB795D'
+      },
+      {
+        key: 'Maker',
+        value: 'Maker',
+        url: 'https://chai.money',
+        color: '#000000'
       }
     ],
     oneClickAccessTo: [
-      { text: '🦄 Pooling', color: '#18722b' },
+      { text: '🦄 Pooling', color: '#66098e' },
       { text: '💸 Lending', color: '#63d37b' }
     ],
     numberOfInteractions: 5,
@@ -104,7 +120,7 @@ const Zaps = {
       {
         name: 'CHAI Pool token',
         percent: 100,
-        color: '#ad7213'
+        color: '#DE3443'
       }
     ],
     description: {
@@ -143,6 +159,8 @@ const Zaps = {
       icon: 'dai_logo.svg'
     },
     gasLimitRequirement: '1500000',
+    volume: '179',
+
     platformsUsed: [
       {
         key: 'uniswap',
@@ -151,7 +169,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
+    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#66098e' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -198,6 +216,8 @@ const Zaps = {
       icon: 'maker_logo.svg'
     },
     gasLimitRequirement: '1500000',
+    volume: '117',
+    illustration: 'mkr_illustration.svg',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -206,7 +226,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
+    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#66098e' }],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -215,7 +235,7 @@ const Zaps = {
       {
         name: 'MKR Pool token',
         percent: 100,
-        color: '#D34FEE'
+        color: '#1AAB9B'
       }
     ],
     description: {
@@ -252,6 +272,8 @@ const Zaps = {
       decimals: 18
     },
     gasLimitRequirement: '1500000',
+    volume: 41,
+    illustration: 'snx_illustration.svg',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -260,7 +282,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
+    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#66098e' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -306,6 +328,8 @@ const Zaps = {
       decimals: 18
     },
     gasLimitRequirement: '1500000',
+    volume: 1497,
+    illustration: 'sETH_illustration.svg',
     platformsUsed: [
       {
         key: 'uniswap',
@@ -315,7 +339,7 @@ const Zaps = {
       }
     ],
     oneClickAccessTo: [
-      { text: '🦄 Pooling', color: '#18722b' },
+      { text: '🦄 Pooling', color: '#66098e' },
       { text: '⛽ Staking Rewards', color: '#6C757D' }
     ],
     numberOfInteractions: 5,
@@ -326,7 +350,7 @@ const Zaps = {
       {
         name: 'sETH Pool token',
         percent: 100,
-        color: '#01D691'
+        color: '#6C757D'
       }
     ],
     description: {
@@ -358,16 +382,17 @@ const Zaps = {
     numberOfInteractions: 4,
     ensAddress: 'Lender.DeFiZap.eth',
     gasLimitRequirement: '7000000',
+    volume: 8,
     components: [
       {
         name: 'cDAI',
         percent: 90,
-        color: '#11CEBE'
+        color: '#28A745'
       },
       {
         name: 'dLETH2x',
         percent: 10,
-        color: '#0035C4'
+        color: '#407BF7'
       }
     ],
     description: {
@@ -400,7 +425,7 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: '💸 Lending', color: '#0bef3d' },
+      { text: '💸 Lending', color: '#63d37b' },
       { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' }
     ],
     platformsUsed: [
@@ -438,12 +463,12 @@ const Zaps = {
       {
         name: 'dLETH2x',
         percent: 50,
-        color: '#5540BF'
+        color: '#007BFF'
       },
       {
         name: 'dsWBTC',
         percent: 50,
-        color: '#A726f2'
+        color: '#DC3545'
       }
     ],
     description: {
@@ -471,7 +496,7 @@ const Zaps = {
     },
     oneClickAccessTo: [
       { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' },
-      { text: '🐻 Short-sell WBTC', color: '#DC3545' }
+      { text: '🐻 Short BTC', color: '#DC3545' }
     ],
     platformsUsed: [
       {
@@ -537,7 +562,7 @@ const Zaps = {
         key: 'Synthetix',
         value: 'Synthetix',
         url: 'https://synthetix.exchange/',
-        color: '#282C34'
+        color: '#5F6E98'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -555,12 +580,12 @@ const Zaps = {
       {
         name: 'dLETH2x',
         percent: 50,
-        color: '#D42351'
+        color: '#007BFF'
       },
       {
         name: 'dLWBTC2x',
         percent: 50,
-        color: '#6E2001'
+        color: '#FFC107'
       }
     ],
     description: {
@@ -616,12 +641,12 @@ const Zaps = {
       {
         name: 'cDAI',
         percent: 50,
-        color: '#01D691'
+        color: '#28A745'
       },
       {
         name: 'iDAI',
         percent: 50,
-        color: '#0062CD'
+        color: '#407BF7'
       }
     ],
     description: {
@@ -655,7 +680,7 @@ const Zaps = {
         '50% auto-converted into DAI + supplied to Fulcrum to mint iDAI'
       ]
     },
-    oneClickAccessTo: [{ text: '💸 Lending Interest', color: '#0bef3d' }],
+    oneClickAccessTo: [{ text: '💸 Lending', color: '#63d37b' }],
     platformsUsed: [
       {
         key: 'Compound',
@@ -670,7 +695,7 @@ const Zaps = {
         color: '#407BF7'
       },
       {
-        key: 'kyber',
+        key: 'Kyber',
         value: 'Kyber',
         url: 'https://kyberswap.com/swap/',
         color: '#FB795D'

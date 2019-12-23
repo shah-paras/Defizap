@@ -1,9 +1,18 @@
 .buyButton {
-    background: linear-gradient(180deg, #6615DC 21.33%, #F03154 100%);
-    border: none;
+  background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
+  width: 60%;
+  border: 0;
+}
+
+@media (max-width: 1200px) {
+  .buyButton {
+      width:100%;
   }
+}
 
 .buyButton:hover {
-  background: linear-gradient(90deg, #6615DC 21.33%, #F03154 100%);
+  background: linear-gradient(90deg, #4776E6 0%, #4776E6 100%);
     border: none;
-}
+} 
+
+

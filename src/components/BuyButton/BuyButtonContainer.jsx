@@ -307,6 +307,8 @@ class LenderBuyButton extends React.Component {
   render() {
     const { isOrderable, name, block, size } = this.props;
     return (
+      <Row className='justify-content-center'>
+
       <>
         {isOrderable ? (
           // eslint-disable-next-line jsx-a11y/accessible-emoji
@@ -321,7 +323,7 @@ class LenderBuyButton extends React.Component {
             }}
             disabled={!isOrderable}
             // variant="outline-primary"
-            size={!isEmpty(size) ? size : 'lg'}
+            size={!isEmpty(size) ? size : 'md'}
             block={block}
           >
             ⚡ Use This Zap
@@ -339,6 +341,7 @@ class LenderBuyButton extends React.Component {
         )}
         {this.renderModal()}
       </>
+      </Row>
     );
   }
 }

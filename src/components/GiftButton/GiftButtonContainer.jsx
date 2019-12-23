@@ -325,37 +325,40 @@ class GiftButtonContainer extends React.Component {
   render() {
     const { isOrderable, name, block, size } = this.props;
     return (
-      <>
-        {isOrderable ? (
-          // eslint-disable-next-line jsx-a11y/accessible-emoji
-          <Button
-            className={`${styles.giftButton}`}
-            onClick={() => {
-              this.setState({ open: true });
-              registerEvent({
-                category: BUY_ZAP,
-                action: name
-              });
-            }}
-            disabled={!isOrderable}
-            size={!isEmpty(size) ? size : 'lg'}
-            block={block}
-          >
-            🎁 Gift This Zap
-          </Button>
-        ) : (
-          <Button
-            onClick={() => this.setState({ open: true })}
-            disabled={!isOrderable}
-            variant="outline-primary"
-            size={!isEmpty(size) ? size : 'auto'}
-            block={block}
-          >
-            Coming Soon
-          </Button>
-        )}
-        {this.renderModal()}
-      </>
+      <Row className="justify-content-center">
+        <>
+          {isOrderable ? (
+            // eslint-disable-next-line jsx-a11y/accessible-emoji
+            <Button
+              className={`${styles.giftButton}`}
+              onClick={() => {
+                this.setState({ open: true });
+                registerEvent({
+                  category: BUY_ZAP,
+                  action: name
+                });
+              }}
+              disabled={!isOrderable}
+              // variant="outline-danger"
+              size={!isEmpty(size) ? size : 'md'}
+              block={block}
+            >
+              🎁 Gift This Zap
+            </Button>
+          ) : (
+            <Button
+              onClick={() => this.setState({ open: true })}
+              disabled={!isOrderable}
+              variant="outline-primary"
+              size={!isEmpty(size) ? size : 'auto'}
+              block={block}
+            >
+              Coming Soon
+            </Button>
+          )}
+          {this.renderModal()}
+        </>
+      </Row>
     );
   }
 }
