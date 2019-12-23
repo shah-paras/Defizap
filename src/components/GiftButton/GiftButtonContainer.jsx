@@ -16,7 +16,7 @@ import Loading from '../Loading';
 import Confirmed from '../Confirmed';
 import Rejected from '../Rejected';
 import Simulator from '../Simulator';
-import contractProvider from '../../utils/web3DataProvider';
+import contractProvider from '../../utils/giftweb3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
 import {
@@ -108,17 +108,44 @@ class GiftButtonContainer extends React.Component {
         const contract = new web3.eth.Contract(contractAbi, newAddress);
         this.setState({ showLoader: true, showCross: false, showCheck: false });
         let tx;
-        if (
+        if (this.props.name === 'Lender') {
+          tx = await contract.methods.LetsInvest(this.state.toAddress, 90, 5);
+        } else if (
+          this.props.name === 'ETH Bull' ||
+          this.props.name === 'Double Bull' ||
+          this.props.name === 'Super Saver' ||
+          this.props.name === 'Moderate Bull'
+        ) {
+          tx = await contract.methods.LetsInvest(this.state.toAddress, 50, 5);
+        } else if (
           this.props.name === 'CHAI Unipool' ||
           this.props.name === 'cDAI Unipool'
         ) {
           tx = await contract.methods.LetsInvest(
-            '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-            window.web3.currentProvider.selectedAddress,
+            '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
+            this.state.toAddress,
             5
           );
-        } else {
-          tx = await contract.methods.LetsInvest();
+        } else if (this.props.name === 'DAI Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0x6b175474e89094c44da98b954eedeac495271d0f',
+            this.state.toAddress
+          );
+        } else if (this.props.name === 'MKR Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2',
+            this.state.toAddress
+          );
+        } else if (this.props.name === 'SNX Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f',
+            this.state.toAddress
+          );
+        } else if (this.props.name === 'sETH Unipool') {
+          tx = await contract.methods.LetsInvest(
+            '0x5e74c9036fb86bd7ecdcb084a0673efc32ea31cb',
+            this.state.toAddress
+          );
         }
         tx.send({
           from: this.state.account,

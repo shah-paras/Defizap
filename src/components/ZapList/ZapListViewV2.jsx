@@ -62,7 +62,7 @@ const Zap = props => {
           <Col className="text-sm-center">
             {props.oneClickAccessTo ? (
               <span>
-                <h6 style={{ fontSize: '0.8em' }} >1-CLICK ACCESS TO:</h6>
+                <h6 style={{ fontSize: '0.8em' }}>1-CLICK ACCESS TO:</h6>
                 <h6>
                   {props.oneClickAccessTo.map((access, index) => (
                     <Row key={access.text} className="justify-content-center">
@@ -76,13 +76,13 @@ const Zap = props => {
                     </Row>
                   ))}
                   {props.oneClickAccessTo.length === 1 ? (
-                  <div className="my-3 pb-2"/>
-                  ): null}
+                    <div className="my-3 pb-2" />
+                  ) : null}
                 </h6>
               </span>
             ) : (
-                ''
-              )}
+              ''
+            )}
             {props.platformsUsed ? (
               <span>
                 <h6 style={{ fontSize: '0.8em' }}>PLATFORMS USED:</h6>
@@ -98,7 +98,7 @@ const Zap = props => {
                         style={{ backgroundColor: platform.color }}
                         variant="success"
                         // className={index === 0 ? 'beforePill' : 'afterPill'}
-                        className='badgePadding'
+                        className="badgePadding"
                       >
                         {platform.value}
                       </Badge>
@@ -107,32 +107,36 @@ const Zap = props => {
                 </h6>
               </span>
             ) : (
-                ''
-              )}
+              ''
+            )}
             {props.metamaskInteractionsSaved ? (
               <span>
                 <h6 style={{ fontSize: '0.8em' }}>
                   WALLET INTERACTIONS SAVED: <br />
                   <h6>
-                  <b style={{ fontSize: '1.8em' }}>
-                    {props.metamaskInteractionsSaved.map(
-                      interactions => interactions.saved
-                    )}
-                  </b>
+                    <b style={{ fontSize: '1.8em' }}>
+                      {props.metamaskInteractionsSaved.map(
+                        interactions => interactions.saved
+                      )}
+                    </b>
                   </h6>
-
                 </h6>
               </span>
             ) : null}
-              <span>
-                  <h6 style={{ fontSize: '0.9em' }}>DEPOYED THROUGH THIS ZAP:</h6>
-                  <h6>
-                    <b style={{ fontSize: '1.8em' }}>
-                      {props.volume ?  props.volume : '-'} ETH
+            <span>
+              <h6 style={{ fontSize: '0.9em' }}>DEPOYED THROUGH THIS ZAP:</h6>
+              <h6>
+                <b style={{ fontSize: '1.8em' }}>
+                  {props.volume ? props.volume : '-'} ETH
                 </b>
-                    <p className='pt-1' style={{ fontSize: '0.6em', opacity: '70%' }}>Updated every 6 hours</p>
-                  </h6>
-                </span>
+                <p
+                  className="pt-1"
+                  style={{ fontSize: '0.6em', opacity: '70%' }}
+                >
+                  Updated every 6 hours
+                </p>
+              </h6>
+            </span>
           </Col>
         </Row>
       </Col>

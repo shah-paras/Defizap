@@ -148,7 +148,7 @@ class ZapFullView extends PureComponent {
                       style={{ fontSize: '0.6em', opacity: '70%' }}
                     >
                       {' '}
-                      Updated every 6 Updated every 6 Updated every 6 hours
+                      Updated every 6 hours
                     </p>
                   </h6>
                 </span>
