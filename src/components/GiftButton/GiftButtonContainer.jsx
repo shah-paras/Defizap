@@ -16,6 +16,7 @@ import '../../App.css';
 import Loading from '../Loading';
 import Confirmed from '../Confirmed';
 import Rejected from '../Rejected';
+import Simulator from '../Simulator';
 
 import contractProvider from '../../utils/web3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
@@ -37,6 +38,7 @@ class GiftButtonContainer extends React.Component {
       showCross: false,
       showCheck: false,
       gasMode: 'average',
+      toAddress: '',
       errorMessage: '',
       depositTxHash: ''
     };
@@ -82,11 +84,21 @@ class GiftButtonContainer extends React.Component {
       }
       const networkId = await web3.eth.net.getId();
       const { ens } = web3.eth;
+      const isInvalidAddress = !(await web3.utils.isAddress(
+        this.state.toAddress
+      ));
       await this.getGas();
-      if (networkId !== 1) {
-        alert(
-          'Sorry, you need to be on the Ethereum MainNet to use our services.'
-        );
+      if (networkId !== 1 || isInvalidAddress) {
+        if (isInvalidAddress) {
+          alert(
+            'Sorry, it seems like the ETH Address you entered is not valid.'
+          );
+        }
+        if (networkId !== 1) {
+          alert(
+            'Sorry, you need to be on the Ethereum MainNet to use our services.'
+          );
+        }
       } else {
         const {
           contractAbi,
@@ -103,6 +115,15 @@ class GiftButtonContainer extends React.Component {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
+        } else if (
+          this.props.name === 'CHAI Unipool' ||
+          this.props.name === 'cDAI Unipool'
+        ) {
+          tx = await contract.methods.LetsInvest(
+            '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+            window.web3.currentProvider.selectedAddress,
+            5
+          );
         } else {
           tx = await contract.methods.LetsInvest();
         }
@@ -120,7 +141,8 @@ class GiftButtonContainer extends React.Component {
             this.setState({
               depositTxHash: receipt.transactionHash,
               showLoader: false,
-              showCheck: true
+              showCheck: true,
+              txId: receipt.transactionHash
             });
           })
           .on('error', error => {
@@ -135,6 +157,10 @@ class GiftButtonContainer extends React.Component {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  handleAddressChange = async event => {
+    this.setState({ toAddress: event.target.value });
   };
 
   setGasMode = async gasMode => {
@@ -153,12 +179,14 @@ class GiftButtonContainer extends React.Component {
   }
 
   renderModal() {
-    const { open, value } = this.state;
+    const { open, value, toAddress } = this.state;
     const {
       name,
       ensAddress,
       gasLimitRequirement,
-      hasReturnsChart
+      hasReturnsChart,
+      tokenInfo,
+      tokenAddress
     } = this.props;
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
@@ -166,10 +194,31 @@ class GiftButtonContainer extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="buycontainer">
               <h1>{name}</h1>
-              <div className="sendcontents">
-                <span className="buytext pt-4 mr-2">To</span>
-                <input type="text" required />
-              </div>
+              <Row className="d-flex justify-content-center my-1 py-0">
+                <Column xs={12}>My friend&apos;s ETH address</Column>
+                <Column xs={12}>
+                  <input
+                    type="text"
+                    required
+                    onChange={this.handleAddressChange}
+                    value={toAddress}
+                    placeholder="0xc1912fee45d61c87cc5ea59dae31190fffff232d"
+                    style={{ width: '80%' }}
+                  />
+                </Column>
+                <Column>
+                  <b>
+                    No ETH Wallet?{' '}
+                    <a
+                      href="https://google.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Make one
+                    </a>
+                  </b>
+                </Column>
+              </Row>
               <div className="buycontents">
                 <p className="buytext pt-4 mr-2">INPUT</p>
                 <input
@@ -190,9 +239,15 @@ class GiftButtonContainer extends React.Component {
                         }
                   }
                 />
-
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
+              {hasReturnsChart ? (
+                <Simulator
+                  value={this.state.value}
+                  tokenInfo={tokenInfo}
+                  tokenAddress={tokenAddress}
+                />
+              ) : null}
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
               {/* {hasReturnsChart ? 
               <Row className="justify-content-center pe-4 pt-2">
@@ -210,7 +265,6 @@ class GiftButtonContainer extends React.Component {
               <Row className="justify-content-center py-3">
                 Select Transaction Speed:{' '}
               </Row>
-
               <Row className="justify-content-center">
                 <ToggleButtonGroup
                   type="radio"

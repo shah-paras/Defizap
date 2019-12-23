@@ -12,7 +12,6 @@ import Column from 'react-bootstrap/Col';
 import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
 import styles from './BuyButton.module.css';
-
 import '../../App.css';
 import Loading from '../Loading';
 import Confirmed from '../Confirmed';
@@ -209,7 +208,6 @@ class LenderBuyButton extends React.Component {
                   tokenAddress={tokenAddress}
                 />
               ) : null}
-
               {/* <div className='justify-content-center pl-4'>Slippage</div> */}
               {/* {hasReturnsChart ? 
               <Row className="justify-content-center pe-4 pt-2">
