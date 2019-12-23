@@ -3,6 +3,8 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+
 
 const Confirmed = props => (
   <div className="container loading">
@@ -26,7 +28,7 @@ const Confirmed = props => (
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Tweet it out 🐦
+                Tweet it out <FontAwesomeIcon size="lg" color="#1DA1F2" icon={faTwitter} />
               </a>
             </Row>
           </>
