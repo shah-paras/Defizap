@@ -133,7 +133,7 @@ class ZapFullView extends PureComponent {
               ) : null}
               {ensAddress ? (
                 <span>
-                  <h5>View contract on Etherscan</h5>
+                  <h5>View contract on Etherscan:</h5>
                   <h5>
                     <a
                       href={`https://etherscan.io/address/${ensAddress}`}

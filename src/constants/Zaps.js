@@ -27,9 +27,7 @@ const Zaps = {
         color: '#FB795D'
       }
     ],
-    oneClickAccessTo: [
-      { text: 'Add Liquidity to generate fees', color: '#18722b' }
-    ],
+    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -55,9 +53,9 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '50% of your ETH input is first converted to DAI on Kyber',
-        'Converted DAI is then wrapped into cDAI',
-        'cDAI + other 50% ETH input are added to the ETH/cDAI Liquidity Pool on Uniswap and you receive minted liquidity tracking tokens back to your wallet.'
+        '50% of your ETH input is first converted to DAI on Kyber to avoid ETH<>cDAI slippage',
+        'Converted DAI is then supplied on Compound to mint cDAI',
+        'cDAI + other 50% ETH input are added to the ETH/cDAI Liquidity Pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -73,7 +71,8 @@ const Zaps = {
     tokenInfo: {
       address: '0x06AF07097C9Eeb7fD685c692751D5C66dB49c215',
       name: 'CHAI',
-      decimals: 18
+      decimals: 18,
+      icon: 'chai_logo.svg'
     },
     gasLimitRequirement: '1500000',
     platformsUsed: [
@@ -90,9 +89,7 @@ const Zaps = {
         color: '#FB795D'
       }
     ],
-    oneClickAccessTo: [
-      { text: 'Add Liquidity to generate fees', color: '#18722b' }
-    ],
+    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -120,7 +117,7 @@ const Zaps = {
       text: [
         '50% of your ETH input is first converted to DAI on Kyber to avoid ETH->CHAI slippage',
         'Converted DAI is then wrapped into CHAI. Learn more on chai.money',
-        'CHAI + other 50% ETH input are added to the ETH/CHAI Liquidity Pool on Uniswap and you receive minted liquidity tracking tokens back to your wallet.'
+        'CHAI + other 50% ETH input are added to the ETH/CHAI Liquidity Pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 5 }]
@@ -136,7 +133,8 @@ const Zaps = {
     tokenInfo: {
       address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
       name: 'DAI',
-      decimals: 18
+      decimals: 18,
+      icon: 'dai_logo.svg'
     },
     gasLimitRequirement: '1500000',
     platformsUsed: [
@@ -147,9 +145,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [
-      { text: 'Add Liquidity to generate fees', color: '#18722b' }
-    ],
+    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -176,7 +172,7 @@ const Zaps = {
     whatThisMeans: {
       text: [
         '50% converted to DAI',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+        '50% leftover input + acquired tokens are added to the DAI/ETH Liquidity pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -192,7 +188,8 @@ const Zaps = {
     tokenInfo: {
       address: '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2',
       name: 'MKR',
-      decimals: 18
+      decimals: 18,
+      icon: 'maker_logo.svg'
     },
     gasLimitRequirement: '1500000',
     platformsUsed: [
@@ -203,9 +200,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [
-      { text: 'Add Liquidity to generate fees', color: '#18722b' }
-    ],
+    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -232,7 +227,7 @@ const Zaps = {
     whatThisMeans: {
       text: [
         '50% converted to MKR',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+        '50% leftover input + acquired tokens are added to the MKR/ETH Liquidity pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -259,9 +254,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [
-      { text: 'Add Liquidity to generate fees', color: '#18722b' }
-    ],
+    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -288,7 +281,7 @@ const Zaps = {
     whatThisMeans: {
       text: [
         '50% converted to SNX',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+        '50% leftover input + acquired tokens are added to the SNX/ETH Liquidity pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -316,7 +309,8 @@ const Zaps = {
       }
     ],
     oneClickAccessTo: [
-      { text: 'Add Liquidity to generate fees', color: '#18722b' }
+      { text: '🦄 Pooling Fees', color: '#18722b' },
+      { text: '⛽ SNX Staking Rewards', color: '#6C757D' }
     ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
@@ -344,7 +338,7 @@ const Zaps = {
     whatThisMeans: {
       text: [
         '50% converted to sETH',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+        '50% leftover input + acquired tokens are added to the sETH/ETH Liquidity pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -371,9 +365,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [
-      { text: 'Adding Liquidity to generate fees', color: '#18722b' }
-    ],
+    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -400,7 +392,7 @@ const Zaps = {
     whatThisMeans: {
       text: [
         '50% converted to SAI',
-        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+        '50% leftover input + acquired tokens are added to the SAI/ETH Liquidity pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
@@ -456,8 +448,8 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Lending', color: '#0bef3d' },
-      { text: 'Long ETH with 2X Leverage', color: '#007BFF' }
+      { text: '💸 Lending Interest', color: '#0bef3d' },
+      { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' }
     ],
     platformsUsed: [
       {
@@ -471,6 +463,12 @@ const Zaps = {
         value: 'Fulcrum',
         url: 'https://fulcrum.trade/#/',
         color: '#407BF7'
+      },
+      {
+        key: 'kyber',
+        value: 'Kyber',
+        url: 'https://kyberswap.com/swap/',
+        color: '#FB795D'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]
@@ -520,8 +518,8 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Long ETH with 2X Leverage', color: '#007BFF' },
-      { text: 'Short-sell WBTC', color: '#DC3545' }
+      { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' },
+      { text: '📉 Short-sell WBTC', color: '#DC3545' }
     ],
     platformsUsed: [
       {
@@ -581,7 +579,7 @@ const Zaps = {
     whatThisMeans: {
       text: ['50% used to acquire sBTC', '50% used to acquire sETH']
     },
-    oneClickAccessTo: [{ text: 'Synthetic Asset Trading', color: '#6C757D' }],
+    oneClickAccessTo: [{ text: '📊 Synthetic Assets', color: '#6C757D' }],
     platformsUsed: [
       {
         key: 'Synthetix',
@@ -640,8 +638,8 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: 'Long ETH with 2X Leverage', color: '#007BFF' },
-      { text: 'Long BTC with 2X Leverage', color: '#FFC107' }
+      { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' },
+      { text: '📈 Long BTC with 2X Leverage', color: '#FFC107' }
     ],
     platformsUsed: [
       {
@@ -705,7 +703,7 @@ const Zaps = {
         '50% auto-converted into SAI + supplied to Fulcrum to mint iSAI'
       ]
     },
-    oneClickAccessTo: [{ text: 'Lending', color: '#0bef3d' }],
+    oneClickAccessTo: [{ text: '💸 Lending Interest', color: '#0bef3d' }],
     platformsUsed: [
       {
         key: 'Compound',
@@ -718,6 +716,12 @@ const Zaps = {
         value: 'Fulcrum',
         url: 'https://fulcrum.trade/#/',
         color: '#407BF7'
+      },
+      {
+        key: 'kyber',
+        value: 'Kyber',
+        url: 'https://kyberswap.com/swap/',
+        color: '#FB795D'
       }
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]
