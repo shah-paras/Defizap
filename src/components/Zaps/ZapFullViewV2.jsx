@@ -63,7 +63,7 @@ class ZapFullView extends PureComponent {
             <Col xs={12} md={6} className="justify-content-center text-center">
               {oneClickAccessTo ? (
                 <span>
-                  <h5 className="zapFullViewHeader"> 1-click access to:</h5>
+                  <h5 className="zapFullViewHeader"> 1-click:</h5>
                   <h5>
                     {oneClickAccessTo.map((access, index) => (
                       <Badge

@@ -27,7 +27,10 @@ const Zaps = {
         color: '#FB795D'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
+    oneClickAccessTo: [
+      { text: '🦄 Pooling Fees', color: '#18722b' },
+      { text: '💸 Lending Interest', color: '#63d37b' }
+    ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -726,7 +729,6 @@ const Zaps = {
     ],
     metamaskInteractionsSaved: [{ saved: 4 }]
   },
-
   bullSharpe: {
     id: 'bullSharpe',
     name: 'Conservative Bull',

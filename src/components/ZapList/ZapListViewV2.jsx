@@ -63,17 +63,18 @@ const Zap = props => {
           <Col className="text-sm-center">
             {props.oneClickAccessTo ? (
               <span>
-                <h6>1-click access to:</h6>
+                <h6>1-click:</h6>
                 <h6>
                   {props.oneClickAccessTo.map((access, index) => (
-                    <Badge
-                      key={access.text}
-                      style={{ backgroundColor: access.color }}
-                      variant="primary"
-                      className={index === 0 ? 'beforePill' : 'afterPill'}
-                    >
-                      {access.text}
-                    </Badge>
+                    <Row key={access.text} className="justify-content-center">
+                      <Badge
+                        style={{ backgroundColor: access.color }}
+                        variant="primary"
+                        className={index === 0 ? 'beforePill' : 'afterPill'}
+                      >
+                        {access.text}
+                      </Badge>
+                    </Row>
                   ))}
                 </h6>
               </span>
