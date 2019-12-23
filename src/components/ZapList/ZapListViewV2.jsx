@@ -34,7 +34,8 @@ const footerButtons = () => (
           registerEvent({
             category: GENERATE_ZAP,
             action: INDIVIDUAL_ZAP_PAGE
-          })}
+          })
+        }
       >
         Don&apos;t see your Zap? Submit a request and we will create one!
       </Button>
@@ -43,6 +44,9 @@ const footerButtons = () => (
 );
 
 const Zap = props => {
+  const numberWithCommas = x => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
   return (
     <Col xs={12} md={4} lg={3} key={props.name} className="m-4 bg-white">
       <Col className="align-text-center">
@@ -53,8 +57,8 @@ const Zap = props => {
           <>
             <h4>This Zap is still under development.</h4>
             <h4>
-              In the meantime, check out available Zaps{' '}
-              <a href="/zaps">here</a>.
+              In the meantime, check out available Zaps <a href="/zaps">here</a>
+              .
             </h4>
           </>
         )}
@@ -128,7 +132,7 @@ const Zap = props => {
                 <h6 style={{ fontSize: '0.9em' }}>DEPOYED THROUGH THIS ZAP:</h6>
                 <h6>
                   <b style={{ fontSize: '1.8em' }}>
-                    {props.volume ? props.volume : '-'} ETH
+                    {props.volume ? numberWithCommas(props.volume) : '-'} ETH
                   </b>
                   <p
                     className="pt-1"

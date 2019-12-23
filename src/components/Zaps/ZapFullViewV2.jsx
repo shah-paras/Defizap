@@ -19,6 +19,10 @@ class ZapFullView extends PureComponent {
     autobind(this);
   }
 
+  numberWithCommas = x => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
   render() {
     const illustrations = require.context('../../assets/illustrations', true);
     const {
@@ -123,7 +127,6 @@ class ZapFullView extends PureComponent {
                   </ul>
                 </span>
               ) : null}
-
               {metamaskInteractionsSaved ? (
                 <span>
                   <h5 style={{ fontSize: '0.9em' }}>
@@ -142,12 +145,13 @@ class ZapFullView extends PureComponent {
                     DEPOYED THROUGH THIS ZAP:
                   </h6>
                   <h6>
-                    <b style={{ fontSize: '1.8em' }}>{volume} ETH</b>
+                    <b style={{ fontSize: '1.8em' }}>
+                      {this.numberWithCommas(volume)} ETH
+                    </b>
                     <p
                       className="pt-1"
                       style={{ fontSize: '0.6em', opacity: '70%' }}
                     >
-                      {' '}
                       Updated every 6 hours
                     </p>
                   </h6>
