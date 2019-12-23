@@ -153,8 +153,12 @@ const Zap = props => {
           </div>
         ) : null}
         <div className="my-3 text-center">
-          <BuyButtonContainer {...props} block />
-          {/* <GiftButton {...props} block /> */}
+          <div className="m-2">
+            <BuyButtonContainer {...props} block />
+          </div>
+          <div className="m-2">
+            <GiftButton {...props} block />
+          </div>
         </div>
       </Col>
     </Col>

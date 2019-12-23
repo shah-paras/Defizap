@@ -218,6 +218,7 @@ class GiftButtonContainer extends React.Component {
                   <input
                     type="text"
                     required
+                    minLength="40"
                     onChange={this.handleAddressChange}
                     value={toAddress}
                     placeholder="Enter Ethereum address..."
