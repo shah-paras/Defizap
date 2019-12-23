@@ -28,8 +28,8 @@ const Zaps = {
       }
     ],
     oneClickAccessTo: [
-      { text: '🦄 Pooling Fees', color: '#18722b' },
-      { text: '💸 Lending Interest', color: '#63d37b' }
+      { text: '🦄 Pooling', color: '#18722b' },
+      { text: '💸 Lending', color: '#63d37b' }
     ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
@@ -61,7 +61,7 @@ const Zaps = {
         'cDAI + other 50% ETH input are added to the ETH/cDAI Liquidity Pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
       ]
     },
-    metamaskInteractionsSaved: [{ saved: 3 }]
+    metamaskInteractionsSaved: [{ saved: 5 }]
   },
   unipoolchai: {
     id: 'unipoolchai',
@@ -92,7 +92,10 @@ const Zaps = {
         color: '#FB795D'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
+    oneClickAccessTo: [
+      { text: '🦄 Pooling', color: '#18722b' },
+      { text: '💸 Lending', color: '#63d37b' }
+    ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -148,7 +151,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
+    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -203,7 +206,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
+    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
     numberOfInteractions: 3,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -257,7 +260,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
+    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -312,8 +315,8 @@ const Zaps = {
       }
     ],
     oneClickAccessTo: [
-      { text: '🦄 Pooling Fees', color: '#18722b' },
-      { text: '⛽ SNX Staking Rewards', color: '#6C757D' }
+      { text: '🦄 Pooling', color: '#18722b' },
+      { text: '⛽ Staking Rewards', color: '#6C757D' }
     ],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
@@ -368,7 +371,7 @@ const Zaps = {
         color: '#AF2CE4'
       }
     ],
-    oneClickAccessTo: [{ text: '🦄 Pooling Fees', color: '#18722b' }],
+    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
     numberOfInteractions: 5,
     outperformsDuring: ['Choppy Markets'],
     whatHappensUnderTheHood: '',
@@ -451,7 +454,7 @@ const Zaps = {
       ]
     },
     oneClickAccessTo: [
-      { text: '💸 Lending Interest', color: '#0bef3d' },
+      { text: '💸 Lending', color: '#0bef3d' },
       { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' }
     ],
     platformsUsed: [
@@ -522,7 +525,7 @@ const Zaps = {
     },
     oneClickAccessTo: [
       { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' },
-      { text: '📉 Short-sell WBTC', color: '#DC3545' }
+      { text: '🐻 Short-sell WBTC', color: '#DC3545' }
     ],
     platformsUsed: [
       {
@@ -642,7 +645,7 @@ const Zaps = {
     },
     oneClickAccessTo: [
       { text: '🚀 Long ETH with 2X Leverage', color: '#007BFF' },
-      { text: '📈 Long BTC with 2X Leverage', color: '#FFC107' }
+      { text: '🚀 Long BTC with 2X Leverage', color: '#FFC107' }
     ],
     platformsUsed: [
       {

@@ -8,7 +8,6 @@ import Badge from 'react-bootstrap/Badge';
 import '../../App.css';
 import Donut from '../PercentageDoughnut';
 import NavigationBar from '../NavigationBar';
-import styles from './ZapList.module.css';
 import {
   INDIVIDUAL_ZAP_PAGE,
   GENERATE_ZAP
@@ -63,7 +62,7 @@ const Zap = props => {
           <Col className="text-sm-center">
             {props.oneClickAccessTo ? (
               <span>
-                <h6>1-click:</h6>
+                <h6>1-click access to:</h6>
                 <h6>
                   {props.oneClickAccessTo.map((access, index) => (
                     <Row key={access.text} className="justify-content-center">
@@ -143,10 +142,6 @@ const Zap = props => {
         ) : null}
         <div className="my-3 text-center">
           <BuyButtonContainer {...props} block />
-          <span>
-            {' '}
-            <i>or</i>{' '}
-          </span>
           <GiftButton {...props} block />
         </div>
       </Col>

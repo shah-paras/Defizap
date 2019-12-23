@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -22,18 +21,13 @@ class ZapFullView extends PureComponent {
 
   render() {
     const {
-      name,
-      components,
-      isOrderable,
       description,
-      output,
       hasReturnsChart,
       oneClickAccessTo,
       platformsUsed,
       metamaskInteractionsSaved,
       ensAddress,
       gasLimitRequirement,
-      tokenInfo,
       tokenAddress
     } = this.props;
 
@@ -48,32 +42,29 @@ class ZapFullView extends PureComponent {
           <br />
           <Row className="d-flex justify-content-center align-items-center">
             <Col xs={12} sm={4}>
-              <div className="my-1">
-                <BuyButtonContainer {...this.props} size="lg" />
-              </div>
+              <BuyButtonContainer {...this.props} size="lg" />
             </Col>
-            <i> or </i>
             <Col xs={12} sm={4} className="justify-content-start">
-              <div className="my-1">
-                <GiftButton {...this.props} />
-              </div>
+              <GiftButton {...this.props} />
             </Col>
           </Row>
           <Row className="justify-content-center align-text-center">
             <Col xs={12} md={6} className="justify-content-center text-center">
               {oneClickAccessTo ? (
                 <span>
-                  <h5 className="zapFullViewHeader"> 1-click:</h5>
+                  <h5 className="zapFullViewHeader">1-click access to:</h5>
                   <h5>
                     {oneClickAccessTo.map((access, index) => (
-                      <Badge
-                        key={access.text}
-                        style={{ backgroundColor: access.color }}
-                        variant="primary"
-                        className={index === 0 ? 'beforePill' : 'afterPill'}
-                      >
-                        {access.text}
-                      </Badge>
+                      <Row key={access.text} className="justify-content-center">
+                        <Badge
+                          key={access.text}
+                          style={{ backgroundColor: access.color }}
+                          variant="primary"
+                          className={index === 0 ? 'beforePill' : 'afterPill'}
+                        >
+                          {access.text}
+                        </Badge>
+                      </Row>
                     ))}
                   </h5>
                 </span>
@@ -96,7 +87,7 @@ class ZapFullView extends PureComponent {
                 rel="noopener noreferrer"
                 className="my-1"
               >
-                <h5>View Tutorial</h5>
+                <h5>View Detailed Tutorial</h5>
               </a>
               {platformsUsed ? (
                 <span>
@@ -151,14 +142,14 @@ class ZapFullView extends PureComponent {
                 </span>
               ) : null}
               <div className="mt-2">
-                {this.props.hasReturnsChart ? (
+                {hasReturnsChart ? (
                   <a
-                    href={`https://pools.fyi/#/returns/${this.props.tokenAddress}`}
+                    href={`https://pools.fyi/#/returns/${tokenAddress}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="my-1"
                   >
-                    <h5>Pools.fyi</h5>
+                    <h5>View Returns on Pools.fyi</h5>
                   </a>
                 ) : null}
               </div>

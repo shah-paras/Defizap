@@ -3,10 +3,10 @@ import { Modal, ModalBody } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+// import Tooltip from 'react-bootstrap/Tooltip';
+// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Row from 'react-bootstrap/Row';
 import Column from 'react-bootstrap/Col';
 import Web3 from 'web3';
@@ -195,7 +195,7 @@ class GiftButtonContainer extends React.Component {
             <div className="buycontainer">
               <h1>{name}</h1>
               <Row className="d-flex justify-content-center my-1 py-0">
-                <Column xs={12}>My friend&apos;s ETH address</Column>
+                <Column xs={12}>Send to</Column>
                 <Column xs={12}>
                   <input
                     type="text"
