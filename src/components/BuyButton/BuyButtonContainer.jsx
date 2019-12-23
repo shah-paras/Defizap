@@ -38,8 +38,7 @@ class LenderBuyButton extends React.Component {
       showCross: false,
       showCheck: false,
       gasMode: 'average',
-      errorMessage: '',
-      depositTxHash: ''
+      txId: ''
     };
   }
 
@@ -101,15 +100,28 @@ class LenderBuyButton extends React.Component {
         this.setState({ showLoader: true, showCross: false, showCheck: false });
         let tx;
         if (this.props.name === 'Lender') {
-          tx = await contract.methods.SafeNotSorryZapInvestment();
-        } else if (this.props.name === 'ETH Bull') {
-          tx = await contract.methods.ETHMaximalistZAP();
+          tx = await contract.methods.LetsInvest(
+            window.web3.currentProvider.selectedAddress,
+            90,
+            5
+          );
+        } else if (
+          this.props.name === 'ETH Bull' ||
+          this.props.name === 'Double Bull' ||
+          this.props.name === 'Super Saver' ||
+          this.props.name === 'Moderate Bull'
+        ) {
+          tx = await contract.methods.LetsInvest(
+            window.web3.currentProvider.selectedAddress,
+            50,
+            5
+          );
         } else if (
           this.props.name === 'CHAI Unipool' ||
           this.props.name === 'cDAI Unipool'
         ) {
           tx = await contract.methods.LetsInvest(
-            '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+            '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE',
             window.web3.currentProvider.selectedAddress,
             5
           );
@@ -128,7 +140,6 @@ class LenderBuyButton extends React.Component {
               receipt.transactionHash
             );
             this.setState({
-              depositTxHash: receipt.transactionHash,
               showLoader: false,
               showCheck: true,
               txId: receipt.transactionHash

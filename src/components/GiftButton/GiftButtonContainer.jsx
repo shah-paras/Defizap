@@ -5,19 +5,17 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 // import Tooltip from 'react-bootstrap/Tooltip';
 // import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import Row from 'react-bootstrap/Row';
 import Column from 'react-bootstrap/Col';
 import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
+
 import styles from './GiftButton.module.css';
 import '../../App.css';
 import Loading from '../Loading';
 import Confirmed from '../Confirmed';
 import Rejected from '../Rejected';
 import Simulator from '../Simulator';
-
 import contractProvider from '../../utils/web3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
@@ -39,8 +37,7 @@ class GiftButtonContainer extends React.Component {
       showCheck: false,
       gasMode: 'average',
       toAddress: '',
-      errorMessage: '',
-      depositTxHash: ''
+      txId: ''
     };
   }
 
@@ -111,11 +108,7 @@ class GiftButtonContainer extends React.Component {
         const contract = new web3.eth.Contract(contractAbi, newAddress);
         this.setState({ showLoader: true, showCross: false, showCheck: false });
         let tx;
-        if (this.props.name === 'Lender') {
-          tx = await contract.methods.SafeNotSorryZapInvestment();
-        } else if (this.props.name === 'ETH Bull') {
-          tx = await contract.methods.ETHMaximalistZAP();
-        } else if (
+        if (
           this.props.name === 'CHAI Unipool' ||
           this.props.name === 'cDAI Unipool'
         ) {
@@ -139,7 +132,6 @@ class GiftButtonContainer extends React.Component {
               receipt.transactionHash
             );
             this.setState({
-              depositTxHash: receipt.transactionHash,
               showLoader: false,
               showCheck: true,
               txId: receipt.transactionHash
@@ -147,7 +139,6 @@ class GiftButtonContainer extends React.Component {
           })
           .on('error', error => {
             this.setState({ showLoader: false, showCross: true });
-
             alert(
               'Sorry, we encountered an error, please try again or reach out to us if this persists.'
             );
@@ -202,7 +193,7 @@ class GiftButtonContainer extends React.Component {
                     required
                     onChange={this.handleAddressChange}
                     value={toAddress}
-                    placeholder="0xc1912fee45d61c87cc5ea59dae31190fffff232d"
+                    placeholder="Enter Ethereum address..."
                     style={{ width: '80%' }}
                   />
                 </Column>
@@ -210,7 +201,7 @@ class GiftButtonContainer extends React.Component {
                   <b>
                     No ETH Wallet?{' '}
                     <a
-                      href="https://google.com"
+                      href="https://docs.ethhub.io/ethereum-basics/resources/#wallets"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -321,7 +312,9 @@ class GiftButtonContainer extends React.Component {
               </div>
               {this.state.showLoader ? <Loading /> : null}
               {this.state.showCross ? <Rejected /> : null}
-              {this.state.showCheck ? <Confirmed /> : null}
+              {this.state.showCheck ? (
+                <Confirmed txId={this.state.txId} />
+              ) : null}
             </div>
           </form>
         </ModalBody>
@@ -345,7 +338,6 @@ class GiftButtonContainer extends React.Component {
               });
             }}
             disabled={!isOrderable}
-            // variant="outline-danger"
             size={!isEmpty(size) ? size : 'lg'}
             block={block}
           >

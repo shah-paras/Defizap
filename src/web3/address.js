@@ -16,8 +16,6 @@ export const UNIPOOL_SNX_CONTRACT_ADDRESS = 'SNXUnipool.DeFiZap.eth';
 
 export const UNIPOOL_SETH_CONTRACT_ADDRESS = 'sETHUnipool.DeFiZap.eth';
 
-export const UNIPOOL_SAI_CONTRACT_ADDRESS = 'SAIUnipool.DeFiZap.eth';
+export const UNIPOOL_CHAI_CONTRACT_ADDRESS = 'CHAIUnipool.DeFiZap.eth';
 
-export const UNIPOOL_CHAI_CONTRACT_ADDRESS = 'CHAIUnipool.DeFiZap.eth'
-
-export const UNIPOOL_CDAI_CONTRACT_ADDRESS = 'cDAIPool.DeFiZap.eth'
+export const UNIPOOL_CDAI_CONTRACT_ADDRESS = 'cDAIPool.DeFiZap.eth';

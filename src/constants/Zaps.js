@@ -349,60 +349,6 @@ const Zaps = {
     },
     metamaskInteractionsSaved: [{ saved: 3 }]
   },
-  unipoolsai: {
-    id: 'unipoolsai',
-    name: 'SAI Unipool',
-    text: 'Uni SAI',
-    isOrderable: true,
-    hasReturnsChart: true,
-    ensAddress: 'SAIUnipool.DeFiZap.eth',
-    tokenAddress: '0x09cabec1ead1c0ba254b09efb3ee13841712be14',
-    tokenInfo: {
-      address: '0x89d24A6b4CcB1B6fAA2625fE562bDD9a23260359',
-      name: 'SAI',
-      decimals: 18
-    },
-    gasLimitRequirement: '1500000',
-    platformsUsed: [
-      {
-        key: 'uniswap',
-        value: 'Uniswap',
-        url: 'https://uniswap.io/',
-        color: '#AF2CE4'
-      }
-    ],
-    oneClickAccessTo: [{ text: '🦄 Pooling', color: '#18722b' }],
-    numberOfInteractions: 5,
-    outperformsDuring: ['Choppy Markets'],
-    whatHappensUnderTheHood: '',
-    whatHappensAfter: '',
-    components: [
-      {
-        name: 'SAI Pool token',
-        percent: 100,
-        color: '#1F8FF9'
-      }
-    ],
-    description: {
-      textQuestion: 'What does this Zap do?',
-      textAnswer: ['Sample text'],
-      textLink: [
-        {
-          text: 'dummy text',
-          hyperlink: 'https://google.com'
-        }
-      ],
-      tutorialLink:
-        'https://defitutorials.substack.com/p/dai-unipool-defizap-tutorial'
-    },
-    whatThisMeans: {
-      text: [
-        '50% converted to SAI',
-        '50% leftover input + acquired tokens are added to the SAI/ETH Liquidity pool on Uniswap. Receive minted liquidity tracking tokens back to your wallet.'
-      ]
-    },
-    metamaskInteractionsSaved: [{ saved: 3 }]
-  },
   lender: {
     id: 'lender',
     name: 'Lender',
@@ -414,7 +360,7 @@ const Zaps = {
     gasLimitRequirement: '7000000',
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 90,
         color: '#11CEBE'
       },
@@ -427,10 +373,10 @@ const Zaps = {
     description: {
       textQuestion: 'What does this Zap do?',
       textAnswer: [
-        'Lender Zap allocates incoming deposits 90% to cSAI and 10% to dLETH2x.',
+        'Lender Zap allocates incoming deposits 90% to cDAI and 10% to dLETH2x.',
         'Therefore, if you send 1 ETH to this Lender.DeFiZap.eth, or buy from our website, 0.9 of your worth will go towards investing in Compound.Finance while 0.1 of your ETH will be used to open a Perpetual ETH Long with 2x leverage.',
-        "Lender's Zap is interesting because, within a year, the interest generated from cSAI could completely cover your margin trade purchase. Think of it as trading with your future interest earned.",
-        'After sending your ETH, you will immediately receive allocated tokens (cSAI+dLETH2x) which track your DAI lending balance + margin trade position. Once you receive these tokens you can visit Compound.Finance to view/withdraw interest earned and Fulcrum.Trade to view your ROI/ close position on dLETH2x.'
+        "Lender's Zap is interesting because, within a year, the interest generated from cDAI could completely cover your margin trade purchase. Think of it as trading with your future interest earned.",
+        'After sending your ETH, you will immediately receive allocated tokens (cDAI+dLETH2x) which track your DAI lending balance + margin trade position. Once you receive these tokens you can visit Compound.Finance to view/withdraw interest earned and Fulcrum.Trade to view your ROI/ close position on dLETH2x.'
       ],
       textLink: [
         {
@@ -449,7 +395,7 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '90% auto-converted into SAI + supplied to Compound to mint cSAI',
+        '90% auto-converted into DAI + supplied to Compound to mint cDAI',
         '10% used to open ETH Long position with 2X leverage on Fulcrum (dLETH2x)'
       ]
     },
@@ -668,12 +614,12 @@ const Zaps = {
     gasLimitRequirement: '3000000',
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 50,
         color: '#01D691'
       },
       {
-        name: 'iSAI',
+        name: 'iDAI',
         percent: 50,
         color: '#0062CD'
       }
@@ -681,10 +627,10 @@ const Zaps = {
     description: {
       textQuestion: 'What does SuperSaver Zap do?',
       textAnswer: [
-        'Your deposit is automatically allocated 50% to cSAI and 50% to iSAI which represent your DAI supply balances on Compound and Fulcrum',
+        'Your deposit is automatically allocated 50% to cDAI and 50% to iDAI which represent your DAI supply balances on Compound and Fulcrum',
         'For example, if you send 1 ETH to SuperSaver.DeFiZap.Eth:',
-        '- 0.5 of your ETH will be converted to cSAI.',
-        '- 0.5 of your ETH will be converted to iSAI.',
+        '- 0.5 of your ETH will be converted to cDAI.',
+        '- 0.5 of your ETH will be converted to iDAI.',
         'After sending your deposit, you will immediately receive allocated tokens.',
         "Soon you will be able to manage these tokens right from DeFiZap Dashboard but for now you can visit Compound + Fulcrum to see how much interest you've earned or make a withdrawal."
       ],
@@ -705,8 +651,8 @@ const Zaps = {
     },
     whatThisMeans: {
       text: [
-        '50% auto-converted into SAI + supplied to Compound to mint cSAI',
-        '50% auto-converted into SAI + supplied to Fulcrum to mint iSAI'
+        '50% auto-converted into DAI + supplied to Compound to mint cDAI',
+        '50% auto-converted into DAI + supplied to Fulcrum to mint iDAI'
       ]
     },
     oneClickAccessTo: [{ text: '💸 Lending Interest', color: '#0bef3d' }],
@@ -738,7 +684,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 90
       },
       {
@@ -753,7 +699,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 90
       },
       {
@@ -768,7 +714,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 50
       },
       {
@@ -787,7 +733,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 50
       },
       {
@@ -806,7 +752,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 20
       },
       {
@@ -825,7 +771,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 20
       },
       {
@@ -863,7 +809,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 25
       },
       {
@@ -886,7 +832,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 25
       },
       {
@@ -905,7 +851,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 50
       },
       {
@@ -939,7 +885,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cSAI',
+        name: 'cDAI',
         percent: 50
       },
       {

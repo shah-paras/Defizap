@@ -44,9 +44,9 @@ class ZapFullView extends PureComponent {
             <Col xs={12} sm={4}>
               <BuyButtonContainer {...this.props} size="lg" />
             </Col>
-            <Col xs={12} sm={4} className="justify-content-start">
+            {/* <Col xs={12} sm={4} className="justify-content-start">
               <GiftButton {...this.props} />
-            </Col>
+            </Col> */}
           </Row>
           <Row className="justify-content-center align-text-center">
             <Col xs={12} md={6} className="justify-content-center text-center">
