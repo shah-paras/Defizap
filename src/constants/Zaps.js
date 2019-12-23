@@ -60,7 +60,7 @@ const Zaps = {
         }
       ],
       tutorialLink:
-        'https://defitutorials.substack.com/p/cdai-unipool-defizap-tutorial'
+        'https://defitutorials.substack.com/p/chai-unipool-defizap-tutorial-9e2'
     },
     whatThisMeans: {
       text: [
@@ -359,7 +359,7 @@ const Zaps = {
         }
       ],
       tutorialLink:
-        'https://defitutorials.substack.com/p/chai-unipool-defizap-tutorial-9e2'
+        'https://defitutorials.substack.com/p/chai-unipool-defizap-tutorial'
     },
     whatThisMeans: {
       text: [
