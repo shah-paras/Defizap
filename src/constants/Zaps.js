@@ -359,7 +359,7 @@ const Zaps = {
         }
       ],
       tutorialLink:
-        'https://defitutorials.substack.com/p/chai-unipool-defizap-tutorial'
+        'https://defitutorials.substack.com/p/chai-unipool-defizap-tutorial-9e2'
     },
     whatThisMeans: {
       text: [
