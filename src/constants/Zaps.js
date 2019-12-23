@@ -616,7 +616,10 @@ const Zaps = {
         'https://defitutorials.substack.com/p/moderate-bull-defizap-walk-through'
     },
     whatThisMeans: {
-      text: ['50% used to acquire sBTC', '50% used to acquire sETH']
+      text: [
+        '50% used to acquire sBTC on Synthetix exchange.',
+        '50% used to acquire sETH on Synthetix exchange.'
+      ]
     },
     oneClickAccessTo: [{ text: '📊 Synthetic Assets', color: '#6C757D' }],
     platformsUsed: [
