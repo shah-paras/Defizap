@@ -142,7 +142,7 @@ class ZapFullView extends PureComponent {
               {volume ? (
                 <span>
                   <h6 style={{ fontSize: '0.9em' }}>
-                    DEPOYED THROUGH THIS ZAP:
+                    DEPLOYED THROUGH THIS ZAP:
                   </h6>
                   <h6>
                     <b style={{ fontSize: '1.8em' }}>

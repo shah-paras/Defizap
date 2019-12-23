@@ -129,7 +129,7 @@ const Zap = props => {
             ) : null}
             {props.volume ? (
               <span>
-                <h6 style={{ fontSize: '0.9em' }}>DEPOYED THROUGH THIS ZAP:</h6>
+                <h6 style={{ fontSize: '0.9em' }}>DEPLOYED THROUGH THIS ZAP:</h6>
                 <h6>
                   <b style={{ fontSize: '1.8em' }}>
                     {props.volume ? numberWithCommas(props.volume) : '-'} ETH
