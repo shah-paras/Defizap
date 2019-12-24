@@ -13,7 +13,7 @@ const Zaps = {
       decimals: 8
     },
     gasLimitRequirement: '1500000',
-    volume: '2',
+    volume: '6',
     illustration: 'cdai_illustration.svg',
     platformsUsed: [
       {
@@ -202,7 +202,7 @@ const Zaps = {
       icon: 'maker_logo.svg'
     },
     gasLimitRequirement: '1500000',
-    volume: '117',
+    volume: '118',
     illustration: 'mkr_illustration.svg',
     platformsUsed: [
       {
@@ -315,7 +315,7 @@ const Zaps = {
       icon: 'chai_logo.svg'
     },
     gasLimitRequirement: '1500000',
-    volume: '29',
+    volume: '32',
     illustration: 'chai_illustration.svg',
     platformsUsed: [
       {
