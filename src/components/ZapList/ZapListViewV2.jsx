@@ -149,7 +149,7 @@ const Zap = props => {
       <Col>
         {props.isOrderable ? (
           <div className="mt-md-2 mt-2 pb-md-0 pb-3 d-flex justify-content-center">
-            <a href={`/zaps/${props.id}`}>Learn More</a>
+            <a style={{whiteSpace:'nowrap'}}href={`/zaps/${props.id}`}>Learn More</a>
           </div>
         ) : null}
         <div className="my-3 text-center">
