@@ -36,7 +36,8 @@ class ZapFullView extends PureComponent {
       tokenInfo,
       tokenAddress,
       volume,
-      illustration
+      illustration,
+      stats
     } = this.props;
 
     return (
@@ -139,20 +140,20 @@ class ZapFullView extends PureComponent {
                   </b>
                 </span>
               ) : null}
-              {volume ? (
+              {stats ? (
                 <span>
                   <h6 style={{ fontSize: '0.9em' }}>
                     DEPLOYED THROUGH THIS ZAP:
                   </h6>
                   <h6>
                     <b style={{ fontSize: '1.8em' }}>
-                      {this.numberWithCommas(volume)} ETH
+                    {stats.volumeETH ? this.numberWithCommas(stats.volumeETH.toFixed(0)) : '-'} ETH
                     </b>
                     <p
                       className="pt-1"
                       style={{ fontSize: '0.6em', opacity: '70%' }}
                     >
-                      Updated every 6 hours
+                      Updated {new Date(stats.updated).toLocaleString()}
                     </p>
                   </h6>
                 </span>
