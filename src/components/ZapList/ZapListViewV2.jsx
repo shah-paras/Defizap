@@ -85,8 +85,8 @@ const Zap = props => {
                 </h6>
               </span>
             ) : (
-              ''
-            )}
+                ''
+              )}
             {props.platformsUsed ? (
               <span>
                 <h6 style={{ fontSize: '0.8em' }}>PLATFORMS USED:</h6>
@@ -111,8 +111,8 @@ const Zap = props => {
                 </h6>
               </span>
             ) : (
-              ''
-            )}
+                ''
+              )}
             {props.metamaskInteractionsSaved ? (
               <span>
                 <h6 style={{ fontSize: '0.8em' }}>
@@ -127,18 +127,18 @@ const Zap = props => {
                 </h6>
               </span>
             ) : null}
-            {props.volume ? (
+            {props.stats ? (
               <span>
                 <h6 style={{ fontSize: '0.9em' }}>DEPLOYED THROUGH THIS ZAP:</h6>
                 <h6>
                   <b style={{ fontSize: '1.8em' }}>
-                    {props.volume ? numberWithCommas(props.volume) : '-'} ETH
+                    {props.stats.volumeETH ? numberWithCommas(props.stats.volumeETH.toFixed(0)) : '-'} ETH
                   </b>
                   <p
                     className="pt-1"
                     style={{ fontSize: '0.6em', opacity: '70%' }}
                   >
-                    Updated every 6 hours
+                    Updated {new Date(props.stats.updated).toLocaleString()}
                   </p>
                 </h6>
               </span>
@@ -149,7 +149,7 @@ const Zap = props => {
       <Col>
         {props.isOrderable ? (
           <div className="mt-md-2 mt-2 pb-md-0 pb-3 d-flex justify-content-center">
-            <a style={{whiteSpace:'nowrap'}}href={`/zaps/${props.id}`}>Learn More</a>
+            <a style={{ whiteSpace: 'nowrap' }} href={`/zaps/${props.id}`}>Learn More</a>
           </div>
         ) : null}
         <div className="my-3 text-center">
