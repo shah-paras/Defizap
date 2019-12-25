@@ -11,7 +11,7 @@
   }
 
   .giftButton:hover {
-    background: linear-gradient(90deg, #4776E6 0%, #4776E6 100%);
-      border: none;
+    background-image: linear-gradient(to right, #2b6d48 0%, #2b6d48 51%, #2b6d48 100%);
+    border: none;
   } 
   
