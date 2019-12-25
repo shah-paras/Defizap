@@ -353,7 +353,6 @@ class GiftButtonContainer extends React.Component {
   render() {
     const { isOrderable, name, block, size } = this.props;
     return (
-      <Row className="justify-content-center">
         <>
           {isOrderable ? (
             // eslint-disable-next-line jsx-a11y/accessible-emoji
@@ -386,7 +385,6 @@ class GiftButtonContainer extends React.Component {
           )}
           {this.renderModal()}
         </>
-      </Row>
     );
   }
 }
