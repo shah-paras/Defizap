@@ -146,21 +146,17 @@ const Zap = props => {
           </Col>
         </Row>
       </Col>
-      <Col>
-        {props.isOrderable ? (
+      {props.isOrderable ? (
           <div className="mt-md-2 mt-2 pb-md-0 pb-3 d-flex justify-content-center">
             <a style={{ whiteSpace: 'nowrap' }} href={`/zaps/${props.id}`}>Learn More</a>
           </div>
         ) : null}
-        <div className="my-3 text-center">
-          <div className="m-2">
-            <BuyButtonContainer {...props} block />
-          </div>
-          <div className="m-2">
-            <GiftButton {...props} block />
-          </div>
-        </div>
-      </Col>
+      <Row className='justify-content-center mt-3 mb-2 px-4'>
+        <BuyButtonContainer {...props} block />
+      </Row>
+      <Row className='justify-content-center mb-4 px-4'>
+        <GiftButton {...props} block />
+      </Row>
     </Col>
   );
 };
