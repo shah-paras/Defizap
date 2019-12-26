@@ -85,7 +85,7 @@ class GiftButtonContainer extends React.Component {
       }
       const networkId = await web3.eth.net.getId();
       const { ens } = web3.eth;
-      let isInvalidAddress=true;
+      //let isInvalidAddress=true;
       /*if(this.state.toAddress.indexOf(".")!=-1){
         //this if checks that if the address has '.' present,if true then its an ENS address
         web3.eth.ens.getAddress(this.state.toAddress).then(function (address) {
@@ -95,7 +95,7 @@ class GiftButtonContainer extends React.Component {
         }); 
       }
       else{*/
-        isInvalidAddress = !(await web3.utils.isAddress(
+      const isInvalidAddress = !(await web3.utils.isAddress(
           this.state.toAddress
         ));
       //}
@@ -199,20 +199,21 @@ class GiftButtonContainer extends React.Component {
     await this.setState({ addressToPrint: this.state.toAddress });
     if(this.state.toAddress.length >= 1)
       await this.setState({ tick: <Spinner animation="border" className="loader"><span className="sr-only">Loading...</span></Spinner>});
-    else
-    await this.setState({ tick: ""});
-    
+    else{
+      await this.setState({ tick: ""});
+      await this.setState({cross:""});
+    }
     var newAddress;    
+    let web3;
+    if (
+      typeof window.ethereum !== 'undefined' ||
+      typeof window.web3 !== 'undefined'
+    ) {
+      const provider = window.ethereum || window.web3.currentProvider;
+      web3 = new Web3(provider);
+    }
     if(this.state.toAddress.indexOf(".eth")!=-1 && (this.state.toAddress.length-this.state.toAddress.indexOf(".eth")==4) ){
-      
-      let web3;
-      if (
-        typeof window.ethereum !== 'undefined' ||
-        typeof window.web3 !== 'undefined'
-      ) {
-        const provider = window.ethereum || window.web3.currentProvider;
-        web3 = new Web3(provider);
-      }
+    
 
     await web3.eth.ens.getAddress(this.state.toAddress.trim()).then(function (address) {
         newAddress = address;    
@@ -223,6 +224,15 @@ class GiftButtonContainer extends React.Component {
       this.setState({tick: <Button className='tickbtn' variant='success' >&nbsp;✓&nbsp;</Button>});
       this.setState({cross: <Button className='xbtn' variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
 
+    }
+    else if(this.state.toAddress.length==42){
+      let isInvalidAddress = !(await web3.utils.isAddress(
+        this.state.toAddress
+      ));
+      if(!isInvalidAddress){
+        this.setState({tick: <Button className='tickbtn' variant='success' >&nbsp;✓&nbsp;</Button>});
+        this.setState({cross: <Button className='xbtn' variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
+      }
     }
     
   };
