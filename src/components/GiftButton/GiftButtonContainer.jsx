@@ -37,7 +37,8 @@ class GiftButtonContainer extends React.Component {
       showCheck: false,
       gasMode: 'average',
       toAddress: '',
-      txId: ''
+      txId: '',
+      addressToPrint:''
     };
   }
 
@@ -194,8 +195,11 @@ class GiftButtonContainer extends React.Component {
   handleAddressChange = async event => {
     
     await this.setState({ toAddress: event.target.value });
+    await this.setState({ addressToPrint: this.state.toAddress });
+    
     var newAddress;    
-    if(this.state.toAddress.indexOf(".eth")!=-1){
+    if(this.state.toAddress.indexOf(".eth")!=-1 && (this.state.toAddress.length-this.state.toAddress.indexOf(".eth")==4) ){
+      
       let web3;
       if (
         typeof window.ethereum !== 'undefined' ||
@@ -209,7 +213,7 @@ class GiftButtonContainer extends React.Component {
         newAddress = address;    
       }); 
       
-      
+      this.setState({addressToPrint:this.state.toAddress+" : "+newAddress});
       this.setState({toAddress:newAddress}); 
     }
     
@@ -218,6 +222,11 @@ class GiftButtonContainer extends React.Component {
   setGasMode = async gasMode => {
     await this.setState({ gasMode });
   };
+
+  cancelAddress= async event => {
+    this.setState({toAddress:""});
+    this.setState({addressToPrint:""});
+  }
 
   async initialize() {
     try {
@@ -231,7 +240,7 @@ class GiftButtonContainer extends React.Component {
   }
 
   renderModal() {
-    const { open, value, toAddress } = this.state;
+    const { open, value, toAddress,addressToPrint } = this.state;
     const {
       name,
       ensAddress,
@@ -260,10 +269,11 @@ class GiftButtonContainer extends React.Component {
                     required
                     minLength="40"
                     onChange={ this.handleAddressChange}
-                    value={toAddress}
-                    placeholder="Enter Ethereum address..."
+                    value={addressToPrint}
+                    placeholder="Enter public address(0x) or ENS address..."
                     style={{ width: '80%' }}
                   />
+                  <Button className="xbtn" variant="danger" onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>
                 </Column>
                 <Column className="mt-2">
                   <b>

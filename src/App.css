@@ -172,6 +172,14 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-top: 15px;
 }
 
+.xbtn{
+  border: red 0.1px solid;
+  border-radius: 50px; 
+  margin-left: 5px;
+  padding: 1px;
+  background-color: red;
+}
+
 .sendcontents input {
   border-top: none;
   border-right: none;
