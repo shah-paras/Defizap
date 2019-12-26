@@ -13,7 +13,7 @@ const Zaps = {
       decimals: 8
     },
     gasLimitRequirement: '1500000',
-    volume: '6',
+    volume: '8',
     illustration: 'cdai_illustration.svg',
     platformsUsed: [
       {
@@ -85,7 +85,7 @@ const Zaps = {
       decimals: 18
     },
     gasLimitRequirement: '1500000',
-    volume: 1497,
+    volume: 1499,
     illustration: 'sETH_illustration.svg',
     platformsUsed: [
       {
@@ -258,7 +258,7 @@ const Zaps = {
       decimals: 18
     },
     gasLimitRequirement: '1500000',
-    volume: 41,
+    volume: 42,
     illustration: 'snx_illustration.svg',
     platformsUsed: [
       {
@@ -442,7 +442,7 @@ const Zaps = {
     numberOfInteractions: 4,
     ensAddress: 'Lender.DeFiZap.eth',
     gasLimitRequirement: '7000000',
-    volume: 8,
+    volume: 9,
     components: [
       {
         name: 'cDAI',

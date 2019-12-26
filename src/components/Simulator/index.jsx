@@ -152,9 +152,9 @@ class Simulator extends PureComponent {
               <OverlayTrigger
                 overlay={
                   <Tooltip>
-                    {tokenInfo.name === 'CHAI'
-                      ? `In order to avoid excessive slippage, half of your input ETH is converted to DAI on Kyber before being wrapped into CHAI. Estimated Pool Share includes slippage and fees (charged by Kyber/Uniswap) associated with exchanging ETH to DAI before minting and returning liquidity tokens to you.`
-                      : `Estimated Pool Share includes slippage and fees (charged by Kyber/Uniswap) associated with exchanging ETH to ${tokenInfo.name} before minting and returning liquidity tokens to you.`}
+                    {tokenInfo.name === 'CHAI' || tokenInfo.name ==='cDAI'
+                      ? `In order to avoid excessive slippage, half of your input ETH is converted to DAI on Kyber before being wrapped into ${tokenInfo.name}. Ether split is weighted 50.5% into entry ERC20. After adding the liquidity to the pool, we return a small fraction of the entry ERC20 which wasn't used.`
+                      : `Ether split is weighted 50.5% into entry ERC20. After adding the liquidity to the pool, we return a small fraction of the entry ERC20 which wasn't used.`}
                   </Tooltip>
                 }
                 placement="right"

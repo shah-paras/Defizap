@@ -36,7 +36,8 @@ class ZapFullView extends PureComponent {
       tokenInfo,
       tokenAddress,
       volume,
-      illustration
+      illustration,
+      stats
     } = this.props;
 
     return (
@@ -48,14 +49,18 @@ class ZapFullView extends PureComponent {
             </Col>
           </Row>
           <br />
-          <Row className="d-flex justify-content-center align-items-center">
-            <Col xs={12} sm={4} className="m-1">
-              <BuyButtonContainer {...this.props} size="lg" />
-            </Col>
-            <Col xs={12} sm={4} className="justify-content-start m-1">
-              <GiftButton {...this.props} size="lg" />
+          <Row className="justify-content-center mt-3 mb-2 px-4">
+            <Col xs={12} md={6} className="justify-content-center text-center">
+              <BuyButtonContainer {...this.props} size="md" />
             </Col>
           </Row>
+          <Row className="justify-content-center mb-4 px-4">
+            <Col xs={12} md={6} className="justify-content-center text-center">
+              <GiftButton {...this.props} size="md" />
+            </Col>
+
+          </Row>
+
           <Row className="justify-content-center align-text-center">
             <Col xs={12} md={6} className="justify-content-center text-center">
               {oneClickAccessTo ? (
@@ -139,20 +144,20 @@ class ZapFullView extends PureComponent {
                   </b>
                 </span>
               ) : null}
-              {volume ? (
+              {stats ? (
                 <span>
                   <h6 style={{ fontSize: '0.9em' }}>
                     DEPLOYED THROUGH THIS ZAP:
                   </h6>
                   <h6>
                     <b style={{ fontSize: '1.8em' }}>
-                      {this.numberWithCommas(volume)} ETH
+                      {stats.volumeETH ? this.numberWithCommas(stats.volumeETH.toFixed(0)) : '-'} ETH
                     </b>
                     <p
                       className="pt-1"
                       style={{ fontSize: '0.6em', opacity: '70%' }}
                     >
-                      Updated every 6 hours
+                      Updated {new Date(stats.updated).toLocaleString()}
                     </p>
                   </h6>
                 </span>

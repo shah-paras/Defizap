@@ -307,7 +307,6 @@ class LenderBuyButton extends React.Component {
   render() {
     const { isOrderable, name, block, size } = this.props;
     return (
-      <Row className='justify-content-center'>
 
       <>
         {isOrderable ? (
@@ -341,7 +340,6 @@ class LenderBuyButton extends React.Component {
         )}
         {this.renderModal()}
       </>
-      </Row>
     );
   }
 }

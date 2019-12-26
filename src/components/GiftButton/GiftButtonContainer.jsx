@@ -315,7 +315,7 @@ class GiftButtonContainer extends React.Component {
                 </ToggleButtonGroup>
               </Row>
               {/* <Row className='justify-content-center py-2'>1.3 Gwei ($0.28)</Row> */}
-              <Row>
+              {/* <Row>
                 <Column sm={12} mb={8}>
                   <p className="pt-2" style={{ fontSize: '0.75em' }}>
                     Alternatively send ETH directly to {ensAddress} using
@@ -324,7 +324,7 @@ class GiftButtonContainer extends React.Component {
                     {gasLimitRequirement} gas.
                   </p>
                 </Column>
-              </Row>
+              </Row> */}
             </div>
             <div className="my-4 row justify-content-center">
               <input
@@ -353,7 +353,6 @@ class GiftButtonContainer extends React.Component {
   render() {
     const { isOrderable, name, block, size } = this.props;
     return (
-      <Row className="justify-content-center">
         <>
           {isOrderable ? (
             // eslint-disable-next-line jsx-a11y/accessible-emoji
@@ -386,7 +385,6 @@ class GiftButtonContainer extends React.Component {
           )}
           {this.renderModal()}
         </>
-      </Row>
     );
   }
 }
