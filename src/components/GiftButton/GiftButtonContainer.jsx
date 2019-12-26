@@ -82,7 +82,7 @@ class GiftButtonContainer extends React.Component {
       const networkId = await web3.eth.net.getId();
       const { ens } = web3.eth;
       let isInvalidAddress=true;
-      if(this.state.toAddress.indexOf(".")!=-1){
+      /*if(this.state.toAddress.indexOf(".")!=-1){
         //this if checks that if the address has '.' present,if true then its an ENS address
         web3.eth.ens.getAddress(this.state.toAddress).then(function (address) {
           this.setState({toAddress: address});
@@ -90,11 +90,11 @@ class GiftButtonContainer extends React.Component {
           isInvalidAddress=false;
         }); 
       }
-      else{
+      else{*/
         isInvalidAddress = !(await web3.utils.isAddress(
           this.state.toAddress
         ));
-      }
+      //}
       
       await this.getGas();
       if (networkId !== 1 || isInvalidAddress) {
@@ -188,9 +188,31 @@ class GiftButtonContainer extends React.Component {
       console.log(error);
     }
   };
-
+  setAdd(add){
+    this.setState({toAddress:add});
+  }
   handleAddressChange = async event => {
-    this.setState({ toAddress: event.target.value });
+    
+    await this.setState({ toAddress: event.target.value });
+    var newAddress;    
+    if(this.state.toAddress.indexOf(".eth")!=-1){
+      let web3;
+      if (
+        typeof window.ethereum !== 'undefined' ||
+        typeof window.web3 !== 'undefined'
+      ) {
+        const provider = window.ethereum || window.web3.currentProvider;
+        web3 = new Web3(provider);
+      }
+
+    await web3.eth.ens.getAddress(this.state.toAddress.trim()).then(function (address) {
+        newAddress = address;    
+      }); 
+      
+      
+      this.setState({toAddress:newAddress}); 
+    }
+    
   };
 
   setGasMode = async gasMode => {
@@ -237,7 +259,7 @@ class GiftButtonContainer extends React.Component {
                     type="text"
                     required
                     minLength="40"
-                    onChange={this.handleAddressChange}
+                    onChange={ this.handleAddressChange}
                     value={toAddress}
                     placeholder="Enter Ethereum address..."
                     style={{ width: '80%' }}
