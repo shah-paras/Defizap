@@ -18,7 +18,7 @@ const WhyUseDeFiZap = () => (
         <h5>Save Time</h5>
         <p>
         DeFiZap is a system of smart contracts - Zaps - that deploys 
-        your Ether across multiple DeFi protocols in one transaction, saving your time.
+        your Ether (and soon DAI) across multiple DeFi protocols in one transaction, saving your time.
         </p>
       </Col>
       <Col sm md lg>
