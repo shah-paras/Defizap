@@ -184,6 +184,7 @@ class LenderBuyButton extends React.Component {
       tokenInfo,
       tokenAddress
     } = this.props;
+    
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
         <ModalBody>

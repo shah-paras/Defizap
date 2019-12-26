@@ -81,9 +81,21 @@ class GiftButtonContainer extends React.Component {
       }
       const networkId = await web3.eth.net.getId();
       const { ens } = web3.eth;
-      const isInvalidAddress = !(await web3.utils.isAddress(
-        this.state.toAddress
-      ));
+      let isInvalidAddress=true;
+      if(this.state.toAddress.indexOf(".")!=-1){
+        //this if checks that if the address has '.' present,if true then its an ENS address
+        web3.eth.ens.getAddress(this.state.toAddress).then(function (address) {
+          this.setState({toAddress: address});
+          //console.log(address);
+          isInvalidAddress=false;
+        }); 
+      }
+      else{
+        isInvalidAddress = !(await web3.utils.isAddress(
+          this.state.toAddress
+        ));
+      }
+      
       await this.getGas();
       if (networkId !== 1 || isInvalidAddress) {
         if (isInvalidAddress) {
@@ -212,8 +224,14 @@ class GiftButtonContainer extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className="buycontainer">
               <h1>{name}</h1>
-              <Row className="d-flex justify-content-center my-1 py-0">
-                <Column xs={12}>Send to</Column>
+              <Row className="d-flex justify-content-center my-1 py-0 sendcontents" >
+                <Column xs={12}>
+                  <div className="buycontents">
+                    <p className="buytext pt-2 mr-2 mb-0">
+                      Send to
+                    </p>
+                  </div>
+                </Column>
                 <Column xs={12}>
                   <input
                     type="text"
@@ -225,7 +243,7 @@ class GiftButtonContainer extends React.Component {
                     style={{ width: '80%' }}
                   />
                 </Column>
-                <Column>
+                <Column className="mt-2">
                   <b>
                     No ETH Wallet?{' '}
                     <a
