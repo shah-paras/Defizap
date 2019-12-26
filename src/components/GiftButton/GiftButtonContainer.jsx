@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, ModalBody } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import Spinner from 'react-bootstrap/Spinner';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 // import Tooltip from 'react-bootstrap/Tooltip';
 // import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -38,7 +39,9 @@ class GiftButtonContainer extends React.Component {
       gasMode: 'average',
       toAddress: '',
       txId: '',
-      addressToPrint:''
+      addressToPrint:'',
+      tick:'',
+      cross:''
     };
   }
 
@@ -189,13 +192,15 @@ class GiftButtonContainer extends React.Component {
       console.log(error);
     }
   };
-  setAdd(add){
-    this.setState({toAddress:add});
-  }
+  
   handleAddressChange = async event => {
     
     await this.setState({ toAddress: event.target.value });
     await this.setState({ addressToPrint: this.state.toAddress });
+    if(this.state.toAddress.length >= 1)
+      await this.setState({ tick: <Spinner animation="border" className="loader"><span className="sr-only">Loading...</span></Spinner>});
+    else
+    await this.setState({ tick: ""});
     
     var newAddress;    
     if(this.state.toAddress.indexOf(".eth")!=-1 && (this.state.toAddress.length-this.state.toAddress.indexOf(".eth")==4) ){
@@ -215,6 +220,9 @@ class GiftButtonContainer extends React.Component {
       
       this.setState({addressToPrint:this.state.toAddress+" : "+newAddress});
       this.setState({toAddress:newAddress}); 
+      this.setState({tick: <Button className='tickbtn' variant='success' >&nbsp;✓&nbsp;</Button>});
+      this.setState({cross: <Button className='xbtn' variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
+
     }
     
   };
@@ -226,6 +234,8 @@ class GiftButtonContainer extends React.Component {
   cancelAddress= async event => {
     this.setState({toAddress:""});
     this.setState({addressToPrint:""});
+    this.setState({tick:""});
+    this.setState({cross:""});
   }
 
   async initialize() {
@@ -249,6 +259,7 @@ class GiftButtonContainer extends React.Component {
       tokenInfo,
       tokenAddress
     } = this.props;
+
     return (
       <Modal isOpen={open} toggle={this.toggle} centered>
         <ModalBody>
@@ -264,6 +275,7 @@ class GiftButtonContainer extends React.Component {
                   </div>
                 </Column>
                 <Column xs={12}>
+                  {this.state.tick}
                   <input
                     type="text"
                     required
@@ -273,7 +285,7 @@ class GiftButtonContainer extends React.Component {
                     placeholder="Enter public address(0x) or ENS address..."
                     style={{ width: '80%' }}
                   />
-                  <Button className="xbtn" variant="danger" onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>
+                  {this.state.cross}
                 </Column>
                 <Column className="mt-2">
                   <b>

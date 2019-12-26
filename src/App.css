@@ -172,6 +172,27 @@ input[type="number"]::-webkit-outer-spin-button {
   padding-top: 15px;
 }
 
+.tickbtn{
+  border-radius: 50px; 
+  margin-right: 5px;
+  padding: 1px;
+}
+
+.tickbtn:focus{
+  border: 1px solid #28a745;
+  box-shadow: none;
+}
+.tickbtn:not(:disabled):not(.disabled):active:focus{
+  box-shadow: none;
+  background: #28a745; 
+  border: 1px solid #28a745;
+}
+.tickbtn:hover{
+  cursor: default;
+  background: #28a745; 
+  border: 1px solid #28a745;
+}
+
 .xbtn{
   border: red 0.1px solid;
   border-radius: 50px; 
@@ -195,4 +216,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .sendcontents input:focus {
   outline: none;
+}
+
+.loader{
+  color: #28a745; 
+  margin-right: 10px;
+  height: 26px;
+  width: 26px;
 }
