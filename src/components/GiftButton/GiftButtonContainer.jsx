@@ -4,13 +4,9 @@ import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import Spinner from 'react-bootstrap/Spinner';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-// import Tooltip from 'react-bootstrap/Tooltip';
-// import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Row from 'react-bootstrap/Row';
 import Column from 'react-bootstrap/Col';
-import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
-
 import styles from './GiftButton.module.css';
 import '../../App.css';
 import Loading from '../Loading';
@@ -20,7 +16,7 @@ import Simulator from '../Simulator';
 import contractProvider from '../../utils/giftweb3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
-import { getWeb3 } from '../../web3/web3.js'
+import { getWeb3 } from '../../web3/web3';
 import {
   fetchRequest,
   buildOptions,
@@ -40,24 +36,11 @@ class GiftButtonContainer extends React.Component {
       gasMode: 'average',
       toAddress: '',
       txId: '',
-      addressToPrint:'',
-      tick:'',
-      cross:''
+      addressToPrint: '',
+      tick: '',
+      cross: ''
     };
   }
-
-  /*getWeb3 = () => {
-    let web3;
-      if (
-        typeof window.ethereum !== 'undefined' ||
-        typeof window.web3 !== 'undefined'
-      ) {
-        const provider = window.ethereum || window.web3.currentProvider;
-        //web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io"));
-        web3 = new Web3(provider);
-      }
-      return web3;
-  }*/
 
   async getGas() {
     const response = await fetchRequest(
@@ -81,8 +64,6 @@ class GiftButtonContainer extends React.Component {
     });
   };
 
-  
-
   handleSubmit = async event => {
     event.preventDefault();
     registerEvent({
@@ -91,16 +72,14 @@ class GiftButtonContainer extends React.Component {
     });
     try {
       await this.initialize();
-
-      let web3 = getWeb3();
-      
+      const web3 = getWeb3();
       const networkId = await web3.eth.net.getId();
       const { ens } = web3.eth;
-      
+
       const isInvalidAddress = !(await web3.utils.isAddress(
-          this.state.toAddress
-        ));
-      
+        this.state.toAddress
+      ));
+
       await this.getGas();
       if (networkId !== 1 || isInvalidAddress) {
         if (isInvalidAddress) {
@@ -193,79 +172,103 @@ class GiftButtonContainer extends React.Component {
       console.log(error);
     }
   };
-  
+
   handleAddressChange = async event => {
-    
-    await this.setState({ toAddress: event.target.value });
-    await this.setState({ addressToPrint: this.state.toAddress });
-    if(this.state.toAddress.length >= 1)
-      await this.setState({ tick: <Spinner animation="border" className={`${styles.loader}`}><span className="sr-only">Loading...</span></Spinner>});
-    else{
-      await this.setState({ tick: ""});
-      await this.setState({cross:""});
+    await this.setState({
+      toAddress: event.target.value,
+      addressToPrint: event.target.value
+    });
+    if (this.state.toAddress.length >= 1) {
+      await this.setState({
+        tick: (
+          <Spinner animation="border" className={`${styles.loader}`}>
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )
+      });
+    } else {
+      await this.setState({ tick: '', cross: '' });
     }
-    let newAddress;    
-    let web3 = getWeb3();
-    let flag=1;
-    let thisObj = this;
-    if(this.state.toAddress.indexOf(".eth")!=-1 && (this.state.toAddress.length-this.state.toAddress.indexOf(".eth")==4) ){
-    
-      await web3.eth.ens.getAddress(this.state.toAddress.trim()).then(function (address) {
-        flag=2;  
-        newAddress = address;    
-      }).catch(function (address){
-        thisObj.setState({tick: <Button className={`${styles.cross}`}  >&nbsp;X&nbsp;</Button>});
-      }); 
-      
-      if(flag==2){
-        //this.setState({addressToPrint:this.state.toAddress+" : "+newAddress});
-        this.setState({toAddress:newAddress}); 
-        this.setState({tick: <Button className={`${styles.tickbtn}`} variant='success' >&nbsp;✓&nbsp;</Button>});
-        //this.setState({cross: <span className={`${styles.xbtn}`} onClick={this.cancelAddress}>&nbsp;X&nbsp;</span>});
+    let newAddress;
+    const web3 = getWeb3();
+    let flag = 1;
+    const thisObj = this;
+    if (
+      this.state.toAddress.indexOf('.eth') !== -1 &&
+      this.state.toAddress.length - this.state.toAddress.indexOf('.eth') === 4
+    ) {
+      await web3.eth.ens
+        .getAddress(this.state.toAddress.trim())
+        .then(function(address) {
+          flag = 2;
+          newAddress = address;
+        })
+        .catch(function() {
+          thisObj.setState({
+            tick: <Button className={`${styles.cross}`}>&nbsp;X&nbsp;</Button>
+          });
+        });
+
+      if (flag === 2) {
+        this.setState({
+          toAddress: newAddress,
+          tick: (
+            <Button className={`${styles.tickbtn}`} variant="success">
+              &nbsp;✓&nbsp;
+            </Button>
+          )
+        });
+      } else {
+        this.setState({
+          tick: <Button className={`${styles.cross}`}>&nbsp;X&nbsp;</Button>
+        });
       }
-      else{
-        this.setState({tick: <Button className={`${styles.cross}`}  >&nbsp;X&nbsp;</Button>});
-        this.setState({cross: ""});
-      }
-    }
-    else if(this.state.toAddress.length==42){
-      let isInvalidAddress = !(await web3.utils.isAddress(
+    } else if (this.state.toAddress.length === 42) {
+      const isInvalidAddress = !(await web3.utils.isAddress(
         this.state.toAddress
       ));
-      //console.log("is invsl",isInvalidAddress+this.state.toAddress);
-      if(!isInvalidAddress){
-        //console.log("ins",isInvalidAddress);
-        this.setState({tick: <Button className={`${styles.tickbtn}`} variant='success' >&nbsp;✓&nbsp;</Button>});
-        //this.setState({cross: <span className={`${styles.xbtn}`}  onClick={this.cancelAddress}>&nbsp;X&nbsp;</span>});
-      }
-      else{
-
-        this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
-        this.setState({cross: ""});
+      if (!isInvalidAddress) {
+        this.setState({
+          tick: (
+            <Button className={`${styles.tickbtn}`} variant="success">
+              &nbsp;✓&nbsp;
+            </Button>
+          )
+        });
+      } else {
+        this.setState({
+          tick: (
+            <Button className={`${styles.cross}`} variant="danger">
+              &nbsp;X&nbsp;
+            </Button>
+          )
+        });
       }
     }
-    
   };
 
   handleAddressChangeBlur = async event => {
-    if(this.state.toAddress.length==42 && event.target.value.indexOf(".eth")!=-1){
-      this.setState({addressToPrint: event.target.value+" : "+this.state.toAddress});
-    }
-    else if(this.state.toAddress.length==42){
-      this.setState({addressToPrint: this.state.toAddress});
-    }
-    else if((event.target.value.length<42 || event.target.value.indexOf(".eth")==-1) && event.target.value.length>1 ){
-      this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
-        this.setState({cross: ""});
+    if (
+      this.state.toAddress.length === 42 &&
+      event.target.value.indexOf('.eth') !== -1
+    ) {
+      this.setState({
+        addressToPrint: `${event.target.value} : ${this.state.toAddress}`
+      });
     }
   };
 
   handleAddressChangeFocus = async event => {
-    //console.log("val",event.target.value.length);
-    //console.log("val",this.state.addressToPrint.length);
-    
-    if((event.target.value.length == this.state.addressToPrint.length) && (this.state.addressToPrint.indexOf(".eth")!=-1) ){
-      await this.setState({addressToPrint: this.state.addressToPrint.substring(0,(this.state.addressToPrint.indexOf(".eth")+4))});
+    if (
+      event.target.value.length === this.state.addressToPrint.length &&
+      this.state.addressToPrint.indexOf('.eth') !== -1
+    ) {
+      await this.setState({
+        addressToPrint: this.state.addressToPrint.substring(
+          0,
+          this.state.addressToPrint.indexOf('.eth') + 4
+        )
+      });
     }
   };
 
@@ -273,12 +276,9 @@ class GiftButtonContainer extends React.Component {
     await this.setState({ gasMode });
   };
 
-  cancelAddress= async event => {
-    this.setState({toAddress:""});
-    this.setState({addressToPrint:""});
-    this.setState({tick:""});
-    this.setState({cross:""});
-  }
+  cancelAddress = async event => {
+    this.setState({ toAddress: '', addressToPrint: '', tick: '', cross: '' });
+  };
 
   async initialize() {
     try {
@@ -292,7 +292,7 @@ class GiftButtonContainer extends React.Component {
   }
 
   renderModal() {
-    const { open, value, toAddress,addressToPrint } = this.state;
+    const { open, value, toAddress, addressToPrint } = this.state;
     const {
       name,
       ensAddress,
@@ -308,16 +308,15 @@ class GiftButtonContainer extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <div className={`${styles.buycontainer}`}>
               <h1>{name}</h1>
-              <Row className="d-flex justify-content-center my-1 py-0" className={`${styles.sendcontents}`} >
+              <Row
+                className={`${styles.sendcontents} d-flex justify-content-center my-1 py-0` }
+              >
                 <Column xs={12}>
                   <div className={`${styles.butcontents}`}>
-                    <p className={`${styles.buytext1}`}>
-                      Send to
-                    </p>
+                    <p className={`${styles.buytext1}`}>Send to</p>
                   </div>
                 </Column>
                 <Column xs={12}>
-                  
                   {this.state.tick}
                   <input
                     type="text"
@@ -325,7 +324,7 @@ class GiftButtonContainer extends React.Component {
                     minLength="40"
                     onFocus={this.handleAddressChangeFocus}
                     onBlur={this.handleAddressChangeBlur}
-                    onChange={ this.handleAddressChange}
+                    onChange={this.handleAddressChange}
                     value={addressToPrint}
                     placeholder="Enter public address(0x) or ENS address..."
                     style={{ width: '80%' }}
@@ -346,7 +345,9 @@ class GiftButtonContainer extends React.Component {
                 </Column>
               </Row>
               <div className={`${styles.buycontents}`}>
-                <p className="pt-4 mr-2" className={`${styles.buytext}`}>INPUT</p>
+                <p className={`${styles.buytext} pt-4 mr-2`}>
+                  INPUT
+                </p>
                 <input
                   min={0.01}
                   type="number"
@@ -365,7 +366,9 @@ class GiftButtonContainer extends React.Component {
                         }
                   }
                 />
-                <p className="pt-4 ml-2" className={`${styles.buytext}`}>ETH</p>
+                <p className={`${styles.buytext} pt-4 ml-2`}>
+                  ETH
+                </p>
               </div>
               {hasReturnsChart ? (
                 <Simulator
@@ -460,38 +463,38 @@ class GiftButtonContainer extends React.Component {
   render() {
     const { isOrderable, name, block, size } = this.props;
     return (
-        <>
-          {isOrderable ? (
-            // eslint-disable-next-line jsx-a11y/accessible-emoji
-            <Button
-              className={`${styles.giftButton}`}
-              onClick={() => {
-                this.setState({ open: true });
-                registerEvent({
-                  category: BUY_ZAP,
-                  action: name
-                });
-              }}
-              disabled={!isOrderable}
-              // variant="outline-danger"
-              size={!isEmpty(size) ? size : 'md'}
-              block={block}
-            >
-              🎁 Gift This Zap
-            </Button>
-          ) : (
-            <Button
-              onClick={() => this.setState({ open: true })}
-              disabled={!isOrderable}
-              variant="outline-primary"
-              size={!isEmpty(size) ? size : 'auto'}
-              block={block}
-            >
-              Coming Soon
-            </Button>
-          )}
-          {this.renderModal()}
-        </>
+      <>
+        {isOrderable ? (
+          // eslint-disable-next-line jsx-a11y/accessible-emoji
+          <Button
+            className={`${styles.giftButton}`}
+            onClick={() => {
+              this.setState({ open: true });
+              registerEvent({
+                category: BUY_ZAP,
+                action: name
+              });
+            }}
+            disabled={!isOrderable}
+            // variant="outline-danger"
+            size={!isEmpty(size) ? size : 'md'}
+            block={block}
+          >
+            🎁 Gift This Zap
+          </Button>
+        ) : (
+          <Button
+            onClick={() => this.setState({ open: true })}
+            disabled={!isOrderable}
+            variant="outline-primary"
+            size={!isEmpty(size) ? size : 'auto'}
+            block={block}
+          >
+            Coming Soon
+          </Button>
+        )}
+        {this.renderModal()}
+      </>
     );
   }
 }

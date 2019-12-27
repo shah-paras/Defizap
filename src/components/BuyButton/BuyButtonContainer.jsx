@@ -192,7 +192,7 @@ class LenderBuyButton extends React.Component {
             <div className={`${styles.buycontainer}`}>
               <h1>{name}</h1>
               <div className={`${styles.buycontents}`}>
-                <p className="pt-4 mr-2" className={`${styles.buytext}`}>INPUT</p>
+                <p className={`${styles.buytext} pt-4 mr-2`}>INPUT</p>
                 <input
                   min={0.01}
                   type="number"
@@ -211,7 +211,7 @@ class LenderBuyButton extends React.Component {
                         }
                   }
                 />
-                <p className="pt-4 ml-2" className={`${styles.buytext}`}>ETH</p>
+                <p className={`${styles.buytext} pt-4 ml-2`}>ETH</p>
               </div>
               {hasReturnsChart ? (
                 <Simulator
