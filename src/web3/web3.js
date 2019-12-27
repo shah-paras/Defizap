@@ -35,6 +35,7 @@ const wallets = [
   // { walletName: 'trust', preferred: true }
 ];
 
+
 const initializationOptions = {
   dappId: process.env.REACT_APP_BLOCKNATIVE_ID,
   networkId: 1,
@@ -57,4 +58,16 @@ const initializationOptions = {
 
 const onboard = Onboard(initializationOptions);
 
-export { onboard, web3 };
+ const getWeb3 = () => {
+  let web3;
+    if (
+      typeof window.ethereum !== 'undefined' ||
+      typeof window.web3 !== 'undefined'
+    ) {
+      const provider = window.ethereum || window.web3.currentProvider;
+      web3 = new Web3(provider);
+    }
+    return web3;
+}
+
+export { onboard, web3};

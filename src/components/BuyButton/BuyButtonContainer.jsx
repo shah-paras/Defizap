@@ -189,10 +189,10 @@ class LenderBuyButton extends React.Component {
       <Modal isOpen={open} toggle={this.toggle} centered>
         <ModalBody>
           <form onSubmit={this.handleSubmit}>
-            <div className="buycontainer">
+            <div className={`${styles.buycontainer}`}>
               <h1>{name}</h1>
-              <div className="buycontents">
-                <p className="buytext pt-4 mr-2">INPUT</p>
+              <div className={`${styles.buycontents}`}>
+                <p className="pt-4 mr-2" className={`${styles.buytext}`}>INPUT</p>
                 <input
                   min={0.01}
                   type="number"
@@ -211,7 +211,7 @@ class LenderBuyButton extends React.Component {
                         }
                   }
                 />
-                <p className="buytext pt-4 ml-2">ETH</p>
+                <p className="pt-4 ml-2" className={`${styles.buytext}`}>ETH</p>
               </div>
               {hasReturnsChart ? (
                 <Simulator

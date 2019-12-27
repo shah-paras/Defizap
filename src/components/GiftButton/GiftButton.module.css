@@ -48,8 +48,27 @@
     border-radius: 50px; 
     margin-right: 5px;
     padding: 1px;
+    background: red;
+    border: 1px solid red;
   }
   
+  .sendcontents input {
+    border-top: none;
+    border-right: none;
+    border-bottom: 3px solid rgb(43, 177, 96);
+    border-left: none;
+    border-image: initial;
+    color: rgb(43, 177, 96);
+    max-width: 100%;
+    overflow: hidden;
+    text-align: left;
+    width: 300px;
+    font-size: 20px;
+  }
+  .sendcontents input:focus {
+    outline: none;
+  }
+
   .cross:focus{
     border: 1px solid red;
     box-shadow: none;
@@ -71,10 +90,53 @@
   }
   
   .xbtn{
-    border: red 0.1px solid;
-    border-radius: 50px; 
+    border: none;
+    color: red; 
     margin-left: 5px;
     padding: 1px;
-    background-color: red;
+    background-color: none;
+  }
+
+  .buycontainer {
+    position: relative !important;
+    text-align: center !important;
+  }
+  
+  .buycontents {
+    display: inline-flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .buytext {
+    padding-top:1.5rem !important;
+    margin-right: .5rem !important;
+    margin-left: .5rem !important;
+    font-size: 22px !important;
+    color: #1d144f !important;
+  }
+  .buytext1 {
+    padding-top:0rem !important;
+    margin-bottom: 0rem;
+    font-size: 22px !important;
+    color: #1d144f !important;
+  }
+
+  .buycontents input {
+    border-top: none;
+    border-right: none;
+    border-bottom: 3px solid rgb(43, 177, 96);
+    border-left: none;
+    border-image: initial;
+    color: rgb(43, 177, 96);
+    max-width: 65%;
+    overflow: hidden;
+    text-align: left;
+    width: 70px;
+    font-size: 48px;
+  }
+  
+  .buycontents input:focus {
+    outline: none;
   }
   

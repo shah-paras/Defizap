@@ -20,6 +20,7 @@ import Simulator from '../Simulator';
 import contractProvider from '../../utils/giftweb3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
+//import { getWeb3 } from '../../web3/web3.js'
 import {
   fetchRequest,
   buildOptions,
@@ -45,6 +46,18 @@ class GiftButtonContainer extends React.Component {
     };
   }
 
+  getWeb3 = () => {
+    let web3;
+      if (
+        typeof window.ethereum !== 'undefined' ||
+        typeof window.web3 !== 'undefined'
+      ) {
+        const provider = window.ethereum || window.web3.currentProvider;
+        web3 = new Web3(provider);
+      }
+      return web3;
+  }
+
   async getGas() {
     const response = await fetchRequest(
       'https://ethgasstation.info/json/ethgasAPI.json',
@@ -67,17 +80,7 @@ class GiftButtonContainer extends React.Component {
     });
   };
 
-  getWeb3(){
-    let web3;
-    if (
-      typeof window.ethereum !== 'undefined' ||
-      typeof window.web3 !== 'undefined'
-    ) {
-      const provider = window.ethereum || window.web3.currentProvider;
-      web3 = new Web3(provider);
-    }
-    return web3;
-  } 
+  
 
   handleSubmit = async event => {
     event.preventDefault();
@@ -214,13 +217,13 @@ class GiftButtonContainer extends React.Component {
       }); 
       
       if(flag==2){
-        this.setState({addressToPrint:this.state.toAddress+" : "+newAddress});
+        //this.setState({addressToPrint:this.state.toAddress+" : "+newAddress});
         this.setState({toAddress:newAddress}); 
         this.setState({tick: <Button className={`${styles.tickbtn}`} variant='success' >&nbsp;✓&nbsp;</Button>});
-        this.setState({cross: <Button className={`${styles.xbtn}`} variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
+        //this.setState({cross: <span className={`${styles.xbtn}`} onClick={this.cancelAddress}>&nbsp;X&nbsp;</span>});
       }
       else{
-        this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
+        this.setState({tick: <Button className={`${styles.cross}`}  >&nbsp;X&nbsp;</Button>});
         this.setState({cross: ""});
       }
     }
@@ -228,14 +231,14 @@ class GiftButtonContainer extends React.Component {
       let isInvalidAddress = !(await web3.utils.isAddress(
         this.state.toAddress
       ));
-      
+      //console.log("is invsl",isInvalidAddress+this.state.toAddress);
       if(!isInvalidAddress){
-        console.log("in",isInvalidAddress);
+        //console.log("ins",isInvalidAddress);
         this.setState({tick: <Button className={`${styles.tickbtn}`} variant='success' >&nbsp;✓&nbsp;</Button>});
-        this.setState({cross: <Button className={`${styles.xbtn}`} variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
+        //this.setState({cross: <span className={`${styles.xbtn}`}  onClick={this.cancelAddress}>&nbsp;X&nbsp;</span>});
       }
       else{
-        
+
         this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
         this.setState({cross: ""});
       }
@@ -244,9 +247,24 @@ class GiftButtonContainer extends React.Component {
   };
 
   handleAddressChangeBlur = async event => {
-    if(event.target.value.length<42 || event.target.value.indexOf(".eth")==-1){
+    if(this.state.toAddress.length==42 && event.target.value.indexOf(".eth")!=-1){
+      this.setState({addressToPrint: event.target.value+" : "+this.state.toAddress});
+    }
+    else if(this.state.toAddress.length==42){
+      this.setState({addressToPrint: this.state.toAddress});
+    }
+    else if((event.target.value.length<42 || event.target.value.indexOf(".eth")==-1) && event.target.value.length>1 ){
       this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
         this.setState({cross: ""});
+    }
+  };
+
+  handleAddressChangeFocus = async event => {
+    //console.log("val",event.target.value.length);
+    //console.log("val",this.state.addressToPrint.length);
+    
+    if((event.target.value.length == this.state.addressToPrint.length) && (this.state.addressToPrint.indexOf(".eth")!=-1) ){
+      await this.setState({addressToPrint: this.state.addressToPrint.substring(0,(this.state.addressToPrint.indexOf(".eth")+4))});
     }
   };
 
@@ -287,22 +305,24 @@ class GiftButtonContainer extends React.Component {
       <Modal isOpen={open} toggle={this.toggle} centered>
         <ModalBody>
           <form onSubmit={this.handleSubmit}>
-            <div className="buycontainer">
+            <div className={`${styles.buycontainer}`}>
               <h1>{name}</h1>
-              <Row className="d-flex justify-content-center my-1 py-0 sendcontents" >
+              <Row className="d-flex justify-content-center my-1 py-0" className={`${styles.sendcontents}`} >
                 <Column xs={12}>
-                  <div className="buycontents">
-                    <p className="buytext pt-2 mr-2 mb-0">
+                  <div className={`${styles.butcontents}`}>
+                    <p className={`${styles.buytext1}`}>
                       Send to
                     </p>
                   </div>
                 </Column>
                 <Column xs={12}>
+                  
                   {this.state.tick}
                   <input
                     type="text"
                     required
                     minLength="40"
+                    onFocus={this.handleAddressChangeFocus}
                     onBlur={this.handleAddressChangeBlur}
                     onChange={ this.handleAddressChange}
                     value={addressToPrint}
@@ -324,8 +344,8 @@ class GiftButtonContainer extends React.Component {
                   </b>
                 </Column>
               </Row>
-              <div className="buycontents">
-                <p className="buytext pt-4 mr-2">INPUT</p>
+              <div className={`${styles.buycontents}`}>
+                <p className="pt-4 mr-2" className={`${styles.buytext}`}>INPUT</p>
                 <input
                   min={0.01}
                   type="number"
@@ -344,7 +364,7 @@ class GiftButtonContainer extends React.Component {
                         }
                   }
                 />
-                <p className="buytext pt-4 ml-2">ETH</p>
+                <p className="pt-4 ml-2" className={`${styles.buytext}`}>ETH</p>
               </div>
               {hasReturnsChart ? (
                 <Simulator
