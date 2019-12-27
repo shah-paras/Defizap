@@ -243,6 +243,13 @@ class GiftButtonContainer extends React.Component {
     
   };
 
+  handleAddressChangeBlur = async event => {
+    if(event.target.value.length<42 || event.target.value.indexOf(".eth")==-1){
+      this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
+        this.setState({cross: ""});
+    }
+  };
+
   setGasMode = async gasMode => {
     await this.setState({ gasMode });
   };
@@ -296,6 +303,7 @@ class GiftButtonContainer extends React.Component {
                     type="text"
                     required
                     minLength="40"
+                    onBlur={this.handleAddressChangeBlur}
                     onChange={ this.handleAddressChange}
                     value={addressToPrint}
                     placeholder="Enter public address(0x) or ENS address..."
