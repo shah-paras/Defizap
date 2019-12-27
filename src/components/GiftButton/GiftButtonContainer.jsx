@@ -312,7 +312,7 @@ class GiftButtonContainer extends React.Component {
                 className={`${styles.sendcontents} d-flex justify-content-center my-1 py-0` }
               >
                 <Column xs={12}>
-                  <div className={`${styles.butcontents}`}>
+                  <div className={`${styles.buycontents}`}>
                     <p className={`${styles.buytext1}`}>Send to</p>
                   </div>
                 </Column>
