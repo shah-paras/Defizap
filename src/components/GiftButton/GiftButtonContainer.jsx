@@ -207,14 +207,14 @@ class GiftButtonContainer extends React.Component {
     let newAddress;    
     let web3 = getWeb3();
     let flag=1;
-    
+    let thisObj = this;
     if(this.state.toAddress.indexOf(".eth")!=-1 && (this.state.toAddress.length-this.state.toAddress.indexOf(".eth")==4) ){
     
       await web3.eth.ens.getAddress(this.state.toAddress.trim()).then(function (address) {
         flag=2;  
         newAddress = address;    
       }).catch(function (address){
-
+        thisObj.setState({tick: <Button className={`${styles.cross}`}  >&nbsp;X&nbsp;</Button>});
       }); 
       
       if(flag==2){
