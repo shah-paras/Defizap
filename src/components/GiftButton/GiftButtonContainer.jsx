@@ -248,12 +248,11 @@ class GiftButtonContainer extends React.Component {
         this.setState({cross: <Button className={`${styles.xbtn}`} variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
       }
       else{
-        //console.log("in",isInvalidAddress);
+        
         this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
         this.setState({cross: ""});
       }
     }
-    //console.log("flagout",flag);
     
   };
 
