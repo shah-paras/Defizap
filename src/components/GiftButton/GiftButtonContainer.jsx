@@ -198,13 +198,14 @@ class GiftButtonContainer extends React.Component {
     await this.setState({ toAddress: event.target.value });
     await this.setState({ addressToPrint: this.state.toAddress });
     if(this.state.toAddress.length >= 1)
-      await this.setState({ tick: <Spinner animation="border" className="loader"><span className="sr-only">Loading...</span></Spinner>});
+      await this.setState({ tick: <Spinner animation="border" className={`${styles.loader}`}><span className="sr-only">Loading...</span></Spinner>});
     else{
       await this.setState({ tick: ""});
       await this.setState({cross:""});
     }
-    var newAddress;    
+    let newAddress;    
     let web3;
+    let flag=1;
     if (
       typeof window.ethereum !== 'undefined' ||
       typeof window.web3 !== 'undefined'
@@ -214,26 +215,45 @@ class GiftButtonContainer extends React.Component {
     }
     if(this.state.toAddress.indexOf(".eth")!=-1 && (this.state.toAddress.length-this.state.toAddress.indexOf(".eth")==4) ){
     
-
-    await web3.eth.ens.getAddress(this.state.toAddress.trim()).then(function (address) {
+      
+      await web3.eth.ens.getAddress(this.state.toAddress.trim()).then(function (address) {
+        flag=2;  
         newAddress = address;    
+      
+      }).catch(function (address){
+
+        //console.log("catch",flag);
       }); 
       
-      this.setState({addressToPrint:this.state.toAddress+" : "+newAddress});
-      this.setState({toAddress:newAddress}); 
-      this.setState({tick: <Button className='tickbtn' variant='success' >&nbsp;✓&nbsp;</Button>});
-      this.setState({cross: <Button className='xbtn' variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
 
+      if(flag==2){
+        this.setState({addressToPrint:this.state.toAddress+" : "+newAddress});
+        this.setState({toAddress:newAddress}); 
+        this.setState({tick: <Button className={`${styles.tickbtn}`} variant='success' >&nbsp;✓&nbsp;</Button>});
+        this.setState({cross: <Button className={`${styles.xbtn}`} variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
+      }
+      else{
+        this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
+        this.setState({cross: ""});
+      }
     }
     else if(this.state.toAddress.length==42){
       let isInvalidAddress = !(await web3.utils.isAddress(
         this.state.toAddress
       ));
+      
       if(!isInvalidAddress){
-        this.setState({tick: <Button className='tickbtn' variant='success' >&nbsp;✓&nbsp;</Button>});
-        this.setState({cross: <Button className='xbtn' variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
+        console.log("in",isInvalidAddress);
+        this.setState({tick: <Button className={`${styles.tickbtn}`} variant='success' >&nbsp;✓&nbsp;</Button>});
+        this.setState({cross: <Button className={`${styles.xbtn}`} variant='danger' onClick={this.cancelAddress}>&nbsp;X&nbsp;</Button>});
+      }
+      else{
+        //console.log("in",isInvalidAddress);
+        this.setState({tick: <Button className={`${styles.cross}`} variant='danger' >&nbsp;X&nbsp;</Button>});
+        this.setState({cross: ""});
       }
     }
+    //console.log("flagout",flag);
     
   };
 
