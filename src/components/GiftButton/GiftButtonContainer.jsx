@@ -20,7 +20,7 @@ import Simulator from '../Simulator';
 import contractProvider from '../../utils/giftweb3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
-//import { getWeb3 } from '../../web3/web3.js'
+import { getWeb3 } from '../../web3/web3.js'
 import {
   fetchRequest,
   buildOptions,
@@ -46,17 +46,18 @@ class GiftButtonContainer extends React.Component {
     };
   }
 
-  getWeb3 = () => {
+  /*getWeb3 = () => {
     let web3;
       if (
         typeof window.ethereum !== 'undefined' ||
         typeof window.web3 !== 'undefined'
       ) {
         const provider = window.ethereum || window.web3.currentProvider;
+        //web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io"));
         web3 = new Web3(provider);
       }
       return web3;
-  }
+  }*/
 
   async getGas() {
     const response = await fetchRequest(
@@ -91,7 +92,7 @@ class GiftButtonContainer extends React.Component {
     try {
       await this.initialize();
 
-      let web3 = this.getWeb3();
+      let web3 = getWeb3();
       
       const networkId = await web3.eth.net.getId();
       const { ens } = web3.eth;
@@ -204,7 +205,7 @@ class GiftButtonContainer extends React.Component {
       await this.setState({cross:""});
     }
     let newAddress;    
-    let web3 = this.getWeb3();
+    let web3 = getWeb3();
     let flag=1;
     
     if(this.state.toAddress.indexOf(".eth")!=-1 && (this.state.toAddress.length-this.state.toAddress.indexOf(".eth")==4) ){

@@ -1,6 +1,6 @@
 import Onboard from 'bnc-onboard';
 import Web3 from 'web3';
-
+/*
 // eslint-disable-next-line import/no-mutable-exports
 let web3;
 
@@ -57,8 +57,8 @@ const initializationOptions = {
 };
 
 const onboard = Onboard(initializationOptions);
-
- const getWeb3 = () => {
+*/
+ export const getWeb3 = () => {
   let web3;
     if (
       typeof window.ethereum !== 'undefined' ||
@@ -70,4 +70,4 @@ const onboard = Onboard(initializationOptions);
     return web3;
 }
 
-export { onboard, web3};
+//export { getWeb3};
