@@ -1,15 +1,15 @@
 //import React from 'react';
 import Chart from 'chart.js';
 import isEmpty from 'lodash/isEmpty';
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector } from 'recharts';
+import React, { PureComponent, useState } from 'react';
+import { PieChart, Pie, Sector, Cell } from 'recharts';
 
-const data = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
+export default function DoughtnutChart(props) {
+
+const name = props.data.name;
+var data = props.data.components;
+const [activeIndex, setActiveIndex] = useState(0);
+
 
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
@@ -52,44 +52,41 @@ const renderActiveShape = (props) => {
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
       <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
       <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+        {`(Rate ${(percent).toFixed(2)}%)`}
       </text>
     </g>
   );
 };
 
 
-export default class DoughtnutChart extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/hqnrgxpj/';
-
-  state = {
-    activeIndex: 0,
+  let onPieEnter = (data, index) => {
+    setActiveIndex(index);
   };
 
-  onPieEnter = (data, index) => {
-    this.setState({
-      activeIndex: index,
-    });
-  };
-
-  render() {
     return (
-      <PieChart width={400} height={400}>
-        <Pie
-          activeIndex={this.state.activeIndex}
-          activeShape={renderActiveShape}
-          data={data}
-          cx={200}
-          cy={200}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-          onMouseEnter={this.onPieEnter}
-        />
-      </PieChart>
+      <div className = "donot-chart">
+        <font size = "3" color = "black">{name}</font>
+        <PieChart width={400} height={400}>
+            <Pie
+              activeIndex={activeIndex}
+              activeShape={renderActiveShape}
+              data={data}
+              cx={200}
+              cy={200}
+              innerRadius={60}
+              outerRadius={80}
+              dataKey="percent"
+              onMouseEnter={onPieEnter} >
+              {
+                data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color}/>
+                ))
+              }
+          </Pie>
+        }
+        </PieChart>
+      </div>
     );
-  }
 }
 
 
@@ -208,15 +205,28 @@ Chart.pluginService.register({
 // class DoughtnutChart extends React.Component {
 //   constructor(props) {
 //     super(props);
-//     this.state = { text: props.data.text, showText: true };
+//     this.state = { 
+//       text: props.data.text, 
+//       showText: true,
+//       chartData : []
+//     };
 //     this.chartRef = React.createRef();
 //   }
-
 //   componentDidMount() {
+//     let tempChartData = [];
+//     debugger;
 //     const half = !(this.props.data.components.length > 1);
 //     const percentages = this.assignPercentages(half);
-//     const colors = this.assignColors(half);
+//    // const colors = this.assignColors(half);
 //     const names = this.assignNames(half);
+//     tempChartData.push({
+//       "names": names,
+//       "percentages": percentages,
+//       "colors": colors
+//     });
+//     this.setState({chartData : tempChartData});
+//     console.log("Temp:", tempChartData);
+//     console.log("Data: ", this.state.chartData);
 //     // const bgColor = this.assignColors(this.props.name) // One possible way to assign colors
 //     // const bgColor = this.assignRandomColor() // Random colors
 //     this.myChart = new Chart(this.chartRef.current, {
