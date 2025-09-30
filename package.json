@@ -15,7 +15,7 @@
     "connected-react-router": "^6.5.2",
     "history": "^4.10.1",
     "humanize-plus": "^1.8.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-autobind": "^1.0.6",
